@@ -3,13 +3,15 @@
 
   class Service {
     constructor($firebaseAuth, Dialog, $state) {
-      this.$firebaseAuth = $firebaseAuth();
+      this.$firebaseAuth = $firebaseAuth;
       this.$dialog = Dialog.$dialog();
       this.$state = $state;
       this.$firebaseAuth.$onAuthStateChanged(authData => {
         this.getAuthData = authData;
       });
-      this.getAuthData = this.$firebaseAuth.$getAuth();
+    }
+    get getAuthData() {
+      return this.$firebaseAuth().$getAuth();
     }
     get authData() {
       return this.getAuthData;
@@ -27,7 +29,7 @@
       this.$dialog.login()().then(credentials => {
         this.login(credentials).then(() => {
           this.$dialog.newPassword()().then(password => {
-            return this.$firebaseAuth
+            return this.$firebaseAuth()
               .$updatePassword(password).then(() => {
                 credentials.password = password;
                 this.login(credentials);
@@ -43,7 +45,7 @@
       });
     }
     login(credentials) {
-      return this.$firebaseAuth
+      return this.$firebaseAuth()
         .$signInWithEmailAndPassword(credentials.email, credentials.password)
         .then((authData) => {
           this.getAuthData = authData;
@@ -51,10 +53,10 @@
         });
     }
     onAuth(callback) {
-      this.$firebaseAuth.$onAuthStateChanged(callback);
+      this.$firebaseAuth().$onAuthStateChanged(callback);
     }
     logout() {
-      this.$firebaseAuth.$signOut();
+      this.$firebaseAuth().$signOut();
     }
   }
   angular
