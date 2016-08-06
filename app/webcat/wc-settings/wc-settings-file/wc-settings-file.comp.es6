@@ -41,7 +41,7 @@
   angular
     .module('webcat.settings')
     .component('wcSettingsFile', {
-      templateUrl: '_components/_webcat/wc-settings/wc-settings-file/wc-settings-file.html',
+      templateUrl: 'webcat/wc-settings/wc-settings-file/wc-settings-file.html',
       controller: Controller,
       bindings: {
         data: '<',

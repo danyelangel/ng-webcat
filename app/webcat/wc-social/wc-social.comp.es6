@@ -29,7 +29,7 @@
   angular
     .module('webcat.social', [])
     .component('wcSocial', {
-      templateUrl: '_components/_webcat/wc-social/wc-social.html',
+      templateUrl: 'webcat/wc-social/wc-social.html',
       controller: Controller,
       bindings: {
         data: '<',

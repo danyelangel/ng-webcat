@@ -11,7 +11,7 @@
   angular
     .module('webcat.settings', [])
     .component('wcSettings', {
-      templateUrl: '_components/_webcat/wc-settings/wc-settings.html',
+      templateUrl: 'webcat/wc-settings/wc-settings.html',
       controller: Controller,
       transclude: true,
       bindings: {

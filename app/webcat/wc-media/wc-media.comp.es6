@@ -84,7 +84,7 @@
       'oblador.lazytube'
     ])
     .component('wcMedia', {
-      templateUrl: '_components/_webcat/wc-media/wc-media.html',
+      templateUrl: 'webcat/wc-media/wc-media.html',
       controller: Controller,
       transclude: true,
       bindings: {

@@ -43,7 +43,7 @@
       'angular-medium-editor'
     ])
     .component('wcText', {
-      templateUrl: '_components/_webcat/wc-text/wc-text.html',
+      templateUrl: 'webcat/wc-text/wc-text.html',
       controller: Controller,
       bindings: {
         data: '<',

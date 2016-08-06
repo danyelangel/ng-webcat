@@ -74,7 +74,7 @@
             let self = this;
             this.$mdDialog
               .show({
-                templateUrl: '_components/_firedux/dialog/progress-dialog.html',
+                templateUrl: 'firedux/dialog/progress-dialog.html',
                 controller: function () {
                   this.progress = progress;
                   this.title = labels.progress[self.Lang.$current][labelId];
@@ -89,7 +89,7 @@
               let self = this;
               this.$mdDialog
                 .show({
-                  templateUrl: '_components/_firedux/dialog/select-dialog.html',
+                  templateUrl: 'firedux/dialog/select-dialog.html',
                   controller: function () {
                     this.title = labels.select[self.Lang.$current][labelId];
                     this.params = params;
@@ -110,7 +110,7 @@
               let self = this;
               this.$mdDialog
                 .show({
-                  templateUrl: '_components/_firedux/dialog/login-dialog.html',
+                  templateUrl: 'firedux/dialog/login-dialog.html',
                   controller: function () {
                     this.hide = credentials => {
                       self.$mdDialog.hide();
@@ -129,7 +129,7 @@
               let self = this;
               this.$mdDialog
                 .show({
-                  templateUrl: '_components/_firedux/dialog/new-password-dialog.html',
+                  templateUrl: 'firedux/dialog/new-password-dialog.html',
                   controller: function () {
                     this.hide = password => {
                       self.$mdDialog.hide();
