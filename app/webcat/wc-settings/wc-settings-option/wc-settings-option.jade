@@ -1,0 +1,9 @@
+md-menu-item
+  md-button(
+  ng-click="$ctrl.onClick({$event:$event})")
+    div(layout="row" flex)
+      p(flex)|{{$ctrl.text}}
+      md-icon(
+      md-menu-align-target
+      style="margin: auto 3px auto 0;")
+          |{{$ctrl.icon}}

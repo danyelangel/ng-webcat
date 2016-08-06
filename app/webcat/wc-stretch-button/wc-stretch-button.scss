@@ -1,0 +1,14 @@
+.wc-stretch-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: background .3s;
+  cursor: pointer;
+  outline: none;
+  background: rgba(125,125,125,.25);
+}
+.wc-stretch-button:hover {
+  background: #E0E0E0;
+}

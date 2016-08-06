@@ -1,0 +1,23 @@
+md-menu-item
+  md-button
+    input.hidden-input(
+    type="file"
+    ngf-select="$ctrl.update($file)"
+    ngf-multiple="false"
+    accept="image/*"
+    ngf-resize="$ctrl.dimensions")
+    span(flex)|{{$ctrl.uploadText?$ctrl.uploadText:'Upload Image'}}
+    md-icon(
+    md-menu-align-target
+    style="margin: auto 3px auto 0;")
+        |{{$ctrl.uploadIcon?$ctrl.uploadIcon:'photo'}}
+        
+md-menu-item(ng-if="$ctrl.data")
+  md-button(
+  ng-click="$ctrl.delete()")
+    div(layout="row" flex)
+      p(flex)|{{$ctrl.removeText?$ctrl.removeText:'Remove Image'}}
+      md-icon(
+      md-menu-align-target
+      style="margin: auto 3px auto 0;")
+          |{{$ctrl.removeIcon?$ctrl.removeIcon:'delete'}}

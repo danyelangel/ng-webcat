@@ -1,0 +1,50 @@
+wc-settings {
+  .settingsWrapper {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    z-index: 4;
+    .wcSettingsOrigin {
+      text-shadow: 0 2px 18px rgba(0,0,0,.75);
+    }
+    md-menu.position-1 {
+      margin-right: 0;
+    }
+    md-menu.position-2 {
+      margin-right: 48px;
+    }
+  }
+  .settingsWrapper.left {
+    right: auto;
+    left: 12px;
+  }
+}
+wc-settings.relative {
+  .settingsWrapper {
+    position: relative;
+    right: auto;
+    top: auto;
+    left: auto;
+  }
+}
+wc-settings.no-shadow {
+  .wcSettingsOrigin {
+    text-shadow: none;
+  }
+}
+wc-settings.bottom {
+  bottom: 12px;
+  top: auto;
+}
+wc-settings.no-margin {
+  .settingsWrapper {
+    right: 8px;
+    top: 8px;
+  }
+}
+wc-settings.bottom.no-margin {
+  .settingsWrapper {
+    bottom: 8px;
+    top: auto;
+  }
+}

@@ -1,0 +1,21 @@
+wc-settings(
+ng-if="$ctrl.authData && !$ctrl.readonly"
+icon="movie"
+position="{{$ctrl.position}}"
+margin-top="{{$ctrl.marginTop}}")
+  wc-settings-option(
+  icon="link"
+  on-click="$ctrl.getUrl()"
+  text="Update link")
+  
+ng-transclude
+
+div(
+ng-if="!disabled && ($ctrl.data.ref || $ctrl.data.data.ref)"
+ob-lazytube="{{$ctrl.data.ref || $ctrl.data.data.ref}}")
+  |Video
+  
+div(
+ng-if="disabled || (!$ctrl.data.ref && !$ctrl.data.data.ref)"
+ob-lazytube="plop")
+  |Video
