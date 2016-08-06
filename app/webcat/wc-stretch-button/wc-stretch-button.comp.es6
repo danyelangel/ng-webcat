@@ -11,7 +11,7 @@
   angular
     .module('webcat.stretch-button', [])
     .component('wcStretchButton', {
-      templateUrl: '_components/_webcat/wc-stretch-button/wc-stretch-button.html',
+      templateUrl: 'webcat/wc-stretch-button/wc-stretch-button.html',
       controller: Controller,
       bindings: {
         icon: '@'

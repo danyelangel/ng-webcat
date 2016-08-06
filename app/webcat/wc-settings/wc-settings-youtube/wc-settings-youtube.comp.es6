@@ -30,7 +30,7 @@
   angular
     .module('webcat.settings')
     .component('wcSettingsYoutube', {
-      templateUrl: '_components/_webcat/wc-settings/wc-settings-youtube/wc-settings-youtube.html',
+      templateUrl: 'webcat/wc-settings/wc-settings-youtube/wc-settings-youtube.html',
       controller: Controller,
       bindings: {
         data: '<',
