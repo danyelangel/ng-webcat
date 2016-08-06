@@ -6,7 +6,7 @@
       this.$firebaseAuth = $firebaseAuth;
       this.$dialog = Dialog.$dialog();
       this.$state = $state;
-      this.$firebaseAuth.$onAuthStateChanged(authData => {
+      this.$firebaseAuth().$onAuthStateChanged(authData => {
         this.getAuthData = authData;
       });
     }

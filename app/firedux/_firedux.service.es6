@@ -2,20 +2,8 @@
   'use strict';
 
   class Service {
-    constructor($window, $firebaseArray, Auth, Dialog, Lang, Storage) {
+    constructor($window, $firebaseArray) {
       this.firebase = $window.firebase;
-      this.auth = () => {
-        return Auth;
-      };
-      this.dialog = () => {
-        return Dialog;
-      };
-      this.lang = () => {
-        return Lang;
-      };
-      this.storage = () => {
-        return Storage;
-      };
     }
     init(config) {
       this.firebase.initializeApp(config);
