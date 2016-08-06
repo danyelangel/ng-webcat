@@ -2,7 +2,7 @@
   'use strict';
 
   class Service {
-    constructor($window, $firebaseArray) {
+    constructor($window) {
       this.firebase = $window.firebase;
     }
     init(config) {
