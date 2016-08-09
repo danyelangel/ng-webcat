@@ -70,6 +70,9 @@
       } else {
         size = 600;
       }
+      if (size < 1280 && this.isBackground) {
+        size = 1280;
+      }
       if (ref) {
         returnable = `http://${this.projectUrl}/?image=${ref}&size=${size}`;
       } else {
