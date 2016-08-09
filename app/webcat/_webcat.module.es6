@@ -10,6 +10,7 @@
       'webcat.youtube',
       'webcat.stretch-button',
       'webcat.social',
-      'webcat.auth'
+      'webcat.auth',
+      'webcat.loader'
     ]);
 }());
