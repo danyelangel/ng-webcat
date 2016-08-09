@@ -98,6 +98,7 @@
         // Events
         onClick: '&',
         onUpdate: '&',
+        onReady: '&',
         removeOnDestroy: '<',
 
         // Positioning
@@ -105,5 +106,21 @@
         position: '@',
         marginTop: '@'
       }
+    })
+    .directive('imageonload', () => {
+      return {
+        restrict: 'A',
+        scope: {
+          imageonload: '&'
+        },
+        link: function (scope, element) {
+          element.bind('load', () => {
+            scope.imageonload();
+          });
+          element.bind('error', () => {
+            scope.imageonload();
+          });
+        }
+      };
     });
 }());

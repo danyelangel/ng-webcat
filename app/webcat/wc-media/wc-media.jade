@@ -29,4 +29,5 @@ ng-style="{backgroundImage: 'url('+$ctrl.getUrl($ctrl.data.ref)+')'}")
 img(
 ng-if="!$ctrl.isBackground && ($ctrl.authData || $ctrl.data.url)"
 ng-click="$ctrl.onClick()"
-ng-src="{{$ctrl.getUrl($ctrl.data.ref)}}")
+ng-src="{{$ctrl.getUrl($ctrl.data.ref)}}"
+imageonload="$ctrl.onReady()")
