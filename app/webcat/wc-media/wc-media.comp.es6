@@ -116,9 +116,11 @@
         link: function (scope, element) {
           element.bind('load', () => {
             scope.imageonload();
+            scope.$apply();
           });
           element.bind('error', () => {
             scope.imageonload();
+            scope.$apply();
           });
         }
       };
