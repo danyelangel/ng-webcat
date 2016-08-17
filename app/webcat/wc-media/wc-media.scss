@@ -34,8 +34,8 @@ wc-media[on-click] {
   }
 }
 wc-media[parallax] {
-  .img-wrapper {
-    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+  @media (min-width: 1024px) {
+    .img-wrapper {
       transform: translateZ(-1px) translateY(-150px) scale(2);
     }
   }
