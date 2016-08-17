@@ -36,6 +36,7 @@ wc-media[on-click] {
 @media (min-width: 1024px) {
   wc-media[parallax-height] .img-wrapper {
     transform-origin-x: 100%;
+    outline: none;
   }
   md-content.parallax {
     overflow-x: hidden !important;
