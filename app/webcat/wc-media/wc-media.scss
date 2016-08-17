@@ -1,11 +1,13 @@
 wc-media {
   display: block;
+  transform-style: preserve-3d;
   .wc-media-wrapper {
     position: relative;
     display: block;
     overflow: hidden;
     height: 100%;
     width: 100%;
+    transform-style: preserve-3d;
     .img-wrapper {
       position: absolute;
       height: 100%;
