@@ -36,7 +36,7 @@ wc-media[on-click] {
 wc-media[parallax] {
   @media (min-width: 1024px) {
     .img-wrapper {
-      transform: translateZ(-1px) translateY(-150px) scale(2);
+      transform: translateZ(-1px) translateY(-240px) scale(2);
     }
   }
 }
