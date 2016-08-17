@@ -91,7 +91,7 @@
     get backgroundStyles() {
       return {
         backgroundImage: `url(${this.getUrl(this.data.ref)})`,
-        transform: this.parallaxHeight && this.$mdMedia('gt-sm') ? this.parallaxTransform : undefined
+        transform: this.parallaxHeight && this.$mdMedia('min-width: 1024px') ? this.parallaxTransform : undefined
       };
     }
   }
