@@ -33,13 +33,25 @@ wc-media[on-click] {
     cursor: pointer;
   }
 }
-wc-media[parallax] {
-  @media (min-width: 1024px) {
-    .img-wrapper {
-      transform: translateZ(-1px) translateY(-240px) scale(2);
-    }
+@media (min-width: 1024px) {
+  wc-media[parallax-height] .img-wrapper {
+    transform-origin-x: 100%;
   }
-}
-md-content {
-  perspective: 1px;
+  wc-media[parallax-height="25"] .img-wrapper {
+    transform: translateZ(-1px) translateY(calc(-100vh/2.6666)) scale(2);
+  }
+  wc-media[parallax-height="50"] .img-wrapper {
+    transform: translateZ(-1px) translateY(calc(-100vh/4)) scale(2);
+  }
+  wc-media[parallax-height="75"] .img-wrapper {
+    transform: translateZ(-1px) translateY(calc(-100vh/8)) scale(2);
+  }
+  wc-media[parallax-height="100"] .img-wrapper {
+    transform: translateZ(-1px) translateY(0) scale(2);
+  }
+  md-content.parallax {
+    overflow-x: hidden !important;
+    perspective: 1px !important;
+    perspective-origin-x: 100%;
+  }
 }
