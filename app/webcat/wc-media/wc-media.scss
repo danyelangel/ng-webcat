@@ -1,13 +1,17 @@
 wc-media {
   display: block;
-  transform-style: preserve-3d;
+  @-moz-document url-prefix() {
+    transform-style: preserve-3d;
+  }
   .wc-media-wrapper {
     position: relative;
     display: block;
     overflow: hidden;
     height: 100%;
     width: 100%;
-    transform-style: preserve-3d;
+    @-moz-document url-prefix() {
+      transform-style: preserve-3d;
+    }
     .img-wrapper {
       position: absolute;
       height: 100%;
@@ -45,12 +49,10 @@ wc-media[on-click] {
 }
 @media (min-width: 1024px) {
   wc-media[parallax-height] .img-wrapper {
-    transform-origin-x: 100%;
     outline: none;
   }
   md-content.parallax {
     overflow-x: hidden !important;
     perspective: 1px !important;
-    perspective-origin-x: 100%;
   }
 }
