@@ -1,8 +1,11 @@
 wc-media {
+  display: block;
   .wc-media-wrapper {
     position: relative;
     display: block;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
     .img-wrapper {
       position: absolute;
       height: 100%;
