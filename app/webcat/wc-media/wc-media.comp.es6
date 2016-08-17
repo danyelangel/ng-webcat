@@ -91,7 +91,7 @@
     get backgroundStyles() {
       return {
         backgroundImage: `url(${this.getUrl(this.data.ref)})`,
-        transform: this.parallaxTransform
+        transform: this.parallaxHeight ? this.parallaxTransform : undefined
       };
     }
   }
