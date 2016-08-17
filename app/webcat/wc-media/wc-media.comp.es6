@@ -84,14 +84,11 @@
     }
     // Styling
     get parallaxTransform() {
-      let translation = 2 / (1 - this.parallaxHeight / 100);
+      let ratio = 2 / (1 - this.parallaxHeight / 100),
+          translation = -100 / ratio;
       return `translateZ(-1px) translateY(${translation}vh) scale(2)`;
     }
     get backgroundStyles() {
-      console.log({
-        backgroundImage: `url(${this.getUrl(this.data.ref)})`,
-        transform: this.parallaxTransform
-      });
       return {
         backgroundImage: `url(${this.getUrl(this.data.ref)})`,
         transform: this.parallaxTransform
