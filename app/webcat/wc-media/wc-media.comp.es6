@@ -7,11 +7,34 @@
       this.$mdMedia = $mdMedia;
       this.$firedux = $firedux;
     }
+    // Firedux
     get authData() {
       return this.Auth.authData;
     }
     get projectUrl() {
       return this.$firedux.projectUrl;
+    }
+    getUrl(ref) {
+      let size = 1920,
+          returnable;
+      if (this.$mdMedia('gt-lg')) {
+        size = 1920;
+      } else if (this.$mdMedia('gt-md')) {
+        size = 1280;
+      } else if (this.$mdMedia('gt-sm')) {
+        size = 960;
+      } else {
+        size = 600;
+      }
+      if (size < 1280 && this.isBackground) {
+        size = 1280;
+      }
+      if (ref) {
+        returnable = `http://${this.projectUrl}/?image=${ref}&size=${size}`;
+      } else {
+        returnable = 'http://www.cheerfulheartsfoundation.org/wp-content/uploads/2013/04/placeholder.png';
+      }
+      return returnable;
     }
     $onChanges(changes) {
       angular.forEach(changes, (key, value) => {
@@ -25,6 +48,7 @@
         }
       }
     }
+    // Operations
     delete() {
       Promise.resolve()
         .then(() => {
@@ -58,27 +82,16 @@
           });
       }
     }
-    getUrl(ref) {
-      let size = 1920,
-          returnable;
-      if (this.$mdMedia('gt-lg')) {
-        size = 1920;
-      } else if (this.$mdMedia('gt-md')) {
-        size = 1280;
-      } else if (this.$mdMedia('gt-sm')) {
-        size = 960;
-      } else {
-        size = 600;
-      }
-      if (size < 1280 && this.isBackground) {
-        size = 1280;
-      }
-      if (ref) {
-        returnable = `http://${this.projectUrl}/?image=${ref}&size=${size}`;
-      } else {
-        returnable = 'http://www.cheerfulheartsfoundation.org/wp-content/uploads/2013/04/placeholder.png';
-      }
-      return returnable;
+    // Styling
+    get parallaxTransform() {
+      let translation = 2 / (1 - this.parallaxHeight / 100);
+      return `transform: translateZ(-1px) translateY(${translation}) scale(2);`;
+    }
+    get backgroundStyles() {
+      return {
+        backgroundImage: `url(${this.getUrl(this.data.ref)})`,
+        transform: this.parallaxTransform
+      };
     }
   }
   angular
@@ -104,7 +117,8 @@
         // Positioning
         isBackground: '<',
         position: '@',
-        marginTop: '@'
+        marginTop: '@',
+        parallaxHeight: '@'
       }
     })
     .directive('imageonload', () => {

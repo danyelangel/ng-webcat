@@ -25,7 +25,7 @@ ng-transclude
 .img-wrapper(
 ng-if="$ctrl.isBackground && ($ctrl.authData || $ctrl.data.url)"
 ng-click="$ctrl.onClick()"
-ng-style="{backgroundImage: 'url('+$ctrl.getUrl($ctrl.data.ref)+')'}")
+ng-style="$ctrl.backgroundStyles")
 img(
 ng-if="!$ctrl.isBackground && ($ctrl.authData || $ctrl.data.url)"
 ng-click="$ctrl.onClick()"
