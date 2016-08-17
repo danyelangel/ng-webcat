@@ -33,3 +33,13 @@ wc-media[on-click] {
     cursor: pointer;
   }
 }
+wc-media[parallax] {
+  .img-wrapper {
+    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+      transform: translateZ(-1px);
+    }
+  }
+}
+md-content {
+  perspective: 1px;
+}
