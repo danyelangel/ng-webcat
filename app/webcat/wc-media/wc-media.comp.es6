@@ -85,7 +85,7 @@
     // Styling
     get parallaxTransform() {
       let translation = 2 / (1 - this.parallaxHeight / 100);
-      return `transform: translateZ(-1px) translateY(${translation}) scale(2);`;
+      return `translateZ(-1px) translateY(${translation}) scale(2)`;
     }
     get backgroundStyles() {
       return {
