@@ -11,6 +11,7 @@
       'webcat.stretch-button',
       'webcat.social',
       'webcat.auth',
-      'webcat.loader'
+      'webcat.loader',
+      'webcat.collapse'
     ]);
 }());
