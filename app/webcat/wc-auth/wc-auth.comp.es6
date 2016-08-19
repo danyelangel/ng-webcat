@@ -3,13 +3,10 @@
   class Controller {
     constructor(Auth) {
       this.Auth = Auth;
-      this.onAuth({
-        $data: this.authData
-      });
-    }
-    $onChanges() {
-      this.onAuth({
-        $data: this.authData
+      Auth.onAuth(authData => {
+        this.onAuth({
+          $data: authData
+        });
       });
     }
     get authData() {
