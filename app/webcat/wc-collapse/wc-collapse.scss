@@ -7,6 +7,7 @@ wc-collapse.open {
   transition: width .3s, height .5s, opacity .2s .3s;
 }
 wc-collapse.vertical-only {
+  width: auto !important;
   transition: height .2s, opacity .15s, width 0s .2s;
 }
 wc-collapse.open.vertical-only {
