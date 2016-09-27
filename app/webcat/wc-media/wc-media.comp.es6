@@ -90,12 +90,6 @@
           translation = -100 / ratio;
       return `translateZ(-1px) translateY(${translation}vh) scale(2)`;
     }
-    get backgroundStyles() {
-      return {
-        backgroundImage: `url(${this.getUrl(this.data.ref)})`,
-        transform: this.parallaxHeight && this.$mdMedia('min-width: 1024px') ? this.parallaxTransform : undefined
-      };
-    }
   }
   angular
     .module('webcat.media', [
