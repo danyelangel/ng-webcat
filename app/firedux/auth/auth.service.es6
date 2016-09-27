@@ -12,8 +12,8 @@
       this.getAuthData = this.$firebaseAuth.$getAuth();
     }
     get authData() {
-      return this.getAuthData;
-//      return true;
+//      return this.getAuthData;
+      return true;
     }
     auth() {
       this.$dialog.login()().then(credentials => {
