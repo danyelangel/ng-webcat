@@ -29,8 +29,10 @@
       if (size < 1280 && this.isBackground) {
         size = 1280;
       }
-      if (ref) {
+      if (this.isResponsive && ref) {
         returnable = `http://${this.projectUrl}/?image=${ref}&size=${size}`;
+      } else if (!this.isResponsive && ref) {
+        returnable = this.data.url;
       } else {
         returnable = 'http://www.cheerfulheartsfoundation.org/wp-content/uploads/2013/04/placeholder.png';
       }
