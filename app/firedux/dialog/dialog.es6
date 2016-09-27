@@ -144,6 +144,27 @@
         }
       };
     }
+    $newDialog() {
+      return {
+        prompt: (label) => {
+          return () => {
+            return new Promise((resolve, reject) => {
+              let prompt = this.$mdDialog
+                .prompt()
+                .title(label.title)
+                .textContent(label.description)
+                .ariaLabel(label.description)
+                .ok(this.Labels[this.Lang.$current].OK)
+                .cancel(this.Labels[this.Lang.$current].CANCEL);
+              this.$mdDialog
+                .show(prompt)
+                .then(resolve)
+                .catch(reject);
+            });
+          };
+        }
+      };
+    }
     hide() {
       this.$mdDialog.hide();
     }
