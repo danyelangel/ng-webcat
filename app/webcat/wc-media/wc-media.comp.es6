@@ -90,6 +90,11 @@
           translation = -100 / ratio;
       return `translateZ(-1px) translateY(${translation}vh) scale(2)`;
     }
+    get backgroundStyles() {
+      return this.data ? {
+        backgroundImage: `url(${this.getUrl(this.data.ref)})`
+      } : null;
+    }
   }
   angular
     .module('webcat.media', [
