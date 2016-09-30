@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  function $fireduxArrayFact($firebaseArray, $timeout, Dialog) {
+  function $fireduxArrayFact($firebaseArray, $timeout, Dialog, $window) {
     let $dialog = Dialog.$dialog({
       confirm: {
         es: {
@@ -48,6 +48,12 @@
         return this.$list.$add(Object.assign(data, {
           $priority: newPriority
         }));
+      },
+      $addWithTimestamp: function (data) {
+        return this.$list.$add({
+          data: data,
+          timestamp: $window.firebase.database.ServerValue.TIMESTAMP
+        });
       },
       $removeWithDialog: function ($index) {
         $dialog.confirm('REMOVE')().then(() => {

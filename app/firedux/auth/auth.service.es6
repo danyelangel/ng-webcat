@@ -10,17 +10,18 @@
         this.getAuthData = authData;
       });
       this.getAuthData = this.$firebaseAuth.$getAuth();
+      if (!this.getAuthData) {
+        this.$firebaseAuth.$signInAnonymously();
+      }
     }
     get authData() {
-//      return this.getAuthData;
-      return true;
+      return this.getAuthData;
     }
     auth() {
       this.$dialog.login()().then(credentials => {
         this.login(credentials);
-        this.$state.go('root');
       }).catch(() => {
-        this.$state.go('root');
+        // To do error notification
       });
     }
     updatePassword() {
@@ -31,15 +32,15 @@
               .$updatePassword(password).then(() => {
                 credentials.password = password;
                 this.login(credentials);
-                console.log('Success');
+                // To do success notification
               })
-              .catch(error => {
-                console.log(error);
+              .catch(() => {
+                // To do error notification
               });
           });
         });
       }).catch(() => {
-        this.$state.go('root');
+        // To do error notification
       });
     }
     login(credentials) {
@@ -47,7 +48,6 @@
         .$signInWithEmailAndPassword(credentials.email, credentials.password)
         .then((authData) => {
           this.getAuthData = authData;
-          console.log('User Logged In');
         });
     }
     onAuth(callback) {
