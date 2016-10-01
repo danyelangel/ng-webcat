@@ -13,6 +13,7 @@
     $onChanges(changes) {
       if (changes.parameters && this.requests) {
         this.requests.$addWithTimestamp(this.parameters);
+        this.onRequestSent();
       }
     }
     onFireduxReady(ready) {
@@ -34,7 +35,8 @@
         parameters: '<',
         debounce: '@',
         onReady: '&',
-        onData: '&'
+        onData: '&',
+        onRequestSent: '&'
         // onAuthError: '&',
         // onError: '&'
         // For future error implementation
