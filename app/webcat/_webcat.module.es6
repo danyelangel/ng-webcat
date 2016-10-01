@@ -12,6 +12,7 @@
       'webcat.social',
       'webcat.auth',
       'webcat.loader',
-      'webcat.collapse'
+      'webcat.collapse',
+      'webcat.api'
     ]);
 }());
