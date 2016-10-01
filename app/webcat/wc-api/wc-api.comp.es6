@@ -13,7 +13,7 @@
       });
     }
     $onChanges(changes) {
-      if (this.userId || changes.parameters && this.requests) {
+      if (changes.userId || changes.parameters && this.requests) {
         this.requests.$addWithTimestamp(this.parameters);
         this.onRequestSent();
       }
