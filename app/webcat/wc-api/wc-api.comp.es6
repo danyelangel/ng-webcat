@@ -7,11 +7,13 @@
     }
     $onInit() {
       this.Auth.onAuth(authData => {
-        this.userId = authData.uid;
+        if (authData) {
+          this.userId = authData.uid;
+        }
       });
     }
     $onChanges(changes) {
-      if (changes.parameters && this.requests) {
+      if (this.userId || changes.parameters && this.requests) {
         this.requests.$addWithTimestamp(this.parameters);
         this.onRequestSent();
       }
@@ -37,7 +39,7 @@
         onReady: '&',
         onData: '&',
         onRequestSent: '&'
-        // onAuthError: '&',
+        // onAuthError:  '&',
         // onError: '&'
         // For future error implementation
       }
