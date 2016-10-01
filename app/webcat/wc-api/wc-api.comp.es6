@@ -7,7 +7,7 @@
     }
     $onInit() {
       this.Auth.onAuth(authData => {
-        this.userId = authData.id;
+        this.userId = authData.uid;
       });
     }
     $onChanges(changes) {
