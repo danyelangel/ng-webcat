@@ -10,7 +10,7 @@
         this.getAuthData = authData;
       });
       this.getAuthData = this.$firebaseAuth.$getAuth();
-      if (!this.getAuthData) {
+      if (!this.authData) {
         this.$firebaseAuth.$signInAnonymously();
       }
     }
@@ -51,6 +51,9 @@
         });
     }
     onAuth(callback) {
+      if (!this.authData) {
+        this.$firebaseAuth.$signInAnonymously();
+      }
       this.$firebaseAuth.$onAuthStateChanged(callback);
     }
     logout() {
