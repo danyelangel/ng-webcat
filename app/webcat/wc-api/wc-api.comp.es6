@@ -9,7 +9,6 @@
       this.Auth.onAuth(authData => {
         if (authData) {
           this.userId = authData.uid;
-          this.requests.$addWithTimestamp(this.parameters);
         }
       });
     }
@@ -21,6 +20,8 @@
     }
     onFireduxReady(ready) {
       if (ready) {
+        this.requests.$addWithTimestamp(this.parameters);
+        this.onRequestSent();
         this.onReady();
       }
     }
