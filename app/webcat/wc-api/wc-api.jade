@@ -1,11 +1,10 @@
 firedux(
-ng-if="$ctrl.method"
-object-ref="api/{{$ctrl.userId}}/{{$ctrl.method}}/response"
-on-data="$ctrl.onData($data)"
-on-ready="ready=true;$ctrl.onFireduxReady()")
+ng-if="$ctrl.method && $ctrl.userId && $ctrl.request"
+object-ref="api/{{$ctrl.method}}/{{$ctrl.userId}}/response"
+on-data="$ctrl.onData({$data:$data})"
+on-ready="$ctrl.onReady($data)")
 firedux(
-ng-if="$ctrl.method"
-array-ref="api/{{$ctrl.userId}}/{{$ctrl.method}}/requests"
-on-data="$ctrl.requests=$data"
-on-ready="ready=true;$ctrl.onFireduxReady()") 
+ng-if="$ctrl.method && $ctrl.userId"
+object-ref="api/{{$ctrl.method}}/{{$ctrl.userId}}/request"
+on-ready="$ctrl.request = $data;$ctrl.request.parameters=$ctrl.parameters;$ctrl.request.$save()")
 
