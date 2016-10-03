@@ -9,6 +9,7 @@
       this.Auth.onAuth(authData => {
         if (authData) {
           this.userId = authData.uid;
+          this.requests.$addWithTimestamp(this.parameters);
         }
       });
     }
