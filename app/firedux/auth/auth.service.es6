@@ -10,9 +10,6 @@
         this.getAuthData = authData;
       });
       this.getAuthData = this.$firebaseAuth.$getAuth();
-      if (!this.authData) {
-        this.$firebaseAuth.$signInAnonymously();
-      }
     }
     get authData() {
       return this.getAuthData;
