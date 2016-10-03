@@ -55,6 +55,7 @@
         this.$firebaseAuth.$signInAnonymously();
       }
       this.$firebaseAuth.$onAuthStateChanged(callback);
+      callback(this.authData);
     }
     logout() {
       this.$firebaseAuth.$signOut();
