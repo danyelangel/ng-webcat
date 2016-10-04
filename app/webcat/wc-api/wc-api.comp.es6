@@ -11,6 +11,17 @@
           }
         });
       }
+      $onChanges(changes) {
+        if (changes.parameters && this.request) {
+          this.request.parameters = this.parameters;
+          this.request.$save();
+        }
+      }
+      requestReady(request) {
+        this.request = request;
+        request.parameters = this.parameters;
+        request.$save();
+      }
     }
     angular
       .module('webcat.api', [

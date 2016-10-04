@@ -6,5 +6,5 @@ on-ready="$ctrl.onReady($data)")
 firedux(
 ng-if="$ctrl.method && $ctrl.userId"
 object-ref="api/{{$ctrl.method}}/{{$ctrl.userId}}/request"
-on-ready="$ctrl.request = $data;$ctrl.request.parameters=$ctrl.parameters;$ctrl.request.$save()")
+on-ready="$ctrl.requestReady($data)")
 
