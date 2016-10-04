@@ -10,12 +10,12 @@ on-ready="$ctrl.requestReady($data)")
 
 firedux(
 ng-if="$ctrl.action && $ctrl.userId && $ctrl.request"
-object-ref="action/{{$ctrl.action}}/{{$ctrl.userId}}/response"
+object-ref="api/{{$ctrl.action}}/{{$ctrl.userId}}/response"
 on-data="$ctrl.onData({$data:$data})"
 on-ready="$ctrl.onReady($data)")
 firedux(
 ng-if="$ctrl.action && $ctrl.userId"
-object-ref="action/{{$ctrl.action}}/{{$ctrl.userId}}/request"
+object-ref="api/{{$ctrl.action}}/{{$ctrl.userId}}/request"
 on-ready="$ctrl.requestReady($data)")
 
 
