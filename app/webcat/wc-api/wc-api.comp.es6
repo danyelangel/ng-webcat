@@ -32,9 +32,9 @@
         controller: Controller,
         bindings: {
           // Data
-          method: '@',
+          reducer: '@',
+          action: '@',
           parameters: '<',
-          debounce: '@',
           onReady: '&',
           onData: '&'
           // onAuthError:  '&',
