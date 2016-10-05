@@ -36,7 +36,8 @@
           action: '@',
           parameters: '<',
           onReady: '&',
-          onData: '&'
+          onData: '&',
+          onDataArray: '&'
           // onAuthError:  '&',
           // onError: '&'
           // For future error implementation

@@ -34,7 +34,7 @@
       } else if (!this.isResponsive && ref) {
         returnable = this.data.url;
       } else {
-        returnable = 'http://www.cheerfulheartsfoundation.org/wp-content/uploads/2013/04/placeholder.png';
+        returnable = 'https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png';
       }
       return returnable;
     }
