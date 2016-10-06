@@ -11,6 +11,9 @@
       });
       this.getAuthData = this.$firebaseAuth.$getAuth();
     }
+    $requireSignIn() {
+      return this.$firebaseAuth.$requireSignIn();
+    }
     get authData() {
       return this.getAuthData;
     }
