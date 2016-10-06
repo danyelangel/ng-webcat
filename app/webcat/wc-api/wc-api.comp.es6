@@ -35,6 +35,7 @@
           reducer: '@',
           action: '@',
           parameters: '<',
+          sendArray: '<',
           onReady: '&',
           onData: '&',
           onDataArray: '&'

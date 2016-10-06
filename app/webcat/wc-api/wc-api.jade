@@ -1,10 +1,10 @@
 firedux(
-ng-if="$ctrl.reducer && $ctrl.userId && $ctrl.request && $ctrl.onDataArray"
+ng-if="$ctrl.reducer && $ctrl.userId && $ctrl.request && $ctrl.sendArray"
 array-ref="api/{{$ctrl.reducer}}/{{$ctrl.userId}}/response"
 on-data="$ctrl.onDataArray({$data:$data})"
 on-ready="$ctrl.onReady($data)")
 firedux(
-ng-if="$ctrl.reducer && $ctrl.userId && $ctrl.request && $ctrl.onData"
+ng-if="$ctrl.reducer && $ctrl.userId && $ctrl.request && !$ctrl.sendArray"
 object-ref="api/{{$ctrl.reducer}}/{{$ctrl.userId}}/response"
 on-data="$ctrl.onData({$data:$data})"
 on-ready="$ctrl.onReady($data)")
