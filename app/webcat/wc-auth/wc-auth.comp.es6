@@ -9,10 +9,12 @@
             $data: authData
           });
         } else if (this.wcForceAuth) {
-          this.$wcAuth
-            .auth()
-            .then(this.onLoginSuccess)
-            .catch(this.onLoginFail);
+          if (this.wcCredentials === this.user.credentials) {
+            this.$wcAuth
+              .auth()
+              .then(this.onLoginSuccess)
+              .catch(this.onLoginFail);
+          }
         }
       });
     }
