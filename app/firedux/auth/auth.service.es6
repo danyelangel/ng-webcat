@@ -2,10 +2,9 @@
   'use strict';
 
   class Service {
-    constructor($firebaseAuth, Dialog, $state) {
+    constructor($firebaseAuth, Dialog) {
       this.$firebaseAuth = $firebaseAuth();
       this.$dialog = Dialog.$dialog();
-      this.$state = $state;
       this.$firebaseAuth.$onAuthStateChanged(authData => {
         this.getAuthData = authData;
       });

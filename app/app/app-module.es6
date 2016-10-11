@@ -3,7 +3,6 @@
 
   angular
     .module('webcat', [
-      'ui.router',
       'webcat.firedux',
       'webcat.components'
     ]);
