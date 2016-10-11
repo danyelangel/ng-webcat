@@ -1,11 +1,11 @@
 (function () {
   'use strict';
   class Controller {
-    constructor(Auth) {
-      this.Auth = Auth;
+    constructor($wcAuth) {
+      this.$wcAuth = $wcAuth;
     }
     $onInit() {
-      this.Auth.onAuth(authData => {
+      this.$wcAuth.onAuth(authData => {
         if (authData) {
           this.userId = authData.uid;
         }
