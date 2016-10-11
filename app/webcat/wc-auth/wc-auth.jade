@@ -1,0 +1,6 @@
+firedux(
+object-ref="users/{{$ctrl.userId}}"
+on-data="user=$data")
+
+ng-transclude(
+  ng-if="$ctrl.authData && (user.credentials === $ctrl.wcCredentials || !$ctrl.wcCredentials)")
