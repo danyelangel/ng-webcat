@@ -17,7 +17,7 @@
       });
     }
     get authData() {
-      return this.Auth.authData;
+      return this.$wcAuth.authData;
     }
   }
   angular
