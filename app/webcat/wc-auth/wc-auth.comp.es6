@@ -1,12 +1,19 @@
 (function () {
   'use strict';
   class Controller {
-    constructor(Auth) {
-      this.Auth = Auth;
-      Auth.onAuth(authData => {
-        this.onAuth({
-          $data: authData
-        });
+    constructor($wcAuth) {
+      this.$wcAuth = $wcAuth;
+      $wcAuth.onAuth(authData => {
+        if (authData) {
+          this.wcOnAuth({
+            $data: authData
+          });
+        } else if (this.wcForceAuth) {
+          this.$wcAuth
+            .auth()
+            .then(this.onLoginSuccess)
+            .catch(this.onLoginFail);
+        }
       });
     }
     get authData() {
@@ -20,7 +27,11 @@
       controller: Controller,
       transclude: true,
       bindings: {
-        onAuth: '&'
+        wcOnAuth: '&',
+        wcForceAuth: '@',
+        wcAuthLayout: '@',
+        wcOnLoginSuccess: '&',
+        wcOnLoginFailure: '&'
       }
     });
 }());

@@ -18,11 +18,7 @@
       return this.getAuthData;
     }
     auth() {
-      this.$dialog.login()().then(credentials => {
-        this.login(credentials);
-      }).catch(() => {
-        // To do error notification
-      });
+      return this.$dialog.login()();
     }
     updatePassword() {
       this.$dialog.login()().then(credentials => {
@@ -51,11 +47,7 @@
         });
     }
     onAuth(callback) {
-      if (!this.authData) {
-        this.$firebaseAuth.$signInAnonymously();
-      }
       this.$firebaseAuth.$onAuthStateChanged(callback);
-      callback(this.authData);
     }
     logout() {
       this.$firebaseAuth.$signOut();
@@ -63,5 +55,5 @@
   }
   angular
     .module('firedux.auth', [])
-    .service('Auth', Service);
+    .service('$wcAuth', Service);
 }());
