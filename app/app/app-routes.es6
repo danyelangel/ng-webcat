@@ -11,13 +11,4 @@
       Auth.auth();
     }
   }
-  function config($stateProvider) {
-    $stateProvider
-      .state('auth', {
-        url: `/login`,
-        template: '',
-        controller: AuthController,
-        controllerAs: 'vm'
-      });
-  }
 }());
