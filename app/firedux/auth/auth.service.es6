@@ -17,7 +17,21 @@
       return this.getAuthData;
     }
     auth() {
-      return this.$dialog.login()();
+      return new Promise((resolve, reject) => {
+        this.$dialog.login()()
+          .then(credentials => {
+            this.login(credentials)
+              .then(authdata => {
+                resolve(authdata);
+              })
+              .catch(() => {
+                this.auth();
+              });
+          })
+          .catch(() => {
+            reject();
+          });
+      });
     }
     updatePassword() {
       this.$dialog.login()().then(credentials => {
@@ -40,10 +54,7 @@
     }
     login(credentials) {
       return this.$firebaseAuth
-        .$signInWithEmailAndPassword(credentials.email, credentials.password)
-        .then((authData) => {
-          this.getAuthData = authData;
-        });
+        .$signInWithEmailAndPassword(credentials.email, credentials.password);
     }
     onAuth(callback) {
       this.$firebaseAuth.$onAuthStateChanged(callback);
