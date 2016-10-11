@@ -29,7 +29,6 @@
       bindings: {
         wcOnAuth: '&',
         wcForceAuth: '@',
-        wcAuthLayout: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
       }

@@ -1,12 +1,12 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($firebaseObject, $fireduxArray, $window, $timeout, Auth) {
+    constructor($firebaseObject, $fireduxArray, $window, $timeout, $wcAuth) {
       this.$firebaseObject = $firebaseObject;
       this.$fireduxArray = $fireduxArray;
       this.firebase = $window.firebase.database();
       this.$timeout = $timeout;
-      this.Auth = Auth;
+      this.$wcAuth = $wcAuth;
     }
     $onChanges(changes) {
       angular.forEach(changes, (value, key) => {
@@ -52,7 +52,7 @@
           $data: this.ngfire
         });
         this.$timeout(() => {
-          if (this.ngfire && this.ngfire.length === 0 && this.arrayRef && this.Auth.authData && !this.equalTo) {
+          if (this.ngfire && this.ngfire.length === 0 && this.arrayRef && this.$wcAuth.authData && !this.equalTo) {
             this.ngfire.$add({exists: true, $priority: 0}).then(ref => {
               this.ngfire.$remove(this.ngfire.$indexFor(ref.key));
             });
@@ -71,7 +71,7 @@
       }
     }
     $onDestroy() {
-      if (this.removeOnDestroy && this.Auth.authData) {
+      if (this.removeOnDestroy && this.$wcAuth.authData) {
         this.ngfire.$remove().then(() => {
           this.destroyFb();
         });
