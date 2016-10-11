@@ -24,12 +24,8 @@
               .then(authdata => {
                 resolve(authdata);
               })
-              .catch(error => {
-                if (error.code === 'auth/unauthorized-domain') {
-                  reject();
-                } else {
-                  this.auth();
-                }
+              .catch(() => {
+                this.auth();
               });
           })
           .catch(() => {
