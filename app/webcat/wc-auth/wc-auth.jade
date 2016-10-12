@@ -4,4 +4,4 @@ object-ref="users/{{$ctrl.userId}}"
 on-data="$ctrl.user=$data")
 
 ng-transclude(
-  ng-if="$ctrl.authData && ($ctrl.user.credentials === $ctrl.wcCredentials || !$ctrl.wcCredentials)")
+  ng-if="$ctrl.authData && ($ctrl.user.credentials === $ctrl.wcCredentials || !$ctrl.wcCredentials) && !($ctrl.authData.isAnonymous && $ctrl.wcAnonymousHide)")

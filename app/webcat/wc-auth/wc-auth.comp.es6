@@ -37,6 +37,7 @@
         wcCredentials: '@',
         wcForceAuth: '@',
         wcAnonymousAuth: '@',
+        wcAnonymousHide: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
       }
