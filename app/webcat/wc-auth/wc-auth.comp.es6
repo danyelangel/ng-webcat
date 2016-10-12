@@ -11,12 +11,10 @@
             $data: authData
           });
         } else if (this.wcForceAuth) {
-          if (this.user && this.wcCredentials === this.user.credentials) {
-            this.$wcAuth
-              .auth()
-              .then(this.onLoginSuccess)
-              .catch(this.onLoginFail);
-          }
+          this.$wcAuth
+            .auth()
+            .then(this.onLoginSuccess)
+            .catch(this.onLoginFail);
         }
       });
     }
@@ -32,6 +30,7 @@
       transclude: true,
       bindings: {
         wcOnAuth: '&',
+        wcCredentials: '@',
         wcForceAuth: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
