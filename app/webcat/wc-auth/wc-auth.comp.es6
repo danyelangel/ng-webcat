@@ -5,6 +5,7 @@
       this.$wcAuth = $wcAuth;
     }
     init() {
+      console.log('plopsixnc');
       this.$wcAuth.onAuth(authData => {
         if (authData) {
           this.wcOnAuth({
