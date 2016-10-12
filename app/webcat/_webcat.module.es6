@@ -13,6 +13,7 @@
       'webcat.auth',
       'webcat.loader',
       'webcat.collapse',
-      'webcat.api'
+      'webcat.api',
+      'webcat.token'
     ]);
 }());
