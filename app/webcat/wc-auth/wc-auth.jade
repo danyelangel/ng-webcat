@@ -3,7 +3,5 @@ object-ref="users"
 on-data="$ctrl.user=$data"
 on-ready="$ctrl.init($data)")
 
-|{{$ctrl.user}}
-
 ng-transclude(
   ng-if="$ctrl.authData && ($ctrl.user.credentials === $ctrl.wcCredentials || !$ctrl.wcCredentials)")
