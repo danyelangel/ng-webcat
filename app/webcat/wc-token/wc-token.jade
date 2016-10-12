@@ -1,0 +1,5 @@
+firebase(
+object-ref="tokens/{{$ctrl.token}}"
+on-data="$ctrl.isValid=$data.$value")
+ng-transclude(
+ng-if="$ctrl.isValid")
