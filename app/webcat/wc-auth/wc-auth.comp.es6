@@ -14,9 +14,9 @@
             .auth()
             .then(this.onLoginSuccess)
             .catch(this.onLoginFail);
-        } else if (this.wcAnonymusAuth) {
+        } else if (this.wcAnonymousAuth) {
           this.$wcAuth
-            .anonymusAuth()
+            .anonymousAuth()
             .then(this.onLoginSuccess)
             .catch(this.onLoginFail);
         }
@@ -36,7 +36,7 @@
         wcOnAuth: '&',
         wcCredentials: '@',
         wcForceAuth: '@',
-        wcAnonymusAuth: '@',
+        wcAnonymousAuth: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
       }
