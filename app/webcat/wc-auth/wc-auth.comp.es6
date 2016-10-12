@@ -5,19 +5,20 @@
       this.$wcAuth = $wcAuth;
     }
     init() {
-      console.log('plopsix nc');
-      this.$wcAuth.onAuth(authData => {
-        if (authData) {
-          this.wcOnAuth({
-            $data: authData
-          });
-        } else if (this.wcForceAuth) {
-          this.$wcAuth
-            .auth()
-            .then(this.onLoginSuccess)
-            .catch(this.onLoginFail);
-        }
-      });
+      if (!this.authWatcher) {
+        this.authWatcher = this.$wcAuth.onAuth(authData => {
+          if (authData) {
+            this.wcOnAuth({
+              $data: authData
+            });
+          } else if (this.wcForceAuth) {
+            this.$wcAuth
+              .auth()
+              .then(this.onLoginSuccess)
+              .catch(this.onLoginFail);
+          }
+        });
+      }
     }
     get authData() {
       return this.$wcAuth.authData;
