@@ -14,6 +14,11 @@
             .auth()
             .then(this.onLoginSuccess)
             .catch(this.onLoginFail);
+        } else if (this.wcAnonymusAuth) {
+          this.$wcAuth
+            .anonymusAuth()
+            .then(this.onLoginSuccess)
+            .catch(this.onLoginFail);
         }
       });
     }
@@ -31,6 +36,7 @@
         wcOnAuth: '&',
         wcCredentials: '@',
         wcForceAuth: '@',
+        wcAnonymusAuth: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
       }
