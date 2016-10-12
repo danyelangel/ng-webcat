@@ -12,7 +12,6 @@
               $data: authData
             });
           } else if (this.wcForceAuth) {
-            console.log('ploasx');
             this.$wcAuth
               .auth()
               .then(this.onLoginSuccess)
