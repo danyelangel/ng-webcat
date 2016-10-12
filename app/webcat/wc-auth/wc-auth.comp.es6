@@ -25,12 +25,11 @@
   angular
     .module('webcat.auth', [])
     .component('wcAuth', {
-      templateUrl: 'webcat/wc-auth/wc-auth.html',
+      template: '<ng-transclude ng-if="$ctrl.authData"></ng-transclude>',
       controller: Controller,
       transclude: true,
       bindings: {
         wcOnAuth: '&',
-        wcCredentials: '@',
         wcForceAuth: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
