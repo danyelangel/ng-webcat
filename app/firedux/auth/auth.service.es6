@@ -17,7 +17,7 @@
       return this.getAuthData;
     }
     anonymousAuth() {
-      return this.$firebaseAuth.signInAnonymously();
+      return this.$firebaseAuth.$signInAnonymously();
     }
     auth() {
       let returnable;
