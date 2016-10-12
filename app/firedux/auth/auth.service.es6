@@ -17,9 +17,10 @@
       return this.getAuthData;
     }
     auth() {
+      let returnable;
       if (!this.isAuthing) {
         this.isAuthing = true;
-        return new Promise((resolve, reject) => {
+        returnable = new Promise((resolve, reject) => {
           this.$dialog.login()()
             .then(credentials => {
               this.login(credentials)
@@ -34,7 +35,10 @@
               reject();
             });
         });
+      } else {
+        returnable = Promise.resolve();
       }
+      return returnable;
     }
     updatePassword() {
       this.$dialog.login()().then(credentials => {
