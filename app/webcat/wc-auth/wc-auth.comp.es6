@@ -3,22 +3,19 @@
   class Controller {
     constructor($wcAuth) {
       this.$wcAuth = $wcAuth;
-    }
-    init() {
-      if (!this.authWatcher) {
-        this.authWatcher = this.$wcAuth.onAuth(authData => {
-          if (authData) {
-            this.wcOnAuth({
-              $data: authData
-            });
-          } else if (this.wcForceAuth) {
-            this.$wcAuth
-              .auth()
-              .then(this.onLoginSuccess)
-              .catch(this.onLoginFail);
-          }
-        });
-      }
+      this.$wcAuth.onAuth(authData => {
+        if (authData) {
+          this.userId = authData.uid;
+          this.wcOnAuth({
+            $data: authData
+          });
+        } else if (this.wcForceAuth) {
+          this.$wcAuth
+            .auth()
+            .then(this.onLoginSuccess)
+            .catch(this.onLoginFail);
+        }
+      });
     }
     get authData() {
       return this.$wcAuth.authData;
