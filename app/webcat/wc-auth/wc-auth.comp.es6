@@ -3,13 +3,15 @@
   class Controller {
     constructor($wcAuth) {
       this.$wcAuth = $wcAuth;
-      $wcAuth.onAuth(authData => {
+    }
+    init() {
+      this.$wcAuth.onAuth(authData => {
         if (authData) {
           this.wcOnAuth({
             $data: authData
           });
         } else if (this.wcForceAuth) {
-          if (this.wcCredentials === this.user.credentials) {
+          if (this.user && this.wcCredentials === this.user.credentials) {
             this.$wcAuth
               .auth()
               .then(this.onLoginSuccess)
