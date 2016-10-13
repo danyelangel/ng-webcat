@@ -15,13 +15,13 @@
                 .auth()
                 .then(this.onLoginSuccess)
                 .catch(this.onLoginFail);
-            } else {
-              this.$wcAuth.logout();
-              this.$wcAuth
-                .anonymousAuth()
-                .then(this.onLoginSuccess)
-                .catch(this.onLoginFail);
             }
+          } else if (this.wcForceAuth === 'anonymous') {
+            this.$wcAuth.logout();
+            this.$wcAuth
+              .anonymousAuth()
+              .then(this.onLoginSuccess)
+              .catch(this.onLoginFail);
           }
         } else if (this.wcForceAuth) {
           switch (this.wcForceAuth) {
