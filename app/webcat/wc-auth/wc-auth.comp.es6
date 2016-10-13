@@ -9,6 +9,14 @@
           this.wcOnAuth({
             $data: authData
           });
+          if (authData.isAnonymous && this.wcForceAuth) {
+            if (this.wcForceAuth !== 'anonymous') {
+              this.$wcAuth
+                .auth()
+                .then(this.onLoginSuccess)
+                .catch(this.onLoginFail);
+            }
+          }
         } else if (this.wcForceAuth) {
           switch (this.wcForceAuth) {
             case 'anonymous':
