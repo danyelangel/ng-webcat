@@ -9,7 +9,7 @@
           this.wcOnAuth({
             $data: authData
           });
-        } else if(this.wcForceAuth) {
+        } else if (this.wcForceAuth) {
           switch (this.wcForceAuth) {
             case 'anonymous':
               this.$wcAuth
@@ -27,13 +27,17 @@
         }
       });
     }
+    get credentialsArray() {
+      if (angular.isString(this.wcCredentials)) {
+        return this.wcCredentials.split(',');
+      }
+    }
     get isAnonymous() {
       return this.authData && this.authData.isAnonymous;
     }
     get showTransclude() {
       let returnable = false;
-      // + AUTH + CREDENTIALS +
-      // |  -   |      -      |
+      // NO AUTH
       if (!this.authData) {
         returnable = false;
       // NO CREDENTIALS
@@ -42,11 +46,15 @@
       // NO USER
       } else if (!this.user) {
         returnable = false;
-      // CREDENTIALS MATCH  
+      // CREDENTIALS MATCH
       } else if (this.user.credentials === this.wcCredentials) {
         returnable = true;
       } else {
-        returnable = false;
+        angular.forEach(this.credentialsArray, credential => {
+          if (credential === this.user.credentials) {
+            returnable = true;
+          }
+        });
       }
       return returnable;
     }
