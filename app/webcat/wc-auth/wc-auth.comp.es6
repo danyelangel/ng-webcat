@@ -9,18 +9,46 @@
           this.wcOnAuth({
             $data: authData
           });
-        } else if (this.wcForceAuth) {
-          this.$wcAuth
-            .auth()
-            .then(this.onLoginSuccess)
-            .catch(this.onLoginFail);
-        } else if (this.wcAnonymousAuth) {
-          this.$wcAuth
-            .anonymousAuth()
-            .then(this.onLoginSuccess)
-            .catch(this.onLoginFail);
+        } else if(this.wcForceAuth) {
+          switch (this.wcForceAuth) {
+            case 'anonymous':
+              this.$wcAuth
+                .anonymousAuth()
+                .then(this.onLoginSuccess)
+                .catch(this.onLoginFail);
+              break;
+            default:
+              this.$wcAuth
+                .auth()
+                .then(this.onLoginSuccess)
+                .catch(this.onLoginFail);
+              break;
+          }
         }
       });
+    }
+    get isAnonymous() {
+      return this.authData && this.authData.isAnonymous;
+    }
+    get showTransclude() {
+      let returnable = false;
+      // + AUTH + CREDENTIALS +
+      // |  -   |      -      |
+      if (!this.authData) {
+        returnable = false;
+      // NO CREDENTIALS
+      } else if (!this.wcCredentials) {
+        returnable = true;
+      // NO USER
+      } else if (!this.user) {
+        returnable = false;
+      // CREDENTIALS MATCH  
+      } else if (this.user.credentials === this.wcCredentials) {
+        returnable = true;
+      } else {
+        returnable = false;
+      }
+      return returnable;
     }
     get authData() {
       return this.$wcAuth.authData;
@@ -36,8 +64,6 @@
         wcOnAuth: '&',
         wcCredentials: '@',
         wcForceAuth: '@',
-        wcAnonymousAuth: '@',
-        wcAnonymousHide: '@',
         wcOnLoginSuccess: '&',
         wcOnLoginFailure: '&'
       }
