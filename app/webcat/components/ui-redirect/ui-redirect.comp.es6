@@ -25,7 +25,7 @@
     .module('webcat.wcUiRedirect', [])
     .component('wcUiRedirect', {
       controller: Controller,
-      templateUrl: 'firedux/components/ui-redirect/ui-redirect.html',
+      templateUrl: 'webcat/components/ui-redirect/ui-redirect.html',
       bindings: {
         wcUiRedirectSref: '@',
         wcUiRedirectSrefParams: '<'

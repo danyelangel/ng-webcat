@@ -42,11 +42,6 @@
             then="${4}")
             catch
             
-- trigger: fd-dispatcher
-  scope: jade
-  text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
 - trigger: fd-auth
   scope: jade
   text: |
@@ -55,6 +50,11 @@
             then
             catch
             
+- trigger: fd-dispatcher
+  scope: jade
+  text: |
+        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+
 - trigger: fd-env
   scope: jade
   text: |
@@ -198,10 +198,6 @@
             wc-progress-type="circular"
             wc-progress-percentage="${1:percentage}")
                 
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -212,3 +208,7 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-sref-params="${2:{}}")      
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
