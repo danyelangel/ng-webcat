@@ -26,6 +26,7 @@
     init(config) {
       this.firebase.initializeApp(config);
       this.hasInitialized = true;
+      this.$fireduxAuth.init(this.firebase);
       this.database = this.firebase.database;
       this.projectUrl = config.storageBucket;
     }

@@ -1,8 +1,8 @@
 (function () {
   'use strict';
   class Service {
-    constructor($window) {
-      this.$auth = $window.firebase.auth;
+    init(firebase) {
+      this.$auth = firebase.auth;
       this.waitForAuth()
         .then(authData => {
           this.auth = authData;
