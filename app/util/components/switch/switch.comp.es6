@@ -39,8 +39,8 @@
     }
   }
   angular
-    .module('webcat.utilSwitch', [
-      'webcat.utilSwitch.item'
+    .module('util.fdUtilSwitch', [
+      'util.fdUtilSwitch.item'
     ])
     .component('fdUtilSwitch', {
       controller: Controller,

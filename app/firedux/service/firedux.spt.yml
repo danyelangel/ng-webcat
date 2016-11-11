@@ -1,9 +1,13 @@
 - trigger: $firedux-init
   scope: javascript
   text: |
-        $firedux.init({
-            
-        });
+        var config = {
+            apiKey: '${2}',
+            authDomain: '${1}.firebaseapp.com',
+            databaseURL: 'https://${1}.firebaseio.com',
+            storageBucket: '${1}.appspot.com'
+        };
+        $firedux.init(config);
 - trigger: $firedux-reducer
   scope: javascript
   text: |

@@ -13,7 +13,7 @@
     }
   }
   angular
-    .module('webcat.utilSwitch.item', [])
+    .module('util.fdUtilSwitch.item', [])
     .directive('fdUtilSwitchItem', {
       controller: Controller,
       controllerAs: '$ctrl',

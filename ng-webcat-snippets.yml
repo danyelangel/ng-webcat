@@ -1,9 +1,13 @@
 - trigger: $firedux-init
   scope: javascript
   text: |
-        $firedux.init({
-            
-        });
+        var config = {
+            apiKey: '${2}',
+            authDomain: '${1}.firebaseapp.com',
+            databaseURL: 'https://${1}.firebaseio.com',
+            storageBucket: '${1}.appspot.com'
+        };
+        $firedux.init(config);
 - trigger: $firedux-reducer
   scope: javascript
   text: |
@@ -51,15 +55,6 @@
   text: |
         fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
 
-- trigger: fd-env
-  scope: jade
-  text: |
-        fd-env(
-            fd-env-constant="${1:constant}"
-            fd-env-array="${2:false}"
-            then="${3:$data}")
-            then
-
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -85,6 +80,15 @@
             then
             catch
             
+- trigger: fd-env
+  scope: jade
+  text: |
+        fd-env(
+            fd-env-constant="${1:constant}"
+            fd-env-array="${2:false}"
+            then="${3:$data}")
+            then
+
 - trigger: fd-ref
   scope: jade
   text: |
