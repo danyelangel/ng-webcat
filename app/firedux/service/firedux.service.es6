@@ -5,6 +5,7 @@
     constructor($window, $fireduxAuth) {
       this.firebase = $window.firebase;
       this.$fireduxAuth = $fireduxAuth;
+      this.reducers = [];
     }
     get auth() {
       return this.$fireduxAuth.auth;
