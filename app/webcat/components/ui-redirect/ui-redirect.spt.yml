@@ -1,0 +1,10 @@
+- trigger: wc-ui-redirect
+  scope: jade
+  text: |
+        wc-ui-redirect(wc-ui-redirect-sref="${1:state}")
+- trigger: wc-ui-redirect-params
+  scope: jade
+  text: |
+        wc-ui-redirect(
+            wc-ui-redirect-sref="${1:state}"
+            wc-ui-redirect-sref-params="${2:{}}")      

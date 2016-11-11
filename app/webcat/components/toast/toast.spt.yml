@@ -1,0 +1,4 @@
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")

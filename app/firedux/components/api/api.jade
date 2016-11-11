@@ -1,0 +1,24 @@
+fd-ref(
+  ng-if="$ctrl.$endpoint"
+  fd-ref-path="{{$ctrl.$path}}"
+  fd-ref-query="$ctrl.$query"
+  fd-ref-array="true"
+  on-ref-data="$ctrl.$then($data)"
+  on-ref-error="$ctrl.$catch($error)")
+fd-bind(
+  ng-if="$ctrl.$endpoint"
+  fd-bind-path="{{$ctrl.$path}}"
+  fd-bind-presence
+  on-bind-data="$ctrl.$request"
+  on-bind-error="$ctrl.$catch($error)")
+
+before(
+  ng-if="$ctrl.$before"
+  ng-transclude="before")
+then(
+  ng-if="$ctrl.$ready"
+  ng-transclude="then")
+catch(
+  ng-if="$ctrl.$error"
+  ng-transclude="catch")
+  

@@ -1,0 +1,38 @@
+- trigger: wc-dialog-alert
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-alert="${1}"
+            wc-dialog-labels="${2}")
+            then
+- trigger: wc-dialog-confirm
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-confirm="${1}"
+            wc-dialog-labels="${2}")
+            then
+            catch
+- trigger: wc-dialog-component
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-component="${1}"
+            wc-dialog-labels="${2}")
+            then
+            catch   
+- trigger: wc-dialog-login
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-login="${1}"
+            wc-dialog-labels="${2}"
+            then="${3}")
+            then
+            catch  
+- trigger: wc-dialog-progress
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-progress="${1}"
+            wc-dialog-labels="${2}")       

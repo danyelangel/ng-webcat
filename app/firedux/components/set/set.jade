@@ -1,0 +1,9 @@
+before(
+  ng-if="!$ctrl.$ready && !$ctrl.$error"
+  ng-transclude="before")
+then(
+  ng-if="!$ctrl.$ready"
+  ng-transclude="then")
+catch(
+  ng-if="$ctrl.$error"
+  ng-transclude="catch")

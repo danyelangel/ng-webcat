@@ -1,0 +1,8 @@
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            

@@ -262,5 +262,5 @@ module.exports = function (gulp, $, config) {
       });
   });
 
-  gulp.task('build', ['deleteTemplates', 'bowerAssets', 'images', 'favicon', 'fonts']);
+  gulp.task('build', ['deleteTemplates', 'bowerAssets', 'images', 'favicon', 'fonts', 'snippets']);
 };

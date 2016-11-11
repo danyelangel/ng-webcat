@@ -1,0 +1,12 @@
+- trigger: fd-upload
+  scope: jade
+  text: |
+        fd-upload(
+            fd-upload-file="${1:$file}"
+            fd-upload-filename="${2}"
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+            

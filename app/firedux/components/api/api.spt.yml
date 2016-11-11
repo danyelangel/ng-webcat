@@ -1,0 +1,10 @@
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="{2:$ctrl.$request}"
+            fd-api-array="{3:false}"
+            then="${4}")
+            catch
+            

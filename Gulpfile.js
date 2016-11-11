@@ -33,6 +33,7 @@ config.appImageFiles = path.join(config.appDir, 'images/**/*');
 config.appMarkupFiles = path.join(config.appDir, '**/*.jade');
 config.appScriptFiles = path.join(config.appDir, '**/*.es6');
 config.appStyleFiles = path.join(config.appDir, '**/*.scss');
+config.appSnippetFiles = path.join(config.appDir, '**/*.spt.yml');
 
 config.buildDirectiveTemplateFiles = path.join(config.buildDir, '**/*directive.tpl.html');
 config.buildJsFiles = path.join(config.buildJs, '**/*.js');

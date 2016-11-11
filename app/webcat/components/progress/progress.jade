@@ -1,0 +1,17 @@
+md-progress-circular(
+  ng-if="$ctrl.$percentage && $ctrl.$type === 'circular'"
+  md-mode="determinate"
+  value="{{$ctrl.$percentage}}")
+  
+md-progress-circular(
+  ng-if="!$ctrl.$percentage && $ctrl.$type === 'circular'"
+  md-mode="indeterminate")
+  
+md-progress-linear(
+  ng-if="$ctrl.$percentage && $ctrl.$type === 'linear'"
+  md-mode="determinate"
+  value="{{$ctrl.$percentage}}")
+  
+md-progress-linear(
+  ng-if="!$ctrl.$percentage && $ctrl.$type === 'linear'"
+  md-mode="indeterminate")

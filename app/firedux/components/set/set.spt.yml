@@ -1,0 +1,12 @@
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
+            before
+            then
+            catch
+            

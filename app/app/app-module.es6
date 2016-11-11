@@ -2,8 +2,9 @@
   'use strict';
 
   angular
-    .module('webcat', [
-      'webcat.firedux',
-      'webcat.components'
+    .module('ng-webcat', [
+      'firedux',
+      'util',
+      'webcat'
     ]);
 }());
