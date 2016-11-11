@@ -9,6 +9,7 @@
         });
     }
     waitForAuth() {
+      console.log('plop');
       return new Promise((resolve, reject) => {
         this.$auth()
           .onAuthStateChanged(authData => {
