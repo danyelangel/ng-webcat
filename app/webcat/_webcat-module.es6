@@ -2,6 +2,7 @@
   'use strict';
   angular
     .module('webcat', [
-      'webcat.components'
+      'webcat.components',
+      'ngMaterial'
     ]);
 }());
