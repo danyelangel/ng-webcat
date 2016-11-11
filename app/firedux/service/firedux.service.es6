@@ -88,6 +88,8 @@
     }
   }
   angular
-    .module('webcat.$firedux', [])
+    .module('firedux.service', [
+      'firedux.$fireduxAuth'
+    ])
     .service('$firedux', Service);
 }());

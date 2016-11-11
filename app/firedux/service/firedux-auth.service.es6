@@ -56,6 +56,6 @@
     }
   }
   angular
-    .module('webcat.$fireduxAuth', [])
+    .module('firedux.$fireduxAuth', [])
     .service('$fireduxAuth', Service);
 }());

@@ -3,6 +3,6 @@
   angular
     .module('firedux', [
       'firedux.components',
-      'firedux.services'
+      'firedux.service'
     ]);
 }());
