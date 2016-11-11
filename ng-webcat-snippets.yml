@@ -198,6 +198,10 @@
             wc-progress-type="circular"
             wc-progress-percentage="${1:percentage}")
                 
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -208,7 +212,3 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-sref-params="${2:{}}")      
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")

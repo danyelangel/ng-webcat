@@ -25,7 +25,6 @@
     .module('webcat.wcUiRedirect', [])
     .component('wcUiRedirect', {
       controller: Controller,
-      templateUrl: 'webcat/components/ui-redirect/ui-redirect.html',
       bindings: {
         wcUiRedirectSref: '@',
         wcUiRedirectSrefParams: '<'
