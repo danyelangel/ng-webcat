@@ -27,6 +27,7 @@
   scope: javascript
   text: |
         $firedux.auth.uid()
+            
 - trigger: fd-api
   scope: jade
   text: |
@@ -37,6 +38,11 @@
             then="${4}")
             catch
             
+- trigger: fd-dispatcher
+  scope: jade
+  text: |
+        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+
 - trigger: fd-auth
   scope: jade
   text: |
@@ -45,11 +51,6 @@
             then
             catch
             
-- trigger: fd-dispatcher
-  scope: jade
-  text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
 - trigger: fd-env
   scope: jade
   text: |
@@ -192,6 +193,7 @@
         wc-progress(
             wc-progress-type="circular"
             wc-progress-percentage="${1:percentage}")
+                
 - trigger: wc-toast
   scope: jade
   text: |
