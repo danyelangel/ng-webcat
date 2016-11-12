@@ -15,7 +15,7 @@
       controller: Controller,
       templateUrl: 'webcat/components/toggle/toggle.html',
       bindings: {
-        wcToggleSelected: '@',
+        wcToggleSelected: '<',
         wcToggleItems: '<',
         onToggleChange: '&'
       }

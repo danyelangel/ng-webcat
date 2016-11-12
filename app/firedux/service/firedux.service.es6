@@ -93,7 +93,6 @@
     }
     setParams(params) {
       this.stateParamsVar = params;
-      console.log(params);
     }
   }
   angular
