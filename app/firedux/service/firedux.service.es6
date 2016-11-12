@@ -20,8 +20,8 @@
         .push()
         .key;
     }
-    get ref() {
-      return this.database().ref;
+    ref(path) {
+      return this.database().ref(path);
     }
     init(config) {
       this.firebase.initializeApp(config);

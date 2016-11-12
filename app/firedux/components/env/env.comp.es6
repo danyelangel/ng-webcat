@@ -42,7 +42,7 @@
         catch: '?catch'
       },
       bindings: {
-        fdEnvConstant: '<',
+        fdEnvConstant: '@',
         fdEnvArray: '@',
         before: '&',
         then: '&',

@@ -1,24 +1,27 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($firedux) {
+    constructor($scope, $firedux) {
+      this.$scope = $scope;
       this.$firedux = $firedux;
     }
     $onChanges(changes) {
       if (
         changes.fdRefPath ||
-        changes.fdRefQuery
+        changes.fdRefQuery ||
+        changes.fdRefArray
       ) {
         this.$ready =
         this.$error =
         this.$before = undefined;
         this.updateRef(
           this.fdRefPath,
-          this.fdRefQuery
+          this.fdRefQuery,
+          this.fdRefArray
         );
       }
     }
-    updateRef(path, query) {
+    updateRef(path, query, isArray) {
       this.$before = true;
       if (
         angular.isObject(this.ref) &&
@@ -27,8 +30,12 @@
         this.ref.off();
       }
       this.ref = this.getRef(path, query);
+      if (isArray !== 'false') {
+        isArray = false;
+      }
       this.ref.on('value', snapshot => {
-        this.updateChanges(snapshot);
+        this.updateChanges(snapshot, isArray);
+        this.$scope.$apply();
       }, err => {
         this.$before = undefined;
         this.$error = err;
@@ -45,7 +52,7 @@
       }
       return ref;
     }
-    getSortedRef(query, ref) {
+    getSortedRef(query = {}, ref = {}) {
       let returnable = ref;
       if (query.orderByChild) {
         returnable = ref
@@ -59,7 +66,7 @@
       }
       return returnable;
     }
-    getFilteredRef(query, ref) {
+    getFilteredRef(query = {}, ref = {}) {
       let returnable = ref;
       if (query.limitToFirst) {
         returnable = ref
@@ -79,10 +86,10 @@
       }
       return returnable;
     }
-    updateChanges(snapshot) {
+    updateChanges(snapshot, isArray) {
       let array = [],
           $index = 0;
-      if (this.fdRefQuery) {
+      if (isArray) {
         snapshot.forEach(childSnapshot => {
           array[$index] = childSnapshot.val();
           $index++;
@@ -114,6 +121,7 @@
       bindings: {
         fdRefPath: '@',
         fdRefQuery: '<',
+        fdRefArray: '@',
         then: '&',
         catch: '&'
       }

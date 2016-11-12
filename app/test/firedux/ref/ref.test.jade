@@ -1,0 +1,27 @@
+.md-display-1|fd-ref
+.md-headline|Text, Object, Number
+fd-ref(
+  fd-ref-path="firedux/ref/test1"
+  then="$test1=$data")
+  before
+    |LOADING
+  then
+    |SUCCESS
+  catch
+    |ERROR
+p|{{$test1}}
+
+.md-headline|Array
+fd-ref(
+  fd-ref-path="firedux/ref/test2"
+  fd-ref-array
+  then="$test2=$data")
+  before
+    |LOADING
+  then
+    |SUCCESS
+  catch
+    |ERROR
+p|{{$test2}}
+  
+  
