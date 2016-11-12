@@ -13,7 +13,7 @@ module.exports = function (gulp, $, config) {
     var snippetsFilter = $.filter('**/*.spt.yml', {restore: true})
     return gulp.src([config.appSnippetFiles])
       .pipe(snippetsFilter)
-      .pipe($.concat('ng-webcat-snippets.yml'))
+      .pipe($.concat('snippets.yml'))
       .pipe(gulp.dest(''))
       .pipe(snippetsFilter.restore);
   });

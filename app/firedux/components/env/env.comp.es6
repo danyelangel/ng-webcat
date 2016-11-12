@@ -14,7 +14,7 @@
     }
     getConstant(constant, array) {
       if (angular.isString(constant)) {
-        this.$ref = `app/constants/${constant}`;
+        this.$path = `app/constants/${constant}`;
       }
       if (angular.isDefined(array)) {
         this.$array = true;
