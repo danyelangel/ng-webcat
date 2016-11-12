@@ -6,11 +6,11 @@
     }
     $onChanges(changes) {
       this.$percentage = this.$type = undefined;
-      if (changes.wcLoaderType) {
-        this.$percentage = this.wcLoaderPercentage;
+      if (changes.wcProgressType) {
+        this.$percentage = this.wcProgressPercentage;
       }
-      if (changes.wcLoaderType) {
-        switch (this.wcLoaderType) {
+      if (changes.wcProgressType) {
+        switch (this.wcProgressType) {
           case 'circular':
             this.$type = 'circular';
             break;
@@ -18,6 +18,7 @@
             this.$type = 'linear';
             break;
           default:
+            this.$type = 'linear';
             break;
         }
       }
