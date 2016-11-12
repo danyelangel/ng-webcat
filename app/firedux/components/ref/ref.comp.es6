@@ -1,9 +1,10 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($scope, $firedux) {
+    constructor($scope, $firedux, $timeout) {
       this.$scope = $scope;
       this.$firedux = $firedux;
+      this.$timeout = $timeout;
     }
     $onChanges(changes) {
       if (
@@ -35,7 +36,9 @@
       }
       this.ref.on('value', snapshot => {
         this.updateChanges(snapshot, isArray);
-        this.$scope.$apply();
+        this.$timeout(() => {
+          this.$scope.$apply();
+        });
       }, err => {
         this.$before = undefined;
         this.$error = err;
