@@ -1,0 +1,15 @@
+.md-display-1|wc-ref
+fd-ref(
+  fd-ref-path="webcat/toggle"
+  fd-ref-query="$ctrl.$query"
+  fd-ref-array="true"
+  then="$array = $data")
+  before
+    |LOADING
+  then
+    |SUCCESS
+  catch
+    |ERROR
+  
+wc-toggle(
+  wc-toggle-items="$array")

@@ -1,0 +1,5 @@
+md-button(
+  ng-disabled="$index===$ctrl.wcToggleSelected"
+  ng-repeat="item in $ctrl.wcToggleItems"
+  ng-click="$ctrl.changeItem($index)")
+  |{{item.label}}

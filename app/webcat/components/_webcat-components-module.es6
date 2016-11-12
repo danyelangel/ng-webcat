@@ -5,6 +5,7 @@
       'webcat.wcDialog',
       'webcat.wcProgress',
       'webcat.wcToast',
+      'webcat.wcToggle',
       'webcat.wcUiRedirect'
     ]);
 }());

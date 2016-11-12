@@ -177,6 +177,10 @@
         wc-dialog(
             wc-dialog-progress="${1}"
             wc-dialog-labels="${2}")       
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-progress-linear
   scope: jade
   text: |
@@ -198,10 +202,6 @@
             wc-progress-type="circular"
             wc-progress-percentage="${1:percentage}")
                 
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-redirect
   scope: jade
   text: |
