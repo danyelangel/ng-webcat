@@ -7,7 +7,7 @@
     }
     $onChanges(changes) {
       if (
-        changes.wcUiRedirectSref &&
+        changes.wcUiRedirectSref ||
         changes.wcUiRedirectParams
       ) {
         this.redirect(
@@ -17,10 +17,10 @@
       }
     }
     redirect(state, params) {
-      if (params) {
-        this.$firedux.setParams(params);
-      }
       if (angular.isString(state)) {
+        if (params) {
+          this.$firedux.setParams(params);
+        }
         this.$state.go(state);
       }
     }

@@ -42,6 +42,28 @@
             then="${4}")
             catch
             
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
+- trigger: fd-dispatcher
+  scope: jade
+  text: |
+        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+
+- trigger: fd-env
+  scope: jade
+  text: |
+        fd-env(
+            fd-env-constant="${1:constant}"
+            fd-env-array="${2:false}"
+            then="${3:$data}")
+            then
+
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -67,28 +89,6 @@
             then
             catch
             
-- trigger: fd-env
-  scope: jade
-  text: |
-        fd-env(
-            fd-env-constant="${1:constant}"
-            fd-env-array="${2:false}"
-            then="${3:$data}")
-            then
-
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
-- trigger: fd-dispatcher
-  scope: jade
-  text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
 - trigger: fd-ref
   scope: jade
   text: |
