@@ -17,7 +17,7 @@
       }
     }
     redirect(state, params) {
-      if (angular.isDefined(params)) {
+      if (params) {
         this.$firedux.setParams(params);
       }
       if (angular.isString(state)) {

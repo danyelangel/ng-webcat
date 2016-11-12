@@ -88,8 +88,13 @@
       }
       return loginPromise;
     }
+    get stateParams() {
+      console.log(this.stateParamsVar);
+      return this.stateParamsVar;
+    }
     setParams(params) {
-      this.stateParams = params;
+      this.stateParamsVar = params;
+      console.log(this.stateParamsVar);
     }
   }
   angular
