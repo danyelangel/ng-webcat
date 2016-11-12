@@ -16,9 +16,7 @@
       if (angular.isString(constant)) {
         this.$path = `app/constants/${constant}`;
       }
-      if (angular.isDefined(array)) {
-        this.$array = true;
-      }
+      this.$array = array;
     }
     $then($data) {
       this.then({
