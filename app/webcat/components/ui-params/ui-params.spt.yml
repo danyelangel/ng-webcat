@@ -1,0 +1,5 @@
+- trigger: wc-ui-params
+  scope: jade
+  text: |
+        wc-ui-params(
+            on-ui-params="${1:$params=$data}")      

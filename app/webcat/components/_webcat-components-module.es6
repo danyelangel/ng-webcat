@@ -6,6 +6,7 @@
       'webcat.wcProgress',
       'webcat.wcToast',
       'webcat.wcToggle',
-      'webcat.wcUiRedirect'
+      'webcat.wcUiRedirect',
+      'webcat.wcUiParams'
     ]);
 }());
