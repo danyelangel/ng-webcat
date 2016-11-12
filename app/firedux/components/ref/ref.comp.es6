@@ -30,7 +30,7 @@
         this.ref.off();
       }
       this.ref = this.getRef(path, query);
-      if (isArray !== 'false') {
+      if (isArray === 'false') {
         isArray = false;
       }
       this.ref.on('value', snapshot => {
