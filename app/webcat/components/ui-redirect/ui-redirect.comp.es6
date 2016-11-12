@@ -16,8 +16,10 @@
       }
     }
     redirect(state, params) {
-      if (angular.isString(state)) {
+      if (angular.isString(state) && angular.isDefined(params)) {
         this.$state.go(state, params);
+      } else if (angular.isString(state)) {
+        this.$state.go(state);
       }
     }
   }
