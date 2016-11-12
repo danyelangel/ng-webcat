@@ -5,7 +5,9 @@
       this.stateParams = $firedux.stateParams;
     }
     $onInit() {
-      this.onUiParams(this.stateParams);
+      this.onUiParams({
+        $data: this.stateParams
+      });
     }
   }
   angular
