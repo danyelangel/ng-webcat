@@ -139,27 +139,6 @@
             then
             catch
             
-- trigger: wc-progress-linear
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="linear")
-- trigger: wc-progress-circular
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="circular")
-- trigger: wc-progress-linear-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="linear"
-            wc-progress-percentage="${1:percentage}")
-- trigger: wc-progress-circular-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="circular"
-            wc-progress-percentage="${1:percentage}")
-                
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -198,6 +177,27 @@
         wc-dialog(
             wc-dialog-progress="${1}"
             wc-dialog-labels="${2}")       
+- trigger: wc-progress-linear
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="linear")
+- trigger: wc-progress-circular
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="circular")
+- trigger: wc-progress-linear-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="linear"
+            wc-progress-percentage="${1:percentage}")
+- trigger: wc-progress-circular-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="circular"
+            wc-progress-percentage="${1:percentage}")
+                
 - trigger: wc-toast
   scope: jade
   text: |

@@ -29,8 +29,8 @@
       controller: Controller,
       templateUrl: 'webcat/components/progress/progress.html',
       bindings: {
-        wcLoaderType: '@',
-        wcLoaderPercentage: '@'
+        wcProgressType: '@',
+        wcProgressPercentage: '@'
       }
     });
 }());
