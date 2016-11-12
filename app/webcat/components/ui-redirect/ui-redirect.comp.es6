@@ -8,11 +8,11 @@
     $onChanges(changes) {
       if (
         changes.wcUiRedirectSref &&
-        changes.wcUiRedirectSrefParams
+        changes.wcUiRedirectParams
       ) {
         this.redirect(
           this.wcUiRedirectSref,
-          this.wcUiRedirectSrefParams
+          this.wcUiRedirectParams
         );
       }
     }

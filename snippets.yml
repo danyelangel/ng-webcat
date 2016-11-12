@@ -64,19 +64,6 @@
             then="${3:$data}")
             then
 
-- trigger: fd-ref
-  scope: jade
-  text: |
-        fd-ref(
-            fd-ref-path="${1:$ctrl.$path}"
-            fd-ref-query="${2:$ctrl.$query}"
-            fd-ref-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -98,6 +85,19 @@
             fd-login-credentials="${2:credentials}")
             then="${3:$data}"
             catch="${4:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-ref
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-query="${2:$ctrl.$query}"
+            fd-ref-array="${3:false}"
+            then="${4:$data}"
+            catch="${5:$error}")
             before
             then
             catch
