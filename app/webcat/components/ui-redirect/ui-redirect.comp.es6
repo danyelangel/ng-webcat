@@ -1,8 +1,9 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($state) {
+    constructor($state, $firedux) {
       this.$state = $state;
+      this.$firedux = $firedux;
     }
     $onChanges(changes) {
       if (
@@ -16,9 +17,10 @@
       }
     }
     redirect(state, params) {
-      if (angular.isString(state) && angular.isDefined(params)) {
-        this.$state.go(state, params);
-      } else if (angular.isString(state)) {
+      if (angular.isDefined(params)) {
+        this.$firedux.setParams(params);
+      }
+      if (angular.isString(state)) {
         this.$state.go(state);
       }
     }
@@ -29,7 +31,7 @@
       controller: Controller,
       bindings: {
         wcUiRedirectSref: '@',
-        wcUiRedirectSrefParams: '<'
+        wcUiRedirectParams: '<'
       }
     });
 }());

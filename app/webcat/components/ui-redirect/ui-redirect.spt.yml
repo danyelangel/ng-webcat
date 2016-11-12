@@ -7,4 +7,4 @@
   text: |
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
-            wc-ui-redirect-sref-params="${2:{}}")      
+            wc-ui-redirect-params="${2}")      

@@ -1,11 +1,11 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($stateParams) {
-      this.$stateParams = $stateParams;
+    constructor($firedux) {
+      this.stateParams = $firedux.stateParams;
     }
     $onInit() {
-      this.onUiParams(this.$stateParams);
+      this.onUiParams(this.stateParams);
     }
   }
   angular

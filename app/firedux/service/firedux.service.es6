@@ -88,6 +88,9 @@
       }
       return loginPromise;
     }
+    setParams(params) {
+      this.stateParams = params;
+    }
   }
   angular
     .module('firedux.service', [
