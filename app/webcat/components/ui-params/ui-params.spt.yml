@@ -2,4 +2,4 @@
   scope: jade
   text: |
         wc-ui-params(
-            on-ui-params="${1:$params=$data}")      
+            then="$${1:params}=$data")      

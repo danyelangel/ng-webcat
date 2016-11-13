@@ -4,4 +4,7 @@
         wc-upload(
             wc-upload-dimensions="${1}"
             wc-upload-multiple="${2}"
-            on-upload-change="$file")
+            then="$file"
+            catch="$error")
+            then
+            catch

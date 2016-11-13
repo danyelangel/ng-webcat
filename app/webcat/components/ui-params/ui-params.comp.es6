@@ -5,7 +5,7 @@
       this.stateParams = $firedux.stateParams;
     }
     $onInit() {
-      this.onUiParams({
+      this.then({
         $data: this.stateParams
       });
     }
@@ -15,7 +15,7 @@
     .component('wcUiParams', {
       controller: Controller,
       bindings: {
-        onUiParams: '&'
+        then: '&'
       }
     });
 }());

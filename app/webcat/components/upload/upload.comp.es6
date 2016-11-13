@@ -15,8 +15,8 @@
       bindings: {
         wcUploadMultiple: '<',
         wcUploadDimensions: '<',
-        onUploadChange: '&',
-        onUploadError: '&'
+        then: '&',
+        catch: '&'
       }
     });
 }());
