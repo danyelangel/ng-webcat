@@ -133,7 +133,7 @@
     ])
     .component('wcDialog', {
       controller: Controller,
-      templateUrl: 'firedux/components/dialog/dialog.html',
+      templateUrl: 'webcat/components/dialog/dialog.html',
       transclude: {
         then: '?then',
         catch: '?catch'
