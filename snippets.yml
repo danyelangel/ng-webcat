@@ -32,94 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: wc-dialog-alert
-  scope: jade
-  text: |
-        wc-dialog(
-            wc-dialog-alert="${1}"
-            wc-dialog-labels="${2}")
-            then
-- trigger: wc-dialog-confirm
-  scope: jade
-  text: |
-        wc-dialog(
-            wc-dialog-confirm="${1}"
-            wc-dialog-labels="${2}")
-            then
-            catch
-- trigger: wc-dialog-component
-  scope: jade
-  text: |
-        wc-dialog(
-            wc-dialog-component="${1}"
-            wc-dialog-labels="${2}")
-            then
-            catch   
-- trigger: wc-dialog-login
-  scope: jade
-  text: |
-        wc-dialog(
-            wc-dialog-login="${1}"
-            wc-dialog-labels="${2}"
-            then="${3}")
-            then
-            catch  
-- trigger: wc-dialog-progress
-  scope: jade
-  text: |
-        wc-dialog(
-            wc-dialog-progress="${1}"
-            wc-dialog-labels="${2}")       
-- trigger: wc-progress-linear
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="linear")
-- trigger: wc-progress-circular
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="circular")
-- trigger: wc-progress-linear-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="linear"
-            wc-progress-percentage="${1:percentage}")
-- trigger: wc-progress-circular-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="circular"
-            wc-progress-percentage="${1:percentage}")
-                
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
-- trigger: wc-ui-params
-  scope: jade
-  text: |
-        wc-ui-params(
-            then="$${1:params}=$data")      
-- trigger: wc-ui-redirect
-  scope: jade
-  text: |
-        wc-ui-redirect(wc-ui-redirect-sref="${1:state}")
-- trigger: wc-ui-redirect-params
-  scope: jade
-  text: |
-        wc-ui-redirect(
-            wc-ui-redirect-sref="${1:state}"
-            wc-ui-redirect-params="${2}")      
-- trigger: wc-upload
-  scope: jade
-  text: |
-        wc-upload(
-            wc-upload-dimensions="${1}"
-            wc-upload-multiple="${2}"
-            then="$file"
-            catch="$error")
-            then
-            catch
 - trigger: fd-api
   scope: jade
   text: |
@@ -228,3 +140,91 @@
             then
             catch
             
+- trigger: wc-dialog-alert
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-alert="${1}"
+            wc-dialog-labels="${2}")
+            then
+- trigger: wc-dialog-confirm
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-confirm="${1}"
+            wc-dialog-labels="${2}")
+            then
+            catch
+- trigger: wc-dialog-component
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-component="${1}"
+            wc-dialog-labels="${2}")
+            then
+            catch   
+- trigger: wc-dialog-login
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-login="${1}"
+            wc-dialog-labels="${2}"
+            then="${3}")
+            then
+            catch  
+- trigger: wc-dialog-progress
+  scope: jade
+  text: |
+        wc-dialog(
+            wc-dialog-progress="${1}"
+            wc-dialog-labels="${2}")       
+- trigger: wc-progress-linear
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="linear")
+- trigger: wc-progress-circular
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="circular")
+- trigger: wc-progress-linear-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="linear"
+            wc-progress-percentage="${1:percentage}")
+- trigger: wc-progress-circular-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="circular"
+            wc-progress-percentage="${1:percentage}")
+                
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
+- trigger: wc-ui-params
+  scope: jade
+  text: |
+        wc-ui-params(
+            then="$${1:params}=$data")      
+- trigger: wc-ui-redirect
+  scope: jade
+  text: |
+        wc-ui-redirect(wc-ui-redirect-sref="${1:state}")
+- trigger: wc-ui-redirect-params
+  scope: jade
+  text: |
+        wc-ui-redirect(
+            wc-ui-redirect-sref="${1:state}"
+            wc-ui-redirect-params="${2}")      
+- trigger: wc-upload
+  scope: jade
+  text: |
+        wc-upload(
+            wc-upload-dimensions="${1}"
+            wc-upload-multiple="${2}"
+            then="$file"
+            catch="$error")
+            then
+            catch
