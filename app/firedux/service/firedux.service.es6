@@ -11,7 +11,7 @@
       return this.$fireduxAuth.auth;
     }
     get TIMESTAMP() {
-      return this.database.ServerValue.TIMESTAMP;
+      return this.firebase.database.ServerValue.TIMESTAMP;
     }
     get UID() {
       return this.firebase
