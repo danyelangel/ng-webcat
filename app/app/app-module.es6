@@ -3,7 +3,7 @@
 
   angular
     .module('ng-webcat', [
-      'test',
+      // 'test',
       'firedux',
       'util',
       'webcat'
