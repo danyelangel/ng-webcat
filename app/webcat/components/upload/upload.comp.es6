@@ -9,7 +9,7 @@
     ])
     .component('wcUpload', {
       controller: Controller,
-      templateUrl: 'webcat/upload/upload.html',
+      templateUrl: 'webcat/components/upload/upload.html',
       transclude: {
         then: '?then',
         catch: '?catch'
