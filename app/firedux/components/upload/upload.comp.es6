@@ -38,16 +38,12 @@
         });
       uploadTask.then(uploadRef => {
         this.$then = true;
-        uploadRef
-          .getDownloadURL()
-          .then(downloadURL => {
-            this.then({
-              $data: {
-                ref: uploadRef.fullPath,
-                url: downloadURL
-              }
-            });
-          });
+        this.then({
+          $data: {
+            ref: uploadRef.ref.fullPath,
+            url: uploadRef.downloadURL
+          }
+        });
       });
     }
   }
