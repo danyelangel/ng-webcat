@@ -14,7 +14,6 @@
       }
     }
     upload(file) {
-      console.log(file);
       let storageRef = this.$firedux.storageRef(),
           uploadTask = storageRef
             .child(this.$firedux.var('UID'))
