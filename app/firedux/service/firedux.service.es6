@@ -23,7 +23,6 @@
     var(variable) {
       switch (variable) {
         case 'UID':
-          console.log(this.UID);
           return this.UID;
         case 'TIMESTAMP':
           return this.TIMESTAMP;

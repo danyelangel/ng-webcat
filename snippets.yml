@@ -89,31 +89,6 @@
             then
             catch
             
-- trigger: fd-ref
-  scope: jade
-  text: |
-        fd-ref(
-            fd-ref-path="${1:$ctrl.$path}"
-            fd-ref-query="${2:$ctrl.$query}"
-            fd-ref-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
-            before
-            then
-            catch
-            
 - trigger: fd-state
   scope: jade
   text: |
@@ -228,3 +203,28 @@
             catch="$error")
             then
             catch
+- trigger: fd-ref
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-query="${2:$ctrl.$query}"
+            fd-ref-array="${3:false}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
+            before
+            then
+            catch
+            
