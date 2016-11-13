@@ -23,6 +23,9 @@
     ref(path) {
       return this.database().ref(path);
     }
+    storageRef(path) {
+      return this.storage().ref(path);
+    }
     init(config) {
       this.firebase.initializeApp(config);
       this.hasInitialized = true;
