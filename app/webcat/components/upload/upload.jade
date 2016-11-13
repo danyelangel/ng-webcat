@@ -1,6 +1,6 @@
 input.hidden-input(
   type="file"
-  ngf-select="$ctrl.$file = $file"
+  ngf-select="$ctrl.$file = $file;$ctrl.log($file)"
   ngf-multiple="$ctrl.wcUploadMultiple"
   accept="image/*"
   ngf-resize="$ctrl.dimensions")
