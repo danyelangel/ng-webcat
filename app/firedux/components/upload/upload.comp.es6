@@ -9,7 +9,7 @@
         changes.fdUploadFile
       ) {
         this.upload(
-          changes.fdUploadFile
+          this.fdUploadFile
         );
       }
     }

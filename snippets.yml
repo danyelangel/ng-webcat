@@ -42,6 +42,15 @@
             then="${4}")
             catch
             
+- trigger: fd-env
+  scope: jade
+  text: |
+        fd-env(
+            fd-env-constant="${1:constant}"
+            fd-env-array="${2:false}"
+            then="${3:$data}")
+            then
+
 - trigger: fd-auth
   scope: jade
   text: |
@@ -54,15 +63,6 @@
   scope: jade
   text: |
         fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
-- trigger: fd-env
-  scope: jade
-  text: |
-        fd-env(
-            fd-env-constant="${1:constant}"
-            fd-env-array="${2:false}"
-            then="${3:$data}")
-            then
 
 - trigger: fd-login_provider
   scope: jade
@@ -89,6 +89,19 @@
             then
             catch
             
+- trigger: fd-upload
+  scope: jade
+  text: |
+        fd-upload(
+            fd-upload-file="${1:$file}"
+            fd-upload-filename="${2}"
+            before="${3:$data}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -110,32 +123,6 @@
             fdSetData="${2}"
             fdSetPresence="${3:false}"
             catch="$error")
-            before
-            then
-            catch
-            
-- trigger: fd-state
-  scope: jade
-  text: |
-        fd-state(
-            fd-state-path="${1:$ctrl.$path}"
-            fd-state-query="${2:$ctrl.$query}"
-            fd-state-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-upload
-  scope: jade
-  text: |
-        fd-upload(
-            fd-upload-file="${1:$file}"
-            fd-upload-filename="${2}"
-            before="${3:$data}"
-            then="${4:$data}"
-            catch="${5:$error}")
             before
             then
             catch
@@ -178,6 +165,19 @@
         wc-dialog(
             wc-dialog-progress="${1}"
             wc-dialog-labels="${2}")       
+- trigger: fd-state
+  scope: jade
+  text: |
+        fd-state(
+            fd-state-path="${1:$ctrl.$path}"
+            fd-state-query="${2:$ctrl.$query}"
+            fd-state-array="${3:false}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
 - trigger: wc-progress-linear
   scope: jade
   text: |
@@ -203,11 +203,6 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
-- trigger: wc-ui-params
-  scope: jade
-  text: |
-        wc-ui-params(
-            then="$${1:params}=$data")      
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -228,3 +223,8 @@
             catch="$error")
             then
             catch
+- trigger: wc-ui-params
+  scope: jade
+  text: |
+        wc-ui-params(
+            then="$${1:params}=$data")      
