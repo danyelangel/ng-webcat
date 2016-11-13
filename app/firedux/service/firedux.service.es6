@@ -24,7 +24,7 @@
       return this.database().ref(path);
     }
     storageRef(path) {
-      return this.storage().ref(path);
+      return this.firebase.storage().ref(path);
     }
     init(config) {
       this.firebase.initializeApp(config);
