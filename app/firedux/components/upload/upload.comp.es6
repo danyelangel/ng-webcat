@@ -21,7 +21,6 @@
             .child(this.$firedux.var('UID'))
             .child(filename)
             .put(file);
-      console.log(this.$firedux.var('UID'));
       this.$before =
       this.$then =
       this.$catch = undefined;
