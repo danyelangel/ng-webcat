@@ -20,6 +20,16 @@
         .push()
         .key;
     }
+    var(variable) {
+      switch (variable) {
+        case 'UID':
+          return this.UID;
+        case 'TIMESTAMP':
+          return this.TIMESTAMP;
+        default:
+          return null;
+      }
+    }
     ref(path) {
       return this.database().ref(path);
     }

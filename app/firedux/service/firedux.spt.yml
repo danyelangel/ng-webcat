@@ -18,11 +18,11 @@
 - trigger: $firedux-TIMESTAMP
   scope: javascript
   text: |
-        $firedux.TIMESTAMP()
+        $firedux.var('TIMESTAMP')
 - trigger: $firedux-UID
   scope: javascript
   text: |
-        $firedux.UID()
+        $firedux.var('UID')
 - trigger: $firedux-ref
   scope: javascript
   text: |

@@ -18,11 +18,11 @@
 - trigger: $firedux-TIMESTAMP
   scope: javascript
   text: |
-        $firedux.TIMESTAMP()
+        $firedux.var('TIMESTAMP')
 - trigger: $firedux-UID
   scope: javascript
   text: |
-        $firedux.UID()
+        $firedux.var('UID')
 - trigger: $firedux-ref
   scope: javascript
   text: |
@@ -114,19 +114,6 @@
             then
             catch
             
-- trigger: fd-state
-  scope: jade
-  text: |
-        fd-state(
-            fd-state-path="${1:$ctrl.$path}"
-            fd-state-query="${2:$ctrl.$query}"
-            fd-state-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -134,6 +121,19 @@
             fd-upload-file="${1:$file}"
             fd-upload-filename="${2}"
             before="${3:$data}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-state
+  scope: jade
+  text: |
+        fd-state(
+            fd-state-path="${1:$ctrl.$path}"
+            fd-state-query="${2:$ctrl.$query}"
+            fd-state-array="${3:false}"
             then="${4:$data}"
             catch="${5:$error}")
             before
