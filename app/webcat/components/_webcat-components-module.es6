@@ -7,6 +7,7 @@
       'webcat.wcToast',
       'webcat.wcToggle',
       'webcat.wcUiRedirect',
-      'webcat.wcUiParams'
+      'webcat.wcUiParams',
+      'webcat.wcUpload'
     ]);
 }());
