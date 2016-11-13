@@ -6,8 +6,7 @@
     }
     $onChanges(changes) {
       if (
-        changes.fdUploadFile ||
-        changes.fdUploadFilename
+        changes.fdUploadFile
       ) {
         this.upload(
           changes.fdUploadFile,

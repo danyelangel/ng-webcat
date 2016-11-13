@@ -7,7 +7,6 @@ input.hidden-input(
 fd-upload(
   ng-if="$ctrl.$file"
   fd-upload-file="$ctrl.$file"
-  fd-upload-filename=""
   before="$percentage = $progress"
   then="$ctrl.onUploadChange({$data:$data})"
   catch="$ctrl.onUploadError({$error:$error})")
