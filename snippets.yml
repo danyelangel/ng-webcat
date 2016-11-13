@@ -32,14 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-api
   scope: jade
   text: |
@@ -48,6 +40,14 @@
             fd-api-request="{2:$ctrl.$request}"
             fd-api-array="{3:false}"
             then="${4}")
+            catch
+            
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
             catch
             
 - trigger: fd-dispatcher
@@ -203,6 +203,11 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
+- trigger: wc-ui-params
+  scope: jade
+  text: |
+        wc-ui-params(
+            then="$${1:params}=$data")      
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -213,11 +218,6 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-params="${2}")      
-- trigger: wc-ui-params
-  scope: jade
-  text: |
-        wc-ui-params(
-            then="$${1:params}=$data")      
 - trigger: wc-upload
   scope: jade
   text: |

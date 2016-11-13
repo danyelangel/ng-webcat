@@ -5,6 +5,7 @@ input.hidden-input(
   accept="image/*"
   ngf-resize="$ctrl.dimensions")
 fd-upload(
+  ng-if="$ctrl.$file"
   fd-upload-file="$ctrl.$file"
   fd-upload-filename=""
   before="$percentage = $progress"
