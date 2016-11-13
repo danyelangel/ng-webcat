@@ -1,9 +1,6 @@
 (function () {
   'use strict';
   class Controller {
-    log(variable) {
-      console.log(variable);
-    }
   }
   angular
     .module('webcat.wcUpload', [

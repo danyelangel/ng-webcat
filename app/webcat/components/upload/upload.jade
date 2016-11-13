@@ -8,8 +8,8 @@ fd-upload(
   ng-if="$ctrl.$file"
   fd-upload-file="$ctrl.$file"
   before="$percentage = $progress"
-  then="$ctrl.onUploadChange({$data:$data})"
-  catch="$ctrl.onUploadError({$error:$error})")
+  then="$ctrl.then({$data:$data})"
+  catch="$ctrl.catch({$error:$error})")
   before
     wc-dialog(
       wc-dialog-progress="$percentage"
