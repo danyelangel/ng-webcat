@@ -4,7 +4,9 @@
     constructor() {}
   }
   angular
-    .module('webcat.wcUpload', [])
+    .module('webcat.wcUpload', [
+      'ngFileUpload'
+    ])
     .component('wcUpload', {
       controller: Controller,
       templateUrl: 'webcat/upload/upload.html',
