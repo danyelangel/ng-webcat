@@ -1,14 +1,13 @@
-md-dialog(aria-label="Loading: {{$ctrl.$title}}")
-  md-dialog-content
-    .md-title
-      |{{$ctrl.$title}}
-    wc-progress(
-      wc-progress-type="linear"
-      wc-progress-percentage="{{$ctrl.$progress}}")
-    .md-body-1
-      |{{$ctrl.$body}}
-  md-dialog-actions
-    div(flex)
-    md-button(
-      ng-click="$ctrl.$catch()")
-        |{{$cancelLabel?$$cancelLabel:'Cancel'}}
+.md-dialog-content
+  .md-title
+    |{{$ctrl.bindings.title}}
+  .md-body-1
+    |{{$ctrl.bindings.body}}
+wc-progress(
+  wc-progress-type="linear"
+  wc-progress-percentage="{{$ctrl.bindings.progress}}")
+.md-dialog-actions
+  div(flex)
+  md-button(
+    ng-click="$ctrl.$catch()")
+      |{{$cancelLabel||'Cancel'}}

@@ -3,7 +3,7 @@
   class Controller {
     changeItem($index) {
       this.wcToggleSelected = $index;
-      this.onToggleChange({
+      this.then({
         $index,
         $data: this.wcToggleItems[$index]
       });
@@ -17,7 +17,7 @@
       bindings: {
         wcToggleSelected: '<',
         wcToggleItems: '<',
-        onToggleChange: '&'
+        then: '&'
       }
     });
 }());

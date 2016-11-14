@@ -3,55 +3,48 @@
   class Controller {
     constructor($mdDialog) {
       this.$mdDialog = $mdDialog;
+      this.defaultLabels = {
+        ok: 'Ok',
+        cancel: 'Cancel'
+      };
     }
-    $onChanges(changes) {
-      if (
-        changes.wcDialogTitle ||
-        changes.wcDialogBody ||
-        changes.wcDialogOk ||
-        changes.wcDialogCancel ||
-        changes.wcDialogProgress
-      ) {
-        this.setDialogBindings();
-        this.checkParams(changes);
-      }
+    $onInit() {
+      this.launchDialog();
     }
-    setDialogBindings() {
+    $onChanges() {
+      this.setDialogBindings(this.wcDialogLabels);
+    }
+    setDialogBindings(labels = {}) {
       this.dialogBindings = Object.assign(
-        this.wcDialogLabels, {
-          progress: angular
-            .isNumber(this.wcDialogProgress) ?
-            this.wcDialogProgress : undefined,
-          component: angular
-            .isNumber(this.wcDialogComponent) ?
-            this.wcDialogComponent : undefined,
-          login: angular
-            .isNumber(this.wcDialogLogin) ?
-            this.wcDialogLogin : undefined
+        this.defaultLabels,
+        labels, {
+          progress: this.wcDialogProgress,
+          component: this.wcDialogComponent,
+          login: this.wcDialogLogin
         });
     }
-    checkParams(changes) {
-      if (changes.wcDialogAlert) {
+    launchDialog() {
+      if (this.wcDialogAlert) {
         this.openDialog({
           type: 'alert',
           bindings: this.dialogBindings
         });
-      } else if (changes.wcDialogConfirm) {
+      } else if (this.wcDialogConfirm) {
         this.openDialog({
           type: 'confirm',
           bindings: this.dialogBindings
         });
-      } else if (changes.wcDialogProgress) {
+      } else if (this.wcDialogProgress) {
         this.openDialog({
           type: 'progress',
           bindings: this.dialogBindings
         });
-      } else if (changes.wcDialogLogin) {
+      } else if (this.wcDialogLogin) {
         this.openDialog({
           type: 'login',
           bindings: this.dialogBindings
         });
-      } else if (changes.wcDialogComponent) {
+      } else if (this.wcDialogComponent) {
         this.openDialog({
           type: 'component',
           bindings: this.dialogBindings
@@ -61,6 +54,7 @@
     openDialog(params = {}) {
       let type = params.type,
           bindings = params.bindings,
+          self = this,
           dialog;
 
       switch (type) {
@@ -83,27 +77,30 @@
           dialog = this.getTemplate(type, bindings.component);
           dialog = {
             template: dialog,
-            bindToController: {
-              $bindings: bindings
+            controller: function () {
+              this.$bindings = bindings;
+              this.$bindings.then = () => {
+                self.$mdDialog.hide();
+              };
+              this.$bindings.catch = () => {
+                self.$mdDialog.cancel();
+              };
             },
-            controllerAs: true
+            controllerAs: '$ctrl'
           };
           break;
       }
-      this.bindings.then = this.$mdDialog.hide;
-      this.bindings.catch = this.$mdDialog.cancel;
-      this.$mdDialog.cancel();
       this.$mdDialog
         .show(dialog)
-        .finally($data => {
+        .then($data => {
           this.$ready = true;
           this.then({
-            $data
+            $data: $data
           });
         }, $error => {
-          this.$error = $error;
+          this.$error = true;
           this.catch({
-            $error
+            $error: $error
           });
         });
     }
@@ -122,7 +119,7 @@
           break;
       }
     }
-    $ngOnDestroy() {
+    $onDestroy() {
       this.$mdDialog.cancel();
     }
   }

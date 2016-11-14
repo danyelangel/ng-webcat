@@ -2,10 +2,12 @@
   'use strict';
 
   class Service {
-    constructor($window, $fireduxAuth) {
+    constructor($window, $fireduxAuth, $timeout, $rootScope) {
       this.firebase = $window.firebase;
       this.$fireduxAuth = $fireduxAuth;
       this.reducers = [];
+      this.$scope = $rootScope;
+      this.$timeout = $timeout;
     }
     get auth() {
       return this.$fireduxAuth.auth;
@@ -106,6 +108,11 @@
     }
     setParams(params) {
       this.stateParamsVar = params;
+    }
+    $apply() {
+      this.$timeout(() => {
+        this.$scope.$apply();
+      });
     }
   }
   angular

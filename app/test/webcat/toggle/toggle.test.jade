@@ -2,7 +2,7 @@
 fd-ref(
   fd-ref-path="webcat/toggle"
   fd-ref-query="$ctrl.$query"
-  then="$data = $data")
+  then="$ctrl.$data = $data")
   before
     |LOADING
   then
@@ -11,4 +11,4 @@ fd-ref(
     |ERROR
   
 wc-toggle(
-  wc-toggle-items="$data")
+  wc-toggle-items="$ctrl.$data")

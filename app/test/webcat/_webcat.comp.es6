@@ -2,6 +2,8 @@
   'use strict';
   angular
     .module('test.webcat', [
+      'test.webcat.dialog',
+      'test.webcat.progress',
       'test.webcat.toggle',
       'test.webcat.upload'
     ])

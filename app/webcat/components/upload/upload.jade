@@ -1,6 +1,6 @@
 input.hidden-input(
   type="file"
-  ngf-select="$ctrl.$file = $file;$ctrl.log($file)"
+  ngf-select="$ctrl.$file = $file"
   ngf-multiple="$ctrl.wcUploadMultiple"
   accept="image/*"
   ngf-resize="$ctrl.dimensions")
@@ -12,7 +12,7 @@ fd-upload(
   catch="$ctrl.catch({$error:$error})")
   before
     wc-dialog(
-      wc-dialog-progress="$percentage"
+      wc-dialog-progress="{{$percentage}}"
       wc-dialog-labels="{title:'Uploading'}")       
   then(ng-transclude="then")
   catch(ng-transclude="catch")

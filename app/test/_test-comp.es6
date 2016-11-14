@@ -6,6 +6,6 @@
       'test.webcat'
     ])
     .component('testComp', {
-      templateUrl: 'test/_test.html'
+      templateUrl: 'test/_test-comp.html'
     });
 }());

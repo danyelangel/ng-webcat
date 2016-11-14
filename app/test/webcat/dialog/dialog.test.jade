@@ -1,0 +1,20 @@
+.md-display-1|wc-dialog
+.md-headline|Alert
+
+md-button(
+  ng-click="$ctrl.$alert=true")|Open Dialog
+wc-dialog(  
+  ng-if="$ctrl.$alert"
+  wc-dialog-confirm="true"
+  wc-dialog-labels="{title:'Alert'}"
+  then="$ctrl.$alert=false")
+  catch|ERROR
+
+.md-headline|Progress
+
+md-button(
+  ng-click="$ctrl.$progress=true")|Open Dialog
+wc-dialog(  
+  ng-if="$ctrl.$progress"
+  wc-dialog-progress="30"
+  wc-dialog-labels="{title:'Progress'}")       

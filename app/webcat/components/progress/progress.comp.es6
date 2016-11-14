@@ -6,7 +6,7 @@
     }
     $onChanges(changes) {
       this.$percentage = this.$type = undefined;
-      if (changes.wcProgressType) {
+      if (changes.wcProgressPercentage) {
         this.$percentage = this.wcProgressPercentage;
       }
       if (changes.wcProgressType) {
