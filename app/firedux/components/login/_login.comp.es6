@@ -6,9 +6,9 @@
     }
     $onChanges(changes) {
       let method;
-      this.$ready = this.$error = true;
+      this.$ready = this.$error = undefined;
       if (
-        changes.fdLoginProvider &&
+        changes.fdLoginProvider ||
         changes.fdLoginCredentials
       ) {
         if (this.fdLoginRedirect) {
@@ -26,21 +26,22 @@
     }
     login(provider, credentials, method) {
       this.$before = true;
-      this
-        .$firedux
-        .login({
+      this.$firedux
+        .login(
           provider,
           credentials,
           method
-        })
+        )
         .then(authData => {
           this.$ready = true;
           this.$before = undefined;
+          this.$firedux.$apply();
           this.then(authData);
         })
         .catch(error => {
           this.$error = error;
           this.$before = undefined;
+          this.$firedux.$apply();
           this.catch(error);
         });
     }
@@ -58,8 +59,8 @@
       bindings: {
         fdLoginProvider: '@',
         fdLoginCredentials: '<',
-        fdLoginRedirect: '@',
-        fdLoginPopup: '@',
+        fdLoginRedirect: '<',
+        fdLoginPopup: '<',
         then: '&',
         catch: '&'
       }

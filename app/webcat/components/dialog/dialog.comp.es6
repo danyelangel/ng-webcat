@@ -79,8 +79,8 @@
             template: dialog,
             controller: function () {
               this.$bindings = bindings;
-              this.$bindings.then = () => {
-                self.$mdDialog.hide();
+              this.$bindings.then = payload => {
+                self.$mdDialog.hide(payload);
               };
               this.$bindings.catch = () => {
                 self.$mdDialog.cancel();

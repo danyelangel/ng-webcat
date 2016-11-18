@@ -1,55 +1,38 @@
-md-dialog(aria-label="Login")
-
-  fd-login(
-    ng-if="$ctrl.$provider!=='email'"
-    fd-login-provider="{{$ctrl.$provider}}"
-    fd-login-popup="$mdMedia('gt-md')"
-    fd-login-redirect="!$mdMedia('gt-md')"
-    then="$ctrl.$then($data)"
-    catch="$ctrl.$catch($error)")
-    before
-      wc-progress(wc-progress-type="linear")
-
-  fd-login(
-    ng-if="$ctrl.$provider==='email' && $ctrl.$credentials"
-    fd-login-provider="email"
-    fd-login-credentials="$ctrl.$credentials"
-    then="$ctrl.$then($data)"
-    catch="$ctrl.$catch($error)")
-    before
-      wc-progress(wc-progress-type="linear")
-
-  md-dialog-content
-    .md-title|{{$ctrl.$title}}
-    .md-body-1|{{$ctrl.$body}}
-    div(ng-repeat="provider in $ctrl.$providers")
-      md-button.md-raised(
-        ng-if="!$ctrl.$provider!=='email'"
-        ng-class="provider"
-        ng-click="$ctrl.$then(provider)")
-        |{{provider|capitalize}}
-      form.email-form(
-        ng-init="credentials={}"
-        ng-if="$ctrl.$provider==='email'")
-        md-input-container
-          label|{{$ctrl.$emailLabel?$ctrl.$emailLabel:'Email'}}
-          input(
-            name="email"
-            ng-model="credentials.$email"
-            type="email")
-        md-input-container
-          label|{{$ctrl.$passwordLabel?$ctrl.$passwordLabel:'Password'}}
-          input(
-            name="password"
-            ng-model="credentials.$password"
-            type="password")
-        md-button.md-raised(
-          ng-class="provider"
-          ng-click="$ctrl.$then(provider, credentials)")
-          |{{provider|capitalize}}
-  md-dialog-actions
-    div(flex)
-    md-button(
-      ng-click="$ctrl.$catch()")
-      |{{$ctrl.$cancelLabel?$ctrl.$cancelLabel:'cancel'}}
-  
+.md-dialog-content
+  .md-title|{{$ctrl.$title}}
+  .md-body-1|{{$ctrl.$body}}
+  div(ng-repeat="provider in $ctrl.$providers")
+    md-button.md-raised(
+      ng-if="provider!=='email'"
+      ng-class="provider"
+      ng-click="$ctrl.$then(provider)")
+      |{{provider}}
+    form.email-form(
+      layout="column"
+      name="loginForm"
+      ng-init="$ctrl.credentials={}"
+      ng-if="provider==='email'")
+      md-input-container
+        label|{{$ctrl.$emailLabel?$ctrl.$emailLabel:'Email'}}
+        input(
+          name="email"
+          ng-model="$ctrl.credentials.email"
+          type="email"
+          required)
+      md-input-container
+        label|{{$ctrl.$passwordLabel?$ctrl.$passwordLabel:'Password'}}
+        input(
+          name="password"
+          ng-model="$ctrl.credentials.password"
+          type="password"
+          required)
+.md-dialog-actions(layout="row")
+  div(flex)
+  md-button(
+    ng-click="$ctrl.$catch()")
+    |{{$ctrl.$cancelLabel?$ctrl.$cancelLabel:'cancel'}}
+  md-button.md-raised(
+    ng-disabled="loginForm.$valid"
+    ng-class="provider"
+    ng-click="$ctrl.$then('email', $ctrl.credentials)")
+    |Login

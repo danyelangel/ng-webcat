@@ -17,4 +17,28 @@ md-button(
 wc-dialog(  
   ng-if="$ctrl.$progress"
   wc-dialog-progress="30"
-  wc-dialog-labels="{title:'Progress'}")       
+  wc-dialog-labels="{title:'Progress'}")  
+  
+  
+.md-headline|Login
+
+md-button(
+  ng-click="$ctrl.$login=true")|Open Dialog
+wc-dialog(  
+  ng-if="$ctrl.$login"
+  wc-dialog-login="email facebook"
+  wc-dialog-labels="{title:'Login'}"
+  then="$ctrl.$loginData=$data")
+  then
+    fd-login(
+      fd-login-provider="{{$ctrl.$loginData.provider}}"
+      fd-login-popup="$mdMedia('gt-md')"
+      fd-login-redirect="!$mdMedia('gt-md')"
+      fd-login-credentials="$ctrl.$loginData.credentials"
+      then=""
+      catch="")
+      before
+      then
+        p|LOGIN SUCCESS
+      catch
+        p|LOGIN ERROR

@@ -67,7 +67,7 @@
       return this.$fireduxAuth.waitForAuth();
     }
     login(provider, credentials, method) {
-      let loginPromise = Promise.reject(),
+      let loginPromise,
           providerService;
       switch (provider) {
         case 'email':
@@ -87,19 +87,22 @@
             .getProvider('twitter');
           break;
         default:
+          loginPromise = Promise.reject();
           break;
       }
-      switch (method) {
-        case 'popup':
-          loginPromise = this.$fireduxAuth
-            .signInWithPopup(providerService);
-          break;
-        case 'redirect':
-          loginPromise = this.$fireduxAuth
-            .signInWithRedirect(providerService);
-          break;
-        default:
-          break;
+      if (providerService) {
+        switch (method) {
+          case 'popup':
+            loginPromise = this.$fireduxAuth
+              .signInWithPopup(providerService);
+            break;
+          case 'redirect':
+            loginPromise = this.$fireduxAuth
+              .signInWithRedirect(providerService);
+            break;
+          default:
+            break;
+        }
       }
       return loginPromise;
     }

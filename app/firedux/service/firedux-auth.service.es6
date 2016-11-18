@@ -50,6 +50,12 @@
           provider
         );
     }
+    signInWithRedirect(provider) {
+      return this.$auth()
+        .signInWithRedirect(
+          provider
+        );
+    }
   }
   angular
     .module('firedux.$fireduxAuth', [])

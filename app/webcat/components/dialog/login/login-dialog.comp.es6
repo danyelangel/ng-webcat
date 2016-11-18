@@ -1,18 +1,19 @@
 (function () {
   'use strict';
   class Controller {
-    $ngInit() {
-      if (angular.isString(
-        this.bindings.wcDialogLogin
-      )) {
-        this.$providers = this.bindings.wcDialogLogin.split(' ');
+    $onInit() {
+      if (angular.isString(this.bindings.login)) {
+        this.$providers = this.bindings.login.split(' ');
         this.$title = this.bindings.title;
         this.$body = this.bindings.body;
         this.$cancel = this.bindings.cancel;
       }
     }
     $then(provider, credentials) {
-      this.bindings.then(provider, credentials);
+      this.bindings.then({
+        provider,
+        credentials
+      });
     }
     $catch() {
       this.bindings.catch();
