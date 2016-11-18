@@ -153,6 +153,7 @@
         wcDialogAlert: '@',
         wcDialogConfirm: '@',
         wcDialogProgress: '@',
+        wcDialogPrompt: '@',
         wcDialogLogin: '@',
         wcDialogComponent: '@',
         // Dialog properties
