@@ -34,6 +34,11 @@
           type: 'confirm',
           bindings: this.dialogBindings
         });
+      } else if (this.wcDialogPrompt) {
+        this.openDialog({
+          type: 'prompt',
+          bindings: this.dialogBindings
+        });
       } else if (this.wcDialogProgress) {
         this.openDialog({
           type: 'progress',
@@ -67,6 +72,14 @@
           break;
         case 'confirm':
           dialog = this.$mdDialog.confirm({
+            title: bindings.title,
+            textContent: bindings.body,
+            ok: bindings.ok,
+            cancel: bindings.cancel
+          });
+          break;
+        case 'prompt':
+          dialog = this.$mdDialog.prompt({
             title: bindings.title,
             textContent: bindings.body,
             ok: bindings.ok,
