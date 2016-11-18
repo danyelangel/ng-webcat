@@ -2,10 +2,10 @@
   'use strict';
   function run($firedux) {
     $firedux.init({
-      apiKey: 'AIzaSyAq3qokQkTAqFNrVpeNQ1UvZUFRR5Nv6zc',
-      authDomain: 'firedux-31074.firebaseapp.com',
-      databaseURL: 'https://firedux-31074.firebaseio.com',
-      storageBucket: 'firedux-31074.appspot.com'
+      apiKey: 'AIzaSyApZgDIz2ZHBdpMAtMvpygRu84U4VFGKaI',
+      authDomain: 'pre-compro.firebaseapp.com',
+      databaseURL: 'https://pre-compro.firebaseio.com',
+      storageBucket: 'pre-compro.appspot.com'
     });
   }
   angular

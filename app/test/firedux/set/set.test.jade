@@ -1,0 +1,13 @@
+.md-display-1|fd-set
+fd-set(
+  fd-set-path="api/search/plap/request"
+  fd-set-data="'te'"
+  fd-set-presence="true"
+  catch="$ctrl.$error=$error")
+  before
+    p|LOADING
+  then
+    p|SUCCESS
+  catch
+    p|ERROR {{$ctrl.$error}}
+  

@@ -1,0 +1,17 @@
+.md-display-1|fd-api
+md-button(
+  ng-click="$ctrl.$test='tet'")|tet
+md-button(
+  ng-click="$ctrl.$test='te'")|te
+fd-api(
+  fd-api-endpoint="search"
+  fd-api-request="$ctrl.$test"
+  fd-api-array="true"
+  then="$ctrl.$data = $data")
+  before
+    p|LOADING
+  then
+    p|SUCCESS = {{$ctrl.$data}}
+  catch
+    p|ERROR
+  

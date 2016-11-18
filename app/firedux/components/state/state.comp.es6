@@ -52,7 +52,7 @@
       bindings: {
         fdStatePath: '@',
         fdStateQuery: '<',
-        fdStateArray: '@',
+        fdStateArray: '<',
         then: '&',
         catch: '&'
       }

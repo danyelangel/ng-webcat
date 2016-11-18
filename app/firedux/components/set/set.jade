@@ -1,8 +1,8 @@
 before(
-  ng-if="!$ctrl.$ready && !$ctrl.$error"
+  ng-if="$ctrl.$loading"
   ng-transclude="before")
 then(
-  ng-if="!$ctrl.$ready"
+  ng-if="$ctrl.$ready"
   ng-transclude="then")
 catch(
   ng-if="$ctrl.$error"

@@ -3,15 +3,12 @@
   class Controller {
     constructor($firedux) {
       this.$firedux = $firedux;
-    }
-    get $uid() {
-      return this.$firedux.UID;
+      this.$uid = this.$firedux.var('UID');
     }
     $onChanges(changes) {
       if (
         changes.fdApiEndpoint ||
         changes.fdApiRequest ||
-        changes.fdApiQuery ||
         changes.fdApiArray
       ) {
         this.makeRequest();
@@ -25,26 +22,26 @@
         angular.isString(endpoint) &&
         angular.isDefined(request)
       ) {
-        if (angular.isObject(this.fdApiQuery)) {
-          this.$query = this.fdApiQuery;
-        }
-        if (this.fdApiArray) {
-          this.$isArray = true;
-        }
-        this.$path = `api/${uid}/${endpoint}`;
-        this.$request = request;
+        this.$isArray = this.fdApiArray;
+        this.$path = `api/${endpoint}/${uid}`;
+        this.$request = {
+          request: request,
+          timestamp: this.$firedux.var('TIMESTAMP')
+        };
         this.$before = true;
         this.$ready = this.$error = undefined;
       }
     }
     $then(data) {
       this.$ready = true;
+      this.$before = false;
       this.then({
         $data: data
       });
     }
     $catch(err) {
       this.$error = true;
+      this.$before = false;
       this.catch({
         $error: err
       });
@@ -63,7 +60,7 @@
       bindings: {
         fdApiEndpoint: '@',
         fdApiRequest: '<',
-        fdApiArray: '@',
+        fdApiArray: '<',
         then: '&',
         catch: '&'
       }

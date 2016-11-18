@@ -1,16 +1,15 @@
-fd-ref(
-  ng-if="$ctrl.$endpoint"
-  fd-ref-path="{{$ctrl.$path}}"
-  fd-ref-query="$ctrl.$query"
-  fd-ref-array="true"
-  on-ref-data="$ctrl.$then($data)"
-  on-ref-error="$ctrl.$catch($error)")
-fd-bind(
-  ng-if="$ctrl.$endpoint"
-  fd-bind-path="{{$ctrl.$path}}"
-  fd-bind-presence
-  on-bind-data="$ctrl.$request"
-  on-bind-error="$ctrl.$catch($error)")
+fd-set(
+  ng-if="$ctrl.$path"
+  fd-set-path="{{$ctrl.$path}}"
+  fd-set-data="$ctrl.$request"
+  fd-set-presence="true"
+  catch="$ctrl.$catch($error)")
+  then
+    fd-ref(
+      fd-ref-path="{{$ctrl.$path}}/response"
+      fd-ref-array="true"
+      then="$ctrl.$then($data)"
+      catch="$ctrl.$catch($error)")
 
 before(
   ng-if="$ctrl.$before"

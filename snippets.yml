@@ -1,4 +1,4 @@
-- trigger: $firedux-init
+- trigger: $fd-init
   scope: javascript
   text: |
         var config = {
@@ -8,26 +8,26 @@
             storageBucket: '${1}.appspot.com'
         };
         $firedux.init(config);
-- trigger: $firedux-reducer
+- trigger: $fd-reducer
   scope: javascript
   text: |
         $firedux.reducer({
             trigger: '${1:TRIGGER}',
             reducer: ${2:reducer}
         });
-- trigger: $firedux-TIMESTAMP
+- trigger: $fd-TIMESTAMP
   scope: javascript
   text: |
         $firedux.var('TIMESTAMP')
-- trigger: $firedux-UID
+- trigger: $fd-UID
   scope: javascript
   text: |
         $firedux.var('UID')
-- trigger: $firedux-ref
+- trigger: $fd-ref
   scope: javascript
   text: |
         $firedux.ref()
-- trigger: $firedux-auth-uid
+- trigger: $fd-auth-uid
   scope: javascript
   text: |
         $firedux.auth.uid()
