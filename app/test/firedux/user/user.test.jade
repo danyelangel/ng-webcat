@@ -1,0 +1,9 @@
+.md-display-1|fd-user
+fd-user(
+  then="$user = $data")
+  before
+    p|LOADING
+  then
+    p|SUCCESS: {{$user}}
+  catch
+    p|ERROR

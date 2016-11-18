@@ -140,6 +140,14 @@
             then
             catch
             
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: wc-dialog-alert
   scope: jade
   text: |

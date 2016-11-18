@@ -8,5 +8,6 @@ angular
     'firedux.fdRef',
     'firedux.fdSet',
     'firedux.fdState',
-    'firedux.fdUpload'
+    'firedux.fdUpload',
+    'firedux.fdUser'
   ]);

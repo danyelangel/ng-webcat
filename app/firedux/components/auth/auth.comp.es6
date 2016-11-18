@@ -9,6 +9,7 @@
       this.$firedux
         .waitForAuth()
         .then((authData) => {
+          this.$firedux.$apply();
           this.$ready = true;
           this.$before = undefined;
           this.then({
@@ -16,6 +17,7 @@
           });
         })
         .catch(() => {
+          this.$firedux.$apply();
           this.$error = true;
           this.$before = undefined;
           this.catch();

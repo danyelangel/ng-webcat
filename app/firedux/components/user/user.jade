@@ -1,0 +1,14 @@
+fd-auth(
+  then="$ctrl.$auth = $data"
+  catch="$ctrl.$catch($error)")
+  before(ng-transclude="before")
+  then
+    fd-ref(
+      fd-ref-path="users/{{$ctrl.$auth.uid}}"
+      then="$ctrl.$then($data)"
+      catch="$ctrl.$catch($error)")
+      before(ng-transclude="before")
+      then(ng-transclude="then")
+      catch(ng-transclude="catch")
+  catch(ng-transclude="catch")
+  

@@ -5,7 +5,8 @@
       'test.firedux.api',
       'test.firedux.env',
       'test.firedux.ref',
-      'test.firedux.set'
+      'test.firedux.set',
+      'test.firedux.user'
     ])
     .component('testFiredux', {
       templateUrl: 'test/firedux/_firedux.html'
