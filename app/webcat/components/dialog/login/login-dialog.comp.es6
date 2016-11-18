@@ -22,7 +22,7 @@
     .module('webcat.wcDialog.login', [])
     .component('wcDialogLogin', {
       controller: Controller,
-      templateUrl: 'webcat/components/dialog/login/login.html',
+      templateUrl: 'webcat/components/dialog/login/login-dialog.html',
       bindings: {
         bindings: '<'
       }
