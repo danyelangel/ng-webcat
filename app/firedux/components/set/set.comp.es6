@@ -36,6 +36,7 @@
           this.$firedux.$apply();
         });
       if (presence) {
+        this.removeOnDestroy(ref);
         ref.onDisconnect().remove();
       }
     }
@@ -48,6 +49,14 @@
         });
       } else {
         return this.$firedux.ref(path);
+      }
+    }
+    removeOnDestroy(ref) {
+      this.destroyRef = ref;
+    }
+    $onDestroy() {
+      if (this.destroyRef && this.destroyRef.remove) {
+        this.destroyRef.remove();
       }
     }
   }
