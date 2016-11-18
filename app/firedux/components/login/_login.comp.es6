@@ -49,7 +49,7 @@
     .module('firedux.fdLogin', [])
     .component('fdLogin', {
       controller: Controller,
-      templateUrl: 'firedux/components/login/login.html',
+      templateUrl: 'firedux/components/login/_login.html',
       transclude: {
         before: '?before',
         then: '?then',
