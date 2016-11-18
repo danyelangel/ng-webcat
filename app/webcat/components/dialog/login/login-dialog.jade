@@ -11,7 +11,7 @@ md-dialog(aria-label="Login")
       wc-progress(wc-progress-type="linear")
 
   fd-login(
-    ng-if="$ctrl.$provider==='email'"
+    ng-if="$ctrl.$provider==='email' && $ctrl.$credentials"
     fd-login-provider="email"
     fd-login-credentials="$ctrl.$credentials"
     then="$ctrl.$then($data)"

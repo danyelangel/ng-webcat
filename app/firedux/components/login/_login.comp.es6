@@ -38,7 +38,7 @@
           this.$before = undefined;
           this.then(authData);
         })
-        .catch((error) => {
+        .catch(error => {
           this.$error = error;
           this.$before = undefined;
           this.catch(error);
