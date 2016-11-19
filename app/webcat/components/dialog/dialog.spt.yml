@@ -35,4 +35,10 @@
   text: |
         wc-dialog(
             wc-dialog-progress="${1}"
-            wc-dialog-labels="${2}")       
+            wc-dialog-labels="${2}")      
+            
+- trigger: wc-dialog-template
+  scope: jade
+  text: |
+        wc-dialog(wc-dialog-template)
+          wc-dialog-template
