@@ -1,8 +1,10 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($mdDialog) {
+    constructor($mdDialog, $document, $firedux) {
       this.$mdDialog = $mdDialog;
+      this.$firedux = $firedux;
+      this.$document = $document;
       this.defaultLabels = {
         ok: 'Ok',
         cancel: 'Cancel'
@@ -54,6 +56,12 @@
           type: 'component',
           bindings: this.dialogBindings
         });
+      } else if (this.wcDialogTemplate) {
+        this.$template = true;
+        this.$firedux.$apply();
+        this.openDialog({
+          type: 'template'
+        });
       }
     }
     openDialog(params = {}) {
@@ -86,6 +94,12 @@
             cancel: bindings.cancel
           });
           break;
+        case 'template':
+          dialog = {
+            parent: angular.element(this.$document[0].body),
+            contentElement: '#webcatDialogTemplate'
+          };
+          break;
         default:
           dialog = this.getTemplate(type, bindings.component);
           dialog = {
@@ -103,19 +117,21 @@
           };
           break;
       }
-      this.$mdDialog
-        .show(dialog)
-        .then($data => {
-          this.$ready = true;
-          this.then({
-            $data: $data
+      this.$firedux.$timeout(() => {
+        this.$mdDialog
+          .show(dialog)
+          .then($data => {
+            this.$ready = true;
+            this.then({
+              $data: $data
+            });
+          }, $error => {
+            this.$error = true;
+            this.catch({
+              $error: $error
+            });
           });
-        }, $error => {
-          this.$error = true;
-          this.catch({
-            $error: $error
-          });
-        });
+      });
     }
     getTemplate(type, component) {
       switch (type) {
@@ -145,6 +161,7 @@
       controller: Controller,
       templateUrl: 'webcat/components/dialog/dialog.html',
       transclude: {
+        wcDialogTemplate: '?wcDialogTemplate',
         then: '?then',
         catch: '?catch'
       },
@@ -156,6 +173,7 @@
         wcDialogPrompt: '@',
         wcDialogLogin: '@',
         wcDialogComponent: '@',
+        wcDialogTemplate: '@',
         // Dialog properties
         wcDialogLabels: '<',
         // Callbacks

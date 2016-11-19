@@ -42,3 +42,17 @@ wc-dialog(
         p|LOGIN SUCCESS
       catch
         p|LOGIN ERROR
+        
+        
+.md-headline|Template
+
+md-button(
+  ng-click="$ctrl.$template=true")|Open Dialog
+wc-dialog(
+  wc-dialog-template="true"
+  ng-if="$ctrl.$template")
+  wc-dialog-template
+    h1|This text is templated lolz
+    md-button(
+      ng-click="$ctrl.$template=false")|close
+  
