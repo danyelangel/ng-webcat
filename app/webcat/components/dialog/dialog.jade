@@ -7,8 +7,6 @@ catch(
 #webcatDialogTemplate.md-dialog-container(
   ng-if="$ctrl.$template")
   md-dialog
-    md-dialog-content.md-dialog-content(
+    div(
       ng-transclude="wcDialogTemplate")
-    md-dialog-actions.md-dialog-actions(
-      ng-transclude="wcDialogTemplateActions")
   

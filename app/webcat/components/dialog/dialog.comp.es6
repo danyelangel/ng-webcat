@@ -162,7 +162,6 @@
       templateUrl: 'webcat/components/dialog/dialog.html',
       transclude: {
         wcDialogTemplate: '?wcDialogTemplate',
-        wcDialogTemplateActions: '?wcDialogTemplateActions',
         then: '?then',
         catch: '?catch'
       },
