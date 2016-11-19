@@ -97,7 +97,8 @@
         case 'template':
           dialog = {
             parent: angular.element(this.$document[0].body),
-            contentElement: '#webcatDialogTemplate'
+            contentElement: '#webcatDialogTemplate',
+            fullscreen: true
           };
           break;
         default:
