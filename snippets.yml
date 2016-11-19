@@ -32,122 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="{2:$ctrl.$request}"
-            fd-api-array="{3:false}"
-            then="${4}")
-            catch
-            
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
-- trigger: fd-dispatcher
-  scope: jade
-  text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
-- trigger: fd-env
-  scope: jade
-  text: |
-        fd-env(
-            fd-env-constant="${1:constant}"
-            fd-env-array="${2:false}"
-            then="${3:$data}")
-            then
-
-- trigger: fd-login_provider
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:facebook}"
-            fd-login-popup="${2:$mdMedia('gt-md')}"
-            fd-login-redirect="!${2:$mdMedia('gt-md')}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-
-- trigger: fd-login_email
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:email}"
-            fd-login-credentials="${2:credentials}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-ref
-  scope: jade
-  text: |
-        fd-ref(
-            fd-ref-path="${1:$ctrl.$path}"
-            fd-ref-query="${2:$ctrl.$query}"
-            fd-ref-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
-            before
-            then
-            catch
-            
-- trigger: fd-state
-  scope: jade
-  text: |
-        fd-state(
-            fd-state-path="${1:$ctrl.$path}"
-            fd-state-query="${2:$ctrl.$query}"
-            fd-state-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-upload
-  scope: jade
-  text: |
-        fd-upload(
-            fd-upload-file="${1:$file}"
-            fd-upload-filename="${2}"
-            before="${3:$data}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -242,3 +126,119 @@
             catch="$error")
             then
             catch
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="{2:$ctrl.$request}"
+            fd-api-array="{3:false}"
+            then="${4}")
+            catch
+            
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
+- trigger: fd-dispatcher
+  scope: jade
+  text: |
+        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+
+- trigger: fd-login_provider
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:facebook}"
+            fd-login-popup="${2:$mdMedia('gt-md')}"
+            fd-login-redirect="!${2:$mdMedia('gt-md')}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+
+- trigger: fd-login_email
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:email}"
+            fd-login-credentials="${2:credentials}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-env
+  scope: jade
+  text: |
+        fd-env(
+            fd-env-constant="${1:constant}"
+            fd-env-array="${2:false}"
+            then="${3:$data}")
+            then
+
+- trigger: fd-ref
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-query="${2:$ctrl.$query}"
+            fd-ref-array="${3:false}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
+            before
+            then
+            catch
+            
+- trigger: fd-state
+  scope: jade
+  text: |
+        fd-state(
+            fd-state-path="${1:$ctrl.$path}"
+            fd-state-query="${2:$ctrl.$query}"
+            fd-state-array="${3:false}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-upload
+  scope: jade
+  text: |
+        fd-upload(
+            fd-upload-file="${1:$file}"
+            fd-upload-filename="${2}"
+            before="${3:$data}"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
