@@ -47,7 +47,7 @@
       this.waitForAuth(() => {
         this
           .ref('users')
-          .child(this.uid)
+          .child(this.UID)
           .once(snap => {
             this.user = snap.val();
           });
