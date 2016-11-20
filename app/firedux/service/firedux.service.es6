@@ -114,6 +114,9 @@
       }
       return loginPromise;
     }
+    logout() {
+      this.$fireduxAuth.logout();
+    }
     get stateParams() {
       return this.stateParamsVar;
     }

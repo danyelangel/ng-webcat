@@ -56,6 +56,10 @@
           provider
         );
     }
+    logout() {
+      return this.$auth()
+        .signOut();
+    }
   }
   angular
     .module('firedux.$fireduxAuth', [])
