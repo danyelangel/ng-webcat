@@ -44,6 +44,14 @@
       this.$fireduxAuth.init(this.firebase);
       this.database = this.firebase.database;
       this.projectUrl = config.storageBucket;
+      this.waitForAuth(() => {
+        this
+          .ref('users')
+          .child(this.uid)
+          .once(snap => {
+            this.user = snap.val();
+          });
+      });
     }
     reducer(params) {
       if (angular.isString(params.trigger) && angular.isFunction(params.reducer)) {
