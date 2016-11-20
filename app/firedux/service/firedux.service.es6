@@ -44,10 +44,10 @@
       this.$fireduxAuth.init(this.firebase);
       this.database = this.firebase.database;
       this.projectUrl = config.storageBucket;
-      this.waitForAuth(() => {
+      this.waitForAuth((authData) => {
         this
           .ref('users')
-          .child(this.UID)
+          .child(authData.uid)
           .once(snap => {
             this.user = snap.val();
           });
