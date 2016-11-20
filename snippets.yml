@@ -32,16 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="{2:$ctrl.$request}"
-            fd-api-array="{3:false}"
-            then="${4}")
-            catch
-            
 - trigger: fd-auth
   scope: jade
   text: |
@@ -50,19 +40,21 @@
             then
             catch
             
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
 - trigger: fd-dispatcher
   scope: jade
   text: |
         fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
-- trigger: fd-env
-  scope: jade
-  text: |
-        fd-env(
-            fd-env-constant="${1:constant}"
-            fd-env-array="${2:false}"
-            then="${3:$data}")
-            then
 
 - trigger: fd-login_provider
   scope: jade
@@ -94,8 +86,31 @@
   text: |
         fd-ref(
             fd-ref-path="${1:$ctrl.$path}"
-            fd-ref-query="${2:$ctrl.$query}"
-            fd-ref-array="${3:false}"
+            then="$data"
+            catch="$error")
+            before
+            then
+            catch
+
+- trigger: fd-ref-array
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-array="true"
+            then="$data"
+            catch="$error")
+            before
+            then
+            catch
+
+- trigger: fd-ref-query
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-query="${2}"
+            fd-ref-array="true"
             then="${4:$data}"
             catch="${5:$error}")
             before
@@ -110,19 +125,6 @@
             fdSetData="${2}"
             fdSetPresence="${3:false}"
             catch="$error")
-            before
-            then
-            catch
-            
-- trigger: fd-state
-  scope: jade
-  text: |
-        fd-state(
-            fd-state-path="${1:$ctrl.$path}"
-            fd-state-query="${2:$ctrl.$query}"
-            fd-state-array="${3:false}"
-            then="${4:$data}"
-            catch="${5:$error}")
             before
             then
             catch
@@ -143,7 +145,7 @@
 - trigger: fd-user
   scope: jade
   text: |
-        fd-user(then="${1:$ctrl.$auth = $data}")
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch
@@ -192,6 +194,15 @@
   text: |
         wc-dialog(wc-dialog-template)
           wc-dialog-template
+          
+- trigger: wc-dialog-prompt
+  scope: jade
+  text: |
+        wc-dialog(
+          wc-dialog-prompt="true"
+          wc-dialog-labels="{title: '${1}'}"
+          then="${2}")
+          then
 - trigger: wc-progress-linear
   scope: jade
   text: |

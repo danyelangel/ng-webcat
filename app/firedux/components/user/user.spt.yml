@@ -1,7 +1,7 @@
 - trigger: fd-user
   scope: jade
   text: |
-        fd-user(then="${1:$ctrl.$auth = $data}")
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch

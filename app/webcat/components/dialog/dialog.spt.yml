@@ -42,3 +42,12 @@
   text: |
         wc-dialog(wc-dialog-template)
           wc-dialog-template
+          
+- trigger: wc-dialog-prompt
+  scope: jade
+  text: |
+        wc-dialog(
+          wc-dialog-prompt="true"
+          wc-dialog-labels="{title: '${1}'}"
+          then="${2}")
+          then

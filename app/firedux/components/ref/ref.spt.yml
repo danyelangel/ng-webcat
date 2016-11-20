@@ -3,8 +3,31 @@
   text: |
         fd-ref(
             fd-ref-path="${1:$ctrl.$path}"
-            fd-ref-query="${2:$ctrl.$query}"
-            fd-ref-array="${3:false}"
+            then="$data"
+            catch="$error")
+            before
+            then
+            catch
+
+- trigger: fd-ref-array
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-array="true"
+            then="$data"
+            catch="$error")
+            before
+            then
+            catch
+
+- trigger: fd-ref-query
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1:$ctrl.$path}"
+            fd-ref-query="${2}"
+            fd-ref-array="true"
             then="${4:$data}"
             catch="${5:$error}")
             before
