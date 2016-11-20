@@ -129,6 +129,14 @@
             then
             catch
             
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="$ctrl.$auth = $data")
+            before
+            then
+            catch
+            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -138,14 +146,6 @@
             before="${3:$data}"
             then="${4:$data}"
             catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch
@@ -203,6 +203,10 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-progress-linear
   scope: jade
   text: |
@@ -224,10 +228,6 @@
             wc-progress-type="circular"
             wc-progress-percentage="${1:percentage}")
                 
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-params
   scope: jade
   text: |
