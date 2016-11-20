@@ -126,11 +126,17 @@
             this.then({
               $data: $data
             });
+            this.$firedux.$apply();
+            this.$after = true;
+            this.after();
           }, $error => {
             this.$error = true;
             this.catch({
               $error: $error
             });
+            this.$firedux.$apply();
+            this.$after = true;
+            this.after();
           });
       });
     }
@@ -164,7 +170,8 @@
       transclude: {
         wcDialogTemplate: '?wcDialogTemplate',
         then: '?then',
-        catch: '?catch'
+        catch: '?catch',
+        after: '?after'
       },
       bindings: {
         // Dialog types
@@ -179,7 +186,8 @@
         wcDialogLabels: '<',
         // Callbacks
         then: '&',
-        catch: '&'
+        catch: '&',
+        after: '&'
       }
     });
 }());

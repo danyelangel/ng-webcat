@@ -4,6 +4,9 @@ then(
 catch(
   ng-if="$ctrl.$error"
   ng-transclude="catch")
+after(
+  ng-if="$ctrl.$after"
+  ng-transclude="after")
 #webcatDialogTemplate.md-dialog-container(
   ng-if="$ctrl.$template")
   md-dialog
