@@ -3,6 +3,7 @@
   angular
     .module('test.webcat', [
       'test.webcat.dialog',
+      'test.webcat.identicon',
       'test.webcat.progress',
       'test.webcat.toggle',
       'test.webcat.upload'

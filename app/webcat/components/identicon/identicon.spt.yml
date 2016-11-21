@@ -1,0 +1,7 @@
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then

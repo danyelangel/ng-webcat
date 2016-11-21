@@ -1,0 +1,12 @@
+.md-display-1|wc-identicon
+fd-auth(then="$ctrl.$auth = $data")
+  before
+  then
+  catch
+  
+wc-identicon(
+  wc-identicon-hash="dan@precompro.com"
+  then="$img=$data")
+p|{{$img}}
+img(
+  ng-src="{{$img}}")
