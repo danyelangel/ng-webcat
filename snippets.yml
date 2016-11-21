@@ -32,6 +32,14 @@
   text: |
         $firedux.auth.uid()
             
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-api
   scope: jade
   text: |
@@ -43,10 +51,27 @@
             before
             catch
             
-- trigger: fd-auth
+- trigger: fd-login_provider
   scope: jade
   text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
+        fd-login(
+            fd-login-provider="${1:facebook}"
+            fd-login-popup="${2:$mdMedia('gt-md')}"
+            fd-login-redirect="!${2:$mdMedia('gt-md')}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+
+- trigger: fd-login_email
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:email}"
+            fd-login-credentials="${2:credentials}")
+            then="${3:$data}"
+            catch="${4:$error}")
             before
             then
             catch
@@ -92,27 +117,15 @@
             then
             catch
             
-- trigger: fd-login_provider
+- trigger: fd-upload
   scope: jade
   text: |
-        fd-login(
-            fd-login-provider="${1:facebook}"
-            fd-login-popup="${2:$mdMedia('gt-md')}"
-            fd-login-redirect="!${2:$mdMedia('gt-md')}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-
-- trigger: fd-login_email
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:email}"
-            fd-login-credentials="${2:credentials}")
-            then="${3:$data}"
-            catch="${4:$error}")
+        fd-upload(
+            fd-upload-file="${1:$file}"
+            fd-upload-filename="${2}"
+            before="${3:$data}"
+            then="${4:$data}"
+            catch="${5:$error}")
             before
             then
             catch
@@ -125,19 +138,6 @@
             fdSetData="${2}"
             fdSetPresence="${3:false}"
             catch="$error")
-            before
-            then
-            catch
-            
-- trigger: fd-upload
-  scope: jade
-  text: |
-        fd-upload(
-            fd-upload-file="${1:$file}"
-            fd-upload-filename="${2}"
-            before="${3:$data}"
-            then="${4:$data}"
-            catch="${5:$error}")
             before
             then
             catch
