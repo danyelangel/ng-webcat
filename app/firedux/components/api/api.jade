@@ -7,7 +7,7 @@ fd-set(
   then
     fd-ref(
       fd-ref-path="{{$ctrl.$path}}/response"
-      fd-ref-array="$ctrl.$array"
+      fd-ref-array="$ctrl.$isArray"
       then="$ctrl.$then($data)"
       catch="$ctrl.$catch($error)")
 

@@ -124,7 +124,7 @@
       bindings: {
         fdRefPath: '@',
         fdRefQuery: '<',
-        fdRefArray: '@',
+        fdRefArray: '<',
         then: '&',
         catch: '&'
       }
