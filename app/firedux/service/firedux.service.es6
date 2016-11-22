@@ -74,6 +74,9 @@
     waitForAuth() {
       return this.$fireduxAuth.waitForAuth();
     }
+    register(credentials) {
+      return this.$firedux.register(credentials);
+    }
     login(provider, credentials, method) {
       let loginPromise,
           providerService;

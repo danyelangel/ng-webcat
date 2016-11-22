@@ -56,6 +56,10 @@
           provider
         );
     }
+    register(credentials) {
+      return this.$auth()
+        .createUserWithEmailAndPassword(credentials.email, credentials.password);
+    }
     logout() {
       return this.$auth()
         .signOut();

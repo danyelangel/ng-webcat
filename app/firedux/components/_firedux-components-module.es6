@@ -5,6 +5,7 @@ angular
     'firedux.fdDispatcher',
     'firedux.fdLogin',
     'firedux.fdRef',
+    'firedux.fdRegister',
     'firedux.fdSet',
     'firedux.fdUpload',
     'firedux.fdUser'
