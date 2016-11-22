@@ -75,7 +75,7 @@
       return this.$fireduxAuth.waitForAuth();
     }
     register(credentials) {
-      return this.$firedux.register(credentials);
+      return this.$fireduxAuth.register(credentials);
     }
     login(provider, credentials, method) {
       let loginPromise,
