@@ -7,16 +7,14 @@
     $onInit() {
       this.$before = true;
       this.$firedux
-        .waitForAuth()
-        .then((authData) => {
+        .waitForAuth((authData) => {
           this.$firedux.$apply();
           this.$ready = true;
           this.$before = undefined;
           this.then({
             $data: authData
           });
-        })
-        .catch(() => {
+        }, () => {
           this.$firedux.$apply();
           this.$error = true;
           this.$before = undefined;

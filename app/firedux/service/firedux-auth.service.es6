@@ -3,18 +3,14 @@
   class Service {
     init(firebase) {
       this.$auth = firebase.auth;
-      this.waitForAuth()
-        .then(authData => {
-          this.auth = authData;
-        });
-    }
-    waitForAuth() {
-      return new Promise(resolve => {
-        this.$auth()
+      this.$auth()
           .onAuthStateChanged(authData => {
-            resolve(authData);
+            this.auth = authData;
           });
-      });
+    }
+    waitForAuth(success, error) {
+      return this.$auth()
+          .onAuthStateChanged(success, error);
     }
     getProvider(provider) {
       let returnable;

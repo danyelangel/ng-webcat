@@ -71,11 +71,13 @@
     dispatch(action) {
       return this.reducers[action.type](action, this);
     }
-    waitForAuth() {
-      return this.$fireduxAuth.waitForAuth();
+    waitForAuth(success, error) {
+      return this.$fireduxAuth.waitForAuth(success, error);
     }
     register(credentials) {
-      return this.$fireduxAuth.register(credentials);
+      return this.$fireduxAuth.register(credentials).then(() => {
+        return this.login('email', credentials);
+      });
     }
     login(provider, credentials, method) {
       let loginPromise,
