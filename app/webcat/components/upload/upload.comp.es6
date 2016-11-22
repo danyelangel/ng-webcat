@@ -1,6 +1,11 @@
 (function () {
   'use strict';
   class Controller {
+    $then(file) {
+      this.then({
+        $data: file
+      });
+    }
   }
   angular
     .module('webcat.wcUpload', [
@@ -16,8 +21,7 @@
       bindings: {
         wcUploadMultiple: '<',
         wcUploadDimensions: '<',
-        then: '&',
-        catch: '&'
+        then: '&'
       }
     });
 }());
