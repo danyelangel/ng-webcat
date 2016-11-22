@@ -81,18 +81,6 @@
             then
             catch
             
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
-            before
-            then
-            catch
-            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -125,6 +113,18 @@
             fd-ref-array="true"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
             before
             then
             catch

@@ -4,7 +4,7 @@
     $then(file) {
       this.$ready = true;
       this.then({
-        $data: file
+        $file: file
       });
     }
   }

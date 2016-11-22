@@ -3,7 +3,7 @@ p|{{$ctrl.test1}}
 md-button.md-icon-button
   wc-upload(
     wc-upload-dimensions="{width:1920,height:1080}"
-    then="$ctrl.test1 = $data"
+    then="$ctrl.$file = $data"
     catch="$errorMessage = $error")
     catch
       md-toast(md-toast-message="$errorMessage")
