@@ -6,7 +6,11 @@
     }
     $onChanges(changes) {
       if (changes.fdDispatcherAction) {
-        this.dispatch(this.fdDispatcherAction);
+        if (angular.isUndefined(this.fdClick)) {
+          this.dispatch(this.fdDispatcherAction);
+        } else {
+          this.$class = 'hidden-input';
+        }
       }
     }
     dispatch(action) {
@@ -18,12 +22,19 @@
           .dispatch(action);
       }
     }
+    $run() {
+      if (this.fdClick) {
+        this.dispatch(this.fdDispatcherAction);
+      }
+    }
   }
   angular
     .module('firedux.fdDispatcher', [])
     .component('fdDispatcher', {
       controller: Controller,
+      template: '<div ng-if="$ctrl.$class" ng-class="$ctrl.$class" ng-click="$ctrl.$run()"/>',
       bindings: {
+        fdClick: '<',
         fdDispatcherAction: '<'
       }
     });
