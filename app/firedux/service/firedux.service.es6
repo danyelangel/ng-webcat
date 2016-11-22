@@ -48,7 +48,7 @@
         this
           .ref('users')
           .child(authData.uid)
-          .once('value', snap => {
+          .on('value', snap => {
             this.user = snap.val();
           });
       });
