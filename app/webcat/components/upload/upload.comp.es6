@@ -2,6 +2,7 @@
   'use strict';
   class Controller {
     $then(file) {
+      this.$ready = true;
       this.then({
         $data: file
       });
@@ -15,8 +16,7 @@
       controller: Controller,
       templateUrl: 'webcat/components/upload/upload.html',
       transclude: {
-        then: '?then',
-        catch: '?catch'
+        then: '?then'
       },
       bindings: {
         wcUploadMultiple: '<',
