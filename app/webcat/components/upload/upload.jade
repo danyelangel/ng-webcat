@@ -4,4 +4,4 @@ input.hidden-input(
   ngf-multiple="$ctrl.wcUploadMultiple"
   accept="image/*"
   ngf-resize="$ctrl.dimensions")
-div(ng-transclude="then")
+div(ng-transclude="then" ng-if="$ctrl.$ready") 
