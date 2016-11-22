@@ -10,7 +10,7 @@
       this.$timeout = $timeout;
     }
     get auth() {
-      return this.$fireduxAuth.auth;
+      return this.$fireduxAuth.auth || {};
     }
     get TIMESTAMP() {
       return this.firebase.database.ServerValue.TIMESTAMP;
