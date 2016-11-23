@@ -98,7 +98,7 @@
           dialog = {
             parent: angular.element(this.$document[0].body),
             contentElement: '#webcatDialogTemplate',
-            fullscreen: true
+            fullscreen: angular.isObject(this.wcDialogFullscreen) ? this.wcDialogFullscreen : true
           };
           break;
         default:
@@ -184,6 +184,7 @@
         wcDialogTemplate: '@',
         // Dialog properties
         wcDialogLabels: '<',
+        wcDialogFullscreen: '<',
         // Callbacks
         then: '&',
         catch: '&',
