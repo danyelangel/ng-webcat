@@ -19,19 +19,19 @@
         angular.isString(action.type)
       ) {
         this.$before = true;
-        this.$ready = this.$error = false;
+        this.$ready = this.$error = undefined;
         this.$firedux.$apply();
         this.$firedux
           .dispatch(action)
           .then($data => {
             this.$ready = true;
-            this.$before = false;
+            this.$before = undefined;
             this.$firedux.$apply();
             this.then({$data});
           })
           .catch($error => {
             this.$error = true;
-            this.$before = false;
+            this.$before = undefined;
             this.$firedux.$apply();
             this.catch({$error});
           });
