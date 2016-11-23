@@ -1,0 +1,10 @@
+div(
+  ng-if="$ctrl.$class"
+  ng-class="$ctrl.$class"
+  ng-click="$ctrl.$run()")
+div(
+  ng-if="$ctrl.$ready"
+  ng-transclude="then")
+div(
+  ng-if="$ctrl.$error"
+  ng-transclude="catch")

@@ -18,8 +18,23 @@
         angular.isObject(action) &&
         angular.isString(action.type)
       ) {
+        this.$before = true;
+        this.$ready = this.$error = false;
+        this.$firedux.$apply();
         this.$firedux
-          .dispatch(action);
+          .dispatch(action)
+          .then($data => {
+            this.$ready = true;
+            this.$before = false;
+            this.$firedux.$apply();
+            this.then({$data});
+          })
+          .catch($error => {
+            this.$error = true;
+            this.$before = false;
+            this.$firedux.$apply();
+            this.catch({$error});
+          });
       }
     }
     $run() {
@@ -32,10 +47,17 @@
     .module('firedux.fdDispatcher', [])
     .component('fdDispatcher', {
       controller: Controller,
-      template: '<div ng-if="$ctrl.$class" ng-class="$ctrl.$class" ng-click="$ctrl.$run()"/>',
+      templateUrl: 'firedux/components/dispatcher/dispatcher.html',
+      transclude: {
+        before: '?before',
+        then: '?then',
+        catch: '?catch'
+      },
       bindings: {
         fdClick: '<',
-        fdDispatcherAction: '<'
+        fdDispatcherAction: '<',
+        then: '&',
+        catch: '&'
       }
     });
 }());
