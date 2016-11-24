@@ -55,4 +55,27 @@ wc-dialog(
     h1|This text is templated lolz
     md-button(
       ng-click="$ctrl.$template=false")|close
+      
+      
+
+.md-headline|Dialog-Dispatcher
+md-button(
+  ng-click="$ctrl.DIALOG.DISPATCHER=true")|Open Dialog
+p|{{$ctrl.data}}
+wc-dialog(
+  ng-if="$ctrl.DIALOG.DISPATCHER"
+  wc-dialog-prompt="true"
+  wc-dialog-labels=`{
+    title: 'DATA',
+    body: '¿Plop is it life?'
+  }`
+  then="$ctrl.data=$data")
+  
+  then
+    fd-dispatcher(
+      fd-dispatcher-action=`{
+        type: 'DIALOG.DISPATCHER',
+        data: $ctrl.data
+      }`
+      then="$ctrl.DIALOG.DISPATCHER=false;$ctrl.$isPloplLife()")
   

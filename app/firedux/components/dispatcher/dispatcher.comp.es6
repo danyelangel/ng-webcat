@@ -18,23 +18,25 @@
         angular.isObject(action) &&
         angular.isString(action.type)
       ) {
-        this.$before = true;
-        this.$ready = this.$error = undefined;
-        this.$firedux.$apply();
-        this.$firedux
-          .dispatch(action)
-          .then($data => {
-            this.$ready = true;
-            this.$before = undefined;
-            this.$firedux.$apply();
-            this.then({$data});
-          })
-          .catch($error => {
-            this.$error = $error;
-            this.$before = undefined;
-            this.$firedux.$apply();
-            this.catch({$error});
-          });
+        if (!this.$before) {
+          this.$before = true;
+          this.$ready = this.$error = undefined;
+          this.$firedux.$apply();
+          this.$firedux
+            .dispatch(action)
+            .then($data => {
+              this.$ready = true;
+              this.$before = undefined;
+              this.$firedux.$apply();
+              this.then({$data});
+            })
+            .catch($error => {
+              this.$error = $error;
+              this.$before = undefined;
+              this.$firedux.$apply();
+              this.catch({$error});
+            });
+        }
       }
     }
     $run() {
