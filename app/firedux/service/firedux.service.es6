@@ -69,9 +69,9 @@
       this.reducers[params.trigger] = params.reducer;
     }
     dispatch(action) {
-      this.isDispatching = true;
       return new Promise((resolve, reject) => {
         if (!this.isDispatching) {
+          this.isDispatching = true;
           this.reducers[action.type](action, this)
             .then((payload) => {
               this.isDispatching = false;
