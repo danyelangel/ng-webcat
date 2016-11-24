@@ -70,6 +70,7 @@
       this.reducers[params.trigger] = params.reducer;
     }
     dispatch(action) {
+      console.log(action);
       return new Promise((resolve, reject) => {
         if (!this.isDispatching[action.type]) {
           this.isDispatching[action.type] = true;
