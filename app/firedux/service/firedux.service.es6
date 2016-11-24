@@ -8,6 +8,7 @@
       this.reducers = [];
       this.$scope = $rootScope;
       this.$timeout = $timeout;
+      this.isDispatching = {};
     }
     get auth() {
       return this.$fireduxAuth.auth || {};
@@ -70,20 +71,20 @@
     }
     dispatch(action) {
       return new Promise((resolve, reject) => {
-        if (!this.isDispatching) {
-          this.isDispatching = true;
+        if (!this.isDispatching[action.type]) {
+          this.isDispatching[action.type] = true;
           this.reducers[action.type](action, this)
             .then((payload) => {
-              this.isDispatching = false;
+              this.isDispatching[action.type] = false;
               resolve(payload);
             })
             .catch((err) => {
-              this.isDispatching = false;
+              this.isDispatching[action.type] = false;
               reject(err);
             });
         } else {
-          this.isDispatching = false;
-          reject('Firedux is already dispatching');
+          this.isDispatching[action.type] = false;
+          reject('Firedux is already dispatching this action');
         }
       });
     }

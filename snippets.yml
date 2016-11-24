@@ -150,6 +150,13 @@
             then
             catch
             
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -203,13 +210,6 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-progress-linear
   scope: jade
   text: |
