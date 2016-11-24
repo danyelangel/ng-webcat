@@ -69,7 +69,22 @@
       this.reducers[params.trigger] = params.reducer;
     }
     dispatch(action) {
-      return this.reducers[action.type](action, this);
+      this.isDispatching = true;
+      return new Promise((resolve, reject) => {
+        if (!this.isDispatching) {
+          this.reducers[action.type](action, this)
+            .then((payload) => {
+              this.isDispatching = false;
+              resolve(payload);
+            })
+            .catch((err) => {
+              this.isDispatching = false;
+              reject(err);
+            });
+        } else {
+          reject('Firedux is already dispatching');
+        }
+      });
     }
     waitForAuth(success, error) {
       return this.$fireduxAuth.waitForAuth(success, error);
