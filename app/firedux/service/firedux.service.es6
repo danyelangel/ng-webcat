@@ -82,6 +82,7 @@
               reject(err);
             });
         } else {
+          this.isDispatching = false;
           reject('Firedux is already dispatching');
         }
       });
