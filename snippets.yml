@@ -235,11 +235,6 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
-- trigger: wc-ui-params
-  scope: jade
-  text: |
-        wc-ui-params(
-            then="$${1:params}=$data")      
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -250,6 +245,11 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-params="${2}")      
+- trigger: wc-ui-params
+  scope: jade
+  text: |
+        wc-ui-params(
+            then="$${1:params}=$data")      
 - trigger: wc-upload
   scope: jade
   text: |

@@ -30,7 +30,7 @@
             this.then({$data});
           })
           .catch($error => {
-            this.$error = true;
+            this.$error = $error;
             this.$before = undefined;
             this.$firedux.$apply();
             this.catch({$error});
