@@ -40,6 +40,7 @@
           this.$scope.$apply();
         });
       }, err => {
+        console.warn(err);
         this.$before = undefined;
         this.$error = err;
         this.catch({

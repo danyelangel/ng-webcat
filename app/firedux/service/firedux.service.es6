@@ -87,6 +87,7 @@
                 reject(err);
               });
           } else {
+            this.isDispatching[action.type] = false;
             reject('Reducer ' + action.type + ' is not registered');
           }
         } else {
