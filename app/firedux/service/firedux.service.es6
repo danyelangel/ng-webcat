@@ -46,12 +46,14 @@
       this.database = this.firebase.database;
       this.projectUrl = config.storageBucket;
       this.waitForAuth((authData) => {
-        this
-          .ref('users')
-          .child(authData.uid)
-          .on('value', snap => {
-            this.user = snap.val();
-          });
+        if (authData) {
+          this
+            .ref('users')
+            .child(authData.uid)
+            .on('value', snap => {
+              this.user = snap.val();
+            });
+        }
       });
     }
     reducer(params) {

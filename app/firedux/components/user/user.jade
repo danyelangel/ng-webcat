@@ -4,6 +4,7 @@ fd-auth(
   before(ng-transclude="before")
   then
     fd-ref(
+      ng-if="$ctrl.$auth.uid"
       fd-ref-path="users/{{$ctrl.$auth.uid}}"
       then="$ctrl.$then($data)"
       catch="$ctrl.$catch($error)")
