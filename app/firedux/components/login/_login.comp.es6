@@ -36,13 +36,17 @@
           this.$ready = true;
           this.$before = undefined;
           this.$firedux.$apply();
-          this.then(authData);
+          this.then({
+            $data: authData
+          });
         })
         .catch(error => {
           this.$error = error;
           this.$before = undefined;
           this.$firedux.$apply();
-          this.catch(error);
+          this.catch({
+            $error: error
+          });
         });
     }
   }
