@@ -30,9 +30,16 @@
         };
         this.$before = true;
         this.$ready = this.$error = undefined;
+        this.before({
+          $promise: new Promise((resolve, reject) => {
+            this.resolve = resolve;
+            this.reject = reject;
+          })
+        });
       }
     }
     $then(data) {
+      this.resolve(data);
       this.$ready = true;
       this.$before = false;
       this.then({
@@ -40,6 +47,7 @@
       });
     }
     $catch(err) {
+      this.reject(err);
       this.$error = true;
       this.$before = false;
       this.catch({
