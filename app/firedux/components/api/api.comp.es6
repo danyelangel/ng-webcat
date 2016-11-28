@@ -70,7 +70,8 @@
         fdApiRequest: '<',
         fdApiArray: '<',
         then: '&',
-        catch: '&'
+        catch: '&',
+        before: '&'
       }
     });
 }());
