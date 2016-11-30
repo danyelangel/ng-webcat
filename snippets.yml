@@ -129,14 +129,6 @@
             then
             catch
             
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="$ctrl.$auth = $data")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -146,6 +138,14 @@
             before="${3:$data}"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch

@@ -27,6 +27,7 @@
       this.$scope = $rootScope;
       this.$timeout = $timeout;
       this.isDispatching = {};
+      this.vals = {};
     }
     get auth() {
       return this.$fireduxAuth.auth || {};
