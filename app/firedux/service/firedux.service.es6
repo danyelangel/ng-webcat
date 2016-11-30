@@ -12,6 +12,7 @@
     }
     watch(callback) {
       this.callbacks.push(callback);
+      callback(this.data);
       return () => {
         let index = this.callbacks.indexOf(callback);
         this.callbacks.splice(index, 1);
