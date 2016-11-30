@@ -13,7 +13,7 @@
           });
         });
     }
-    $ngChange(changes) {
+    $onChanges(changes) {
       if (changes.fdValueData && this.isInitialized) {
         this.$firedux
           .val(this.fdValueId)
@@ -25,12 +25,6 @@
     .module('firedux.fdValue', [])
     .component('fdValue', {
       controller: Controller,
-      templateUrl: 'firedux/components/value/value.html',
-      transclude: {
-        before: '?before',
-        then: '?then',
-        catch: '?catch'
-      },
       bindings: {
         fdValueId: '@',
         fdValueData: '<',
