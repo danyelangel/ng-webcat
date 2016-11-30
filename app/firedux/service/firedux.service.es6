@@ -1,6 +1,23 @@
 (function () {
   'use strict';
-
+  class ValueObserver {
+    constructor() {
+      this.callbacks = [];
+    }
+    set(data) {
+      this.data = data;
+      angular.forEach(this.callbacks, callback => {
+        callback(this.data);
+      });
+    }
+    watch(callback) {
+      this.callbacks.push(callback);
+      return () => {
+        let index = this.callbacks.indexOf(callback);
+        this.callbacks.splice(index, 1);
+      };
+    }
+  }
   class Service {
     constructor($window, $fireduxAuth, $timeout, $rootScope) {
       this.firebase = $window.firebase;
@@ -32,6 +49,12 @@
         default:
           return null;
       }
+    }
+    val(valId) {
+      if (!this.vals[valId]) {
+        this.vals[valId] = new ValueObserver();
+      }
+      return this.vals[valId];
     }
     ref(path) {
       return this.database().ref(path);
