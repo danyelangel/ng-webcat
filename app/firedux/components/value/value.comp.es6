@@ -6,11 +6,11 @@
       this.$firedux
         .val(this.fdValueId)
         .watch(newVal => {
-          this.isInitialized = true;
           this.fdValueData = newVal;
           this.then({
             $data: this.fdValueData
           });
+          this.isInitialized = true;
         });
     }
     $onChanges(changes) {

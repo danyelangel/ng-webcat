@@ -43,11 +43,6 @@
             before
             catch
             
-- trigger: fd-dispatcher
-  scope: jade
-  text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
 - trigger: fd-auth
   scope: jade
   text: |
@@ -56,6 +51,11 @@
             then
             catch
             
+- trigger: fd-dispatcher
+  scope: jade
+  text: |
+        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -117,19 +117,6 @@
             then
             catch
             
-- trigger: fd-upload
-  scope: jade
-  text: |
-        fd-upload(
-            fd-upload-file="${1:$file}"
-            fd-upload-filename="${2}"
-            before="${3:$data}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
 - trigger: fd-set
   scope: jade
   text: |
@@ -146,6 +133,19 @@
   scope: jade
   text: |
         fd-user(then="$ctrl.$auth = $data")
+            before
+            then
+            catch
+            
+- trigger: fd-upload
+  scope: jade
+  text: |
+        fd-upload(
+            fd-upload-file="${1:$file}"
+            fd-upload-filename="${2}"
+            before="${3:$data}"
+            then="${4:$data}"
+            catch="${5:$error}")
             before
             then
             catch
