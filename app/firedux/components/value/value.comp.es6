@@ -7,9 +7,11 @@
         .val(this.fdValueId)
         .watch(newVal => {
           this.fdValueData = newVal;
-          this.then({
-            $data: this.fdValueData
-          });
+          if (this.fdValueData) {
+            this.then({
+              $data: this.fdValueData
+            });
+          }
           this.isInitialized = true;
         });
     }
