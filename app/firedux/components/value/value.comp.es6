@@ -3,9 +3,12 @@
   class Controller {
     constructor($firedux) {
       this.$firedux = $firedux;
+    }
+    $onInit() {
       this.$firedux
         .val(this.fdValueId)
         .watch(newVal => {
+          this.isInitialized = false;
           this.fdValueData = newVal;
           if (this.fdValueData) {
             this.then({
