@@ -20,8 +20,10 @@
       if (angular.isString(state)) {
         if (params) {
           this.$firedux.setParams(params);
+        } else {
+          this.$firedux.setParams(null);
         }
-        this.$state.go(state);
+        this.$state.go(state, params);
       }
     }
   }

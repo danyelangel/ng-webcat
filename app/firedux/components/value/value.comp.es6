@@ -8,11 +8,9 @@
       this.$firedux
         .val(this.fdValueId)
         .watch(newVal => {
-          this.isInitialized = false;
-          this.fdValueData = newVal;
-          if (this.fdValueData) {
+          if (newVal) {
             this.then({
-              $data: this.fdValueData
+              $data: newVal
             });
           }
           this.isInitialized = true;

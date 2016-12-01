@@ -172,11 +172,8 @@
     logout() {
       this.$fireduxAuth.logout();
     }
-    get stateParams() {
-      return this.stateParamsVar;
-    }
     setParams(params) {
-      this.stateParamsVar = params;
+      this.stateParams = params;
     }
     $apply() {
       this.$timeout(() => {
