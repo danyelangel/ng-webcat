@@ -83,7 +83,7 @@
                 .child('response')
                 .once('value')
                 .then(response => {
-                  return response;
+                  return response.val();
                 });
             });
         }
