@@ -72,8 +72,11 @@
           return this.ref('api')
             .child(endpoint)
             .child(this.UID)
-            .child('request')
-            .set(request)
+            .child()
+            .set({
+              request,
+              timestamp: this.TIMESTAMP
+            })
             .then(() => {
               return this.ref('api')
                 .child(endpoint)
