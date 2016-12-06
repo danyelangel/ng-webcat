@@ -61,30 +61,41 @@
     ref(path) {
       return this.database().ref(path);
     }
-    api(endpoint = 'null') {
+    api(endpoint) {
       return {
         call: request => {
-          this.ref('api')
-            .child(endpoint)
-            .child(this.UID)
-            .onDisconnect()
-            .set(null);
+          let UID = this.UID;
           return this.ref('api')
             .child(endpoint)
-            .child(this.UID)
+            .child(UID)
             .set({
               request,
               timestamp: this.TIMESTAMP
             })
             .then(() => {
-              return this.ref('api')
-                .child(endpoint)
-                .child(this.UID)
-                .child('response')
-                .once('value')
-                .then(response => {
-                  return response.val();
-                });
+              return new Promise((resolve, reject) => {
+                this.ref('api')
+                  .child(endpoint)
+                  .child(UID)
+                  .child('response')
+                  .on('value', response => {
+                    this.$timeout(() => {
+                      reject('API timed out');
+                    }, 10000);
+                    if (response) {
+                      this.ref('api')
+                        .child(endpoint)
+                        .child(UID)
+                        .child('response')
+                        .off();
+                      this.ref('api')
+                        .child(endpoint)
+                        .child(UID)
+                        .set(null);
+                      resolve(response.val());
+                    }
+                  });
+              });
             });
         }
       };
