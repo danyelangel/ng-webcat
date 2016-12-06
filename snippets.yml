@@ -32,25 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
-            before
-            catch
-            
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -77,6 +58,25 @@
             fd-login-credentials="${2:credentials}")
             then="${3:$data}"
             catch="${4:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
             before
             then
             catch
@@ -117,14 +117,10 @@
             then
             catch
             
-- trigger: fd-set
+- trigger: fd-user
   scope: jade
   text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch
@@ -142,10 +138,14 @@
             then
             catch
             
-- trigger: fd-user
+- trigger: fd-set
   scope: jade
   text: |
-        fd-user(then="$ctrl.$auth = $data")
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
             before
             then
             catch
