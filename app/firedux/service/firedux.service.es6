@@ -62,27 +62,29 @@
       return this.database().ref(path);
     }
     api(endpoint = 'null') {
-      return request => {
-        this.ref('api')
-          .child(endpoint)
-          .child(this.UID)
-          .onDisconnect()
-          .set(null);
-        return this.ref('api')
-          .child(endpoint)
-          .child(this.UID)
-          .child('request')
-          .set(request)
-          .then(() => {
-            return this.ref('api')
-              .child(endpoint)
-              .child(this.UID)
-              .child('response')
-              .once('value')
-              .then(response => {
-                return response;
-              });
-          });
+      return {
+        call: request => {
+          this.ref('api')
+            .child(endpoint)
+            .child(this.UID)
+            .onDisconnect()
+            .set(null);
+          return this.ref('api')
+            .child(endpoint)
+            .child(this.UID)
+            .child('request')
+            .set(request)
+            .then(() => {
+              return this.ref('api')
+                .child(endpoint)
+                .child(this.UID)
+                .child('response')
+                .once('value')
+                .then(response => {
+                  return response;
+                });
+            });
+        }
       };
     }
     storageRef(path) {
