@@ -23,7 +23,9 @@
         } else {
           this.$firedux.setParams(null);
         }
-        this.$state.go(state, params);
+        this.$state.go(state, params, {
+          location: this.wcUiReplace ? 'replace' : true
+        });
       }
     }
   }
@@ -33,7 +35,8 @@
       controller: Controller,
       bindings: {
         wcUiRedirectSref: '@',
-        wcUiRedirectParams: '<'
+        wcUiRedirectParams: '<',
+        wcUiReplace: '@'
       }
     });
 }());
