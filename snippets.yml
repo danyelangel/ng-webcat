@@ -43,11 +43,6 @@
             before
             catch
             
-- trigger: fd-dispatcher
-  scope: jade
-  text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
-
 - trigger: fd-auth
   scope: jade
   text: |
@@ -56,6 +51,11 @@
             then
             catch
             
+- trigger: fd-dispatcher
+  scope: jade
+  text: |
+        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+
 - trigger: fd-login_provider
   scope: jade
   text: |

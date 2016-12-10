@@ -73,19 +73,23 @@
     getFilteredRef(query = {}, ref = {}) {
       let returnable = ref;
       if (query.limitToFirst) {
-        returnable = ref
+        returnable = returnable
           .limitToFirst(query.limitToFirst);
-      } else if (query.limitToLast) {
-        returnable = ref
+      }
+      if (query.limitToLast) {
+        returnable = returnable
           .limitToLast(query.limitToLast);
-      } else if (query.startAt) {
-        returnable = ref
+      }
+      if (query.startAt) {
+        returnable = returnable
           .startAt(query.startAt);
-      } else if (query.endAt) {
-        returnable = ref
+      }
+      if (query.endAt) {
+        returnable = returnable
           .endAt(query.endAt);
-      } else if (query.equalTo) {
-        returnable = ref
+      }
+      if (query.equalTo) {
+        returnable = returnable
           .equalTo(query.equalTo);
       }
       return returnable;
