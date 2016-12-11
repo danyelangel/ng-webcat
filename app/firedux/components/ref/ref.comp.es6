@@ -46,6 +46,7 @@
         this.catch({
           $error: err
         });
+        this.$scope.$apply();
       });
     }
     getRef(path, query) {
