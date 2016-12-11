@@ -5,11 +5,14 @@ fd-set(
   fd-set-presence="true"
   catch="$ctrl.$catch($error)")
   then
-    fd-ref(
-      fd-ref-path="{{$ctrl.$path}}/response"
-      fd-ref-array="$ctrl.$isArray"
-      then="$ctrl.$then($data)"
-      catch="$ctrl.$catch($error)")
+    fd-timeout(
+      fd-timeout-time="100")
+      then
+        fd-ref(
+          fd-ref-path="{{$ctrl.$path}}/response"
+          fd-ref-array="$ctrl.$isArray"
+          then="$ctrl.$then($data)"
+          catch="$ctrl.$catch($error)")
 
 before(
   ng-if="$ctrl.$before"

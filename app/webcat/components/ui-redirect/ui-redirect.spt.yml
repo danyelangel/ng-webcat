@@ -1,7 +1,14 @@
 - trigger: wc-ui-redirect
   scope: jade
   text: |
-        wc-ui-redirect(wc-ui-redirect-sref="${1:state}")
+        wc-ui-redirect(
+          wc-ui-redirect-sref="${1:state}")
+- trigger: wc-ui-redirect-replace
+  scope: jade
+  text: |
+        wc-ui-redirect(
+            wc-ui-redirect-sref="${1:state}"
+            wc-ui-replace="true") 
 - trigger: wc-ui-redirect-params
   scope: jade
   text: |

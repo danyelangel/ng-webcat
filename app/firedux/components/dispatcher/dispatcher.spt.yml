@@ -1,4 +1,11 @@
 - trigger: fd-dispatcher
   scope: jade
   text: |
-        fd-dispatcher(fd-dispatcher-action="${1:$ctrl.$action}")
+        fd-dispatcher(
+          fd-dispatcher-action=`{
+           type: '${1}'
+          }`)
+          before
+          catch
+          then
+          

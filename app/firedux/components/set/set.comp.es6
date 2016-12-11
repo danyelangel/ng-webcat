@@ -32,7 +32,7 @@
             $error: err
           });
           this.$loading = false;
-          this.$error = err;
+          this.$error = true;
           this.$firedux.$apply();
         });
       if (presence) {

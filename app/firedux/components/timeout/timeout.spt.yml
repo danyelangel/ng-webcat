@@ -1,0 +1,6 @@
+- trigger: fd-timeout
+  scope: jade
+  text: |
+        fd-timeout(
+          fd-timeout-time="${1:1000}")
+          then

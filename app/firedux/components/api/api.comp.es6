@@ -23,6 +23,8 @@
         angular.isDefined(request)
       ) {
         this.$isArray = this.fdApiArray;
+        this.$path = null;
+        this.$firedux.$apply();
         this.$path = `api/${endpoint}/${uid}`;
         this.$request = {
           request: request,
