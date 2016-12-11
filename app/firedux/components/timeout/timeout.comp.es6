@@ -22,7 +22,8 @@
       controller: Controller,
       templateUrl: 'firedux/components/timeout/timeout.html',
       transclude: {
-        then: '?then'
+        then: '?then',
+        before: '?before'
       },
       bindings: {
         fdTimeoutTime: '<',
