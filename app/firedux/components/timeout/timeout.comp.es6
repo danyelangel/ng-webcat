@@ -8,10 +8,10 @@
     $onChanges(changes) {
       if (changes.fdTimeoutTime) {
         this.$before = true;
-        this.$then = false;
+        this.$ready = false;
         this.$timeout(() => {
           this.$before = false;
-          this.$then = true;
+          this.$ready = true;
         }, parseInt(this.fdTimeoutTime, 10));
       }
     }
