@@ -32,14 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-api
   scope: jade
   text: |
@@ -49,6 +41,14 @@
             fd-api-array="${3:false}"
             then="${4}")
             before
+            catch
+            
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
             catch
             
 - trigger: fd-dispatcher

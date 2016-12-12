@@ -59,10 +59,10 @@
     updatePassword(oldPassword, newPassword) {
       let email = this.auth.email;
       return this.auth
-        .reauthenticate(this.$auth.EmailAuthProvider.credential({
-          email: email,
-          password: oldPassword
-        })).then(() => {
+        .reauthenticate(this.$auth.EmailAuthProvider.credential(
+          email,
+          oldPassword
+        )).then(() => {
           return this.auth.updatePassword(newPassword);
         });
     }
