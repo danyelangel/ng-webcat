@@ -208,6 +208,12 @@
       }
       return loginPromise;
     }
+    updatePassword(oldPassword, newPassword) {
+      return this
+        .$firebaseAuth(
+          oldPassword,
+          newPassword);
+    }
     logout() {
       this.$fireduxAuth.logout();
     }

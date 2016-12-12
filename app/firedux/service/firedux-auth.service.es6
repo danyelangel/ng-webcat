@@ -56,6 +56,16 @@
       return this.$auth()
         .createUserWithEmailAndPassword(credentials.email, credentials.password);
     }
+    updatePassword(oldPassword, newPassword) {
+      let email = this.auth.email;
+      return this.auth
+        .reauthenticate({
+          email: email,
+          password: oldPassword
+        }).then(() => {
+          return this.auth.updatePassword(newPassword);
+        });
+    }
     logout() {
       return this.$auth()
         .signOut();
