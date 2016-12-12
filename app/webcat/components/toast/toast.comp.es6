@@ -11,7 +11,11 @@
     }
     showToast(message) {
       if (angular.isString(message)) {
-        this.$mdToast.showSimple(message);
+        this.$mdToast.show(
+          this.$mdToast.simple({
+            textContent: message,
+            position: 'top right'
+          }));
       }
     }
   }

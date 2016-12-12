@@ -51,6 +51,42 @@
             then
             catch
             
+- trigger: fd-ref
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1}"
+            then="$data"
+            catch="$error")
+            before
+            catch
+            then
+
+- trigger: fd-ref-array
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1}"
+            fd-ref-array="true"
+            then="$data"
+            catch="$error")
+            before
+            catch
+            then
+
+- trigger: fd-ref-query
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-path="${1}"
+            fd-ref-query="${2}"
+            fd-ref-array="true"
+            then="${4:$data}"
+            catch="${5:$error}")
+            before
+            catch
+            then
+            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -88,42 +124,13 @@
             then
             catch
             
-- trigger: fd-ref
+- trigger: fd-timeout
   scope: jade
   text: |
-        fd-ref(
-            fd-ref-path="${1}"
-            then="$data"
-            catch="$error")
-            before
-            catch
-            then
+        fd-timeout(
+          fd-timeout-time="${1:1000}")
+          then
 
-- trigger: fd-ref-array
-  scope: jade
-  text: |
-        fd-ref(
-            fd-ref-path="${1}"
-            fd-ref-array="true"
-            then="$data"
-            catch="$error")
-            before
-            catch
-            then
-
-- trigger: fd-ref-query
-  scope: jade
-  text: |
-        fd-ref(
-            fd-ref-path="${1}"
-            fd-ref-query="${2}"
-            fd-ref-array="true"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            catch
-            then
-            
 - trigger: fd-set
   scope: jade
   text: |
@@ -136,13 +143,6 @@
             then
             catch
             
-- trigger: fd-timeout
-  scope: jade
-  text: |
-        fd-timeout(
-          fd-timeout-time="${1:1000}")
-          then
-
 - trigger: fd-upload
   scope: jade
   text: |
@@ -164,6 +164,17 @@
             then
             catch
             
+- trigger: wc-progress
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -224,26 +235,15 @@
             wc-identicon-email="${1}"
             then="$data")
             then
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-params
   scope: jade
   text: |
         wc-ui-params(
             then="$${1:params}=$data")      
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-redirect
   scope: jade
   text: |
