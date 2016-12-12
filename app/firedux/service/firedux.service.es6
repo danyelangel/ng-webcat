@@ -210,7 +210,7 @@
     }
     updatePassword(oldPassword, newPassword) {
       return this
-        .$firebaseAuth(
+        .$fireduxAuth(
           oldPassword,
           newPassword);
     }
