@@ -63,6 +63,31 @@
           then
           
 
+- trigger: fd-login_provider
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:facebook}"
+            fd-login-popup="${2:$mdMedia('gt-md')}"
+            fd-login-redirect="!${2:$mdMedia('gt-md')}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+
+- trigger: fd-login_email
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:email}"
+            fd-login-credentials="${2:credentials}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -98,31 +123,6 @@
             before
             catch
             then
-            
-- trigger: fd-login_provider
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:facebook}"
-            fd-login-popup="${2:$mdMedia('gt-md')}"
-            fd-login-redirect="!${2:$mdMedia('gt-md')}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-
-- trigger: fd-login_email
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:email}"
-            fd-login-credentials="${2:credentials}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
             
 - trigger: fd-set
   scope: jade
@@ -217,6 +217,13 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-progress
   scope: jade
   text: |
@@ -228,13 +235,6 @@
             wc-progress-type="${1:linear}"
             wc-progress-percentage="")
                 
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-toast
   scope: jade
   text: |
@@ -244,16 +244,6 @@
   text: |
         wc-ui-params(
             then="$${1:params}=$data")      
-- trigger: wc-upload
-  scope: jade
-  text: |
-        wc-upload(
-            wc-upload-dimensions="${1}"
-            wc-upload-multiple="${2}"
-            then="$file"
-            catch="$error")
-            then
-            catch
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -271,3 +261,13 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-params="${2}")      
+- trigger: wc-upload
+  scope: jade
+  text: |
+        wc-upload(
+            wc-upload-dimensions="${1}"
+            wc-upload-multiple="${2}"
+            then="$file"
+            catch="$error")
+            then
+            catch
