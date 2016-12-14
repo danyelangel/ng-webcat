@@ -147,7 +147,7 @@
               })
               .catch((err) => {
                 this.isDispatching[action.type] = false;
-                console.warn(`Reducer ${action.type} threw this error: ` + err);
+                console.warn(`Reducer ${action.type} threw this error: ` + err, action);
                 reject(err);
               });
           } else {
