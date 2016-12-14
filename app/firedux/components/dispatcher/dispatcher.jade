@@ -5,7 +5,9 @@ div(
 then(
   ng-if="$ctrl.$ready"
   ng-transclude="then")
-wc-toast(
+catch(
   ng-if="$ctrl.$error"
-  wc-toast-message="{{$ctrl.$error}}"
   ng-transclude="catch")
+  wc-toast(
+    ng-if="$ctrl.$error"
+    wc-toast-message="{{$ctrl.$error}}")
