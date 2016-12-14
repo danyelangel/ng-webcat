@@ -2,12 +2,13 @@ div(
   ng-if="$ctrl.$class"
   ng-class="$ctrl.$class"
   ng-click="$ctrl.$run()")
+before(
+  ng-if="$ctrl.$before"
+  ng-transclude="before")
 then(
   ng-if="$ctrl.$ready"
   ng-transclude="then")
 catch(
   ng-if="$ctrl.$error"
   ng-transclude="catch")
-  wc-toast(
-    ng-if="$ctrl.$error"
-    wc-toast-message="{{$ctrl.$error}}")
+  wc-toast(wc-toast-message="{{$ctrl.$error}}")

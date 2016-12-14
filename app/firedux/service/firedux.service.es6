@@ -148,7 +148,7 @@
               .catch((err) => {
                 this.isDispatching[action.type] = false;
                 console.warn(`Reducer ${action.type} threw this error: ` + err, action);
-                reject(err);
+                reject(err || 'UNDEFINED ERROR');
               });
           } else {
             this.isDispatching[action.type] = false;
