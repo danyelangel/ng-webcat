@@ -124,6 +124,13 @@
             catch
             then
             
+- trigger: fd-timeout
+  scope: jade
+  text: |
+        fd-timeout(
+          fd-timeout-time="${1:1000}")
+          then
+
 - trigger: fd-set
   scope: jade
   text: |
@@ -136,13 +143,6 @@
             then
             catch
             
-- trigger: fd-timeout
-  scope: jade
-  text: |
-        fd-timeout(
-          fd-timeout-time="${1:1000}")
-          then
-
 - trigger: fd-upload
   scope: jade
   text: |

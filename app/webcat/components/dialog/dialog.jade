@@ -11,5 +11,10 @@ after(
   ng-if="$ctrl.$template")
   md-dialog
     div(
+      style={
+        display: 'flex',
+        height: '100%',
+        position: 'relative'
+      }
       ng-transclude="wcDialogTemplate")
   
