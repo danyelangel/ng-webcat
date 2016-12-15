@@ -12,8 +12,11 @@
       ) {
         this.redirect(
           this.wcUiRedirectSref,
-          this.wcUiRedirectParams
+          this.wcUiRedirectParams,
+          this.wcUiReload
         );
+      } else if (changes.wcUiReload) {
+        this.$state.reload();
       }
     }
     redirect(state, params) {
@@ -24,7 +27,8 @@
           this.$firedux.setParams(null);
         }
         this.$state.go(state, params, {
-          location: this.wcUiReplace ? 'replace' : true
+          location: this.wcUiReplace ? 'replace' : true,
+          reload: this.wcUiReload ? true : false
         });
       }
     }
@@ -36,7 +40,8 @@
       bindings: {
         wcUiRedirectSref: '@',
         wcUiRedirectParams: '<',
-        wcUiReplace: '@'
+        wcUiReplace: '@',
+        wcUiReload: '@'
       }
     });
 }());
