@@ -139,7 +139,7 @@
       return new Promise((resolve, reject) => {
         if (!this.isDispatching[action.type]) {
           this.isDispatching[action.type] = true;
-          if (angular.isDefined(this.reducers[action.type])) {
+          if (angular.isFunction(this.reducers[action.type])) {
             this.reducers[action.type](action, this)
               .then((payload) => {
                 this.isDispatching[action.type] = false;
@@ -152,10 +152,12 @@
               });
           } else {
             this.isDispatching[action.type] = false;
+            console.warn('Reducer ' + action.type + ' is not registered');
             reject('Reducer ' + action.type + ' is not registered');
           }
         } else {
           this.isDispatching[action.type] = false;
+          console.warn('Firedux is already dispatching this action');
           reject('Firedux is already dispatching this action');
         }
       });
