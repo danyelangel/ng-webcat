@@ -66,6 +66,17 @@
           return this.auth.updatePassword(newPassword);
         });
     }
+    updateProfile(profile) {
+      let newProfile = {};
+      if (angular.isString(profile.displayName)) {
+        newProfile.displayName = profile.displayName;
+      }
+      if (angular.isString(profile.photoURL)) {
+        newProfile.photoURL = profile.photoURL;
+      }
+      return this.auth
+        .updateProfile(newProfile);
+    }
     logout() {
       return this.$auth()
         .signOut();

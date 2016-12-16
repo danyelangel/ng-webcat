@@ -143,7 +143,7 @@
             console.log(`Dispatching ${action.type}`, action);
             this.reducers[action.type](action, this)
               .then((payload) => {
-                console.log(`Action ${action.type} resolved successfully`, action);
+                console.log(`Reducer ${action.type} resolved: ` + action);
                 this.isDispatching[action.type] = false;
                 resolve(payload);
               })
@@ -218,6 +218,11 @@
         .updatePassword(
           oldPassword,
           newPassword);
+    }
+    updateProfile(profile) {
+      return this
+        .$fireduxAuth
+        .updateProfile(profile);
     }
     logout() {
       this.$fireduxAuth.logout();
