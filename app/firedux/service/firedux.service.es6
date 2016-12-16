@@ -139,9 +139,11 @@
       return new Promise((resolve, reject) => {
         if (!this.isDispatching[action.type]) {
           this.isDispatching[action.type] = true;
-          if (angular.isFunction(this.reducers[action.type])) {
+          if (angular.isDefined(this.reducers[action.type])) {
+            console.log(`Dispatching ${action.type}`, action);
             this.reducers[action.type](action, this)
               .then((payload) => {
+                console.log(`Action ${action.type} resolved successfully`, action);
                 this.isDispatching[action.type] = false;
                 resolve(payload);
               })

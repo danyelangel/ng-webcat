@@ -32,31 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-login_provider
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:facebook}"
-            fd-login-popup="${2:$mdMedia('gt-md')}"
-            fd-login-redirect="!${2:$mdMedia('gt-md')}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-
-- trigger: fd-login_email
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:email}"
-            fd-login-credentials="${2:credentials}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-            
 - trigger: fd-api
   scope: jade
   text: |
@@ -88,6 +63,31 @@
           then
           
 
+- trigger: fd-login_provider
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:facebook}"
+            fd-login-popup="${2:$mdMedia('gt-md')}"
+            fd-login-redirect="!${2:$mdMedia('gt-md')}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+
+- trigger: fd-login_email
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:email}"
+            fd-login-credentials="${2:credentials}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -239,6 +239,11 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
+- trigger: wc-ui-params
+  scope: jade
+  text: |
+        wc-ui-params(
+            then="$${1:params}=$data")      
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -266,8 +271,3 @@
             catch="$error")
             then
             catch
-- trigger: wc-ui-params
-  scope: jade
-  text: |
-        wc-ui-params(
-            then="$${1:params}=$data")      
