@@ -140,16 +140,19 @@
         if (!this.isDispatching[action.type]) {
           this.isDispatching[action.type] = true;
           if (angular.isDefined(this.reducers[action.type])) {
-            console.log(`Dispatching ${action.type}`, action);
+            console.groupCollapsed(`Dispatching ${action}`);
+            console.log(action);
             this.reducers[action.type](action, this)
               .then((payload) => {
-                console.log(`Reducer ${action.type} resolved: ` + action);
+                console.log(`Reducer resolved`);
+                console.groupEnd();
                 this.isDispatching[action.type] = false;
                 resolve(payload);
               })
               .catch((err) => {
                 this.isDispatching[action.type] = false;
-                console.warn(`Reducer ${action.type} threw this error: ` + err, action);
+                console.groupEnd();
+                console.warn(`Reducer ${action} threw this error: `, err);
                 reject(err || 'UNDEFINED ERROR');
               });
           } else {
