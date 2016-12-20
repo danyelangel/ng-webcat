@@ -140,7 +140,7 @@
         if (!this.isDispatching[action.type]) {
           this.isDispatching[action.type] = true;
           if (angular.isDefined(this.reducers[action.type])) {
-            console.groupCollapsed(`Dispatching ${action.type}`);
+            console.groupCollapsed(`${action.type}`);
             console.log(action);
             this.reducers[action.type](action, this)
               .then((payload) => {
