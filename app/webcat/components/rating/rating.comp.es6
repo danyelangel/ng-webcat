@@ -39,7 +39,6 @@
         }
         returnable[floor] = remainder;
       }
-      console.log(returnable);
       return returnable;
     }
   }
