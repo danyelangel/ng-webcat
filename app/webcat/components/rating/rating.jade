@@ -1,0 +1,16 @@
+div(layout="row")
+  div(
+    ng-click="$ctrl.$then($index)"
+    ng-repeat="star in $ctrl.$stars track by $index")
+    full(
+      ng-if="star === 'full'"
+      ng-transclude="full")
+    half(
+      ng-if="star === 'half'"
+      ng-transclude="half")
+    empty(
+      ng-if="star === 'empty'"
+      ng-transclude="empty")
+  catch(
+    ng-if="!$ctrl.$stars.length"
+    ng-transclude="catch")

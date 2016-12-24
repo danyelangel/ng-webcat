@@ -5,6 +5,7 @@
       'webcat.wcDialog',
       'webcat.wcIdenticon',
       'webcat.wcProgress',
+      'webcat.wcRating',
       'webcat.wcToast',
       'webcat.wcToggle',
       'webcat.wcUiRedirect',

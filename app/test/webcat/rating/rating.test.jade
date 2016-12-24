@@ -1,0 +1,51 @@
+.md-display-1|wc-rating
+.md-headline|3.2
+md-button(
+  ng-click="$totalScore1 = 3.2")|Add rating
+
+wc-rating(
+  wc-total-score="$totalScore1"
+  wc-user-score="$userScore1"
+  then="$userScore = $data")
+  empty
+    i.material-icons|star_border
+  half
+    i.material-icons|star_half
+  full
+    i.material-icons|star
+  catch
+    p|NO RATING
+    
+.md-headline|3.5
+md-button(
+  ng-click="$totalScore2 = 3.5")|Add rating
+
+wc-rating(
+  wc-total-score="$totalScore2"
+  wc-user-score="$userScore2"
+  then="$userScore2 = $data")
+  empty
+    i.material-icons|star_border
+  half
+    i.material-icons|star_half
+  full
+    i.material-icons|star
+  catch
+    p|NO RATING
+    
+.md-headline|3.8
+md-button(
+  ng-click="$totalScore3 = 3.8")|Add rating
+
+wc-rating(
+  wc-total-score="$totalScore3"
+  wc-user-score="$userScore3"
+  then="$userScore3 = $data")
+  empty
+    i.material-icons|star_border
+  half
+    i.material-icons|star_half
+  full
+    i.material-icons|star
+  catch
+    p|NO RATING

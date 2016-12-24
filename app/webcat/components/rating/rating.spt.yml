@@ -1,0 +1,11 @@
+- trigger: wc-rating
+  scope: jade
+  text: |
+        wc-rating(
+            wc-total-score=""
+            wc-user-score=""
+            then="$data")
+            empty
+            half
+            full
+            catch

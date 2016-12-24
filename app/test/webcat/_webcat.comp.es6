@@ -5,6 +5,7 @@
       'test.webcat.dialog',
       'test.webcat.identicon',
       'test.webcat.progress',
+      'test.webcat.rating',
       'test.webcat.toggle',
       'test.webcat.upload'
     ])
