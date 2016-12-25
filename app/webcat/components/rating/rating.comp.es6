@@ -24,7 +24,9 @@
         let floor = Math.floor(score),
             decimal = score - floor,
             remainder;
-        if (decimal < 0.25) {
+        if (decimal === 0 && floor === this.wcMaxScore) {
+          remainder = null;
+        } else if (decimal < 0.25) {
           remainder = 'empty';
         } else if (decimal > 0.25 && decimal < 0.75) {
           remainder = 'half';
@@ -34,7 +36,7 @@
         for (let i = 0; i < floor; i++) {
           returnable[i] = 'full';
         }
-        for (let j = floor + 1; j < this.wcMaxScore; j++) {
+        for (let j = floor; j < this.wcMaxScore; j++) {
           returnable[j] = 'empty';
         }
         returnable[floor] = remainder;
