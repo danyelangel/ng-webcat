@@ -2,11 +2,13 @@
   'use strict';
   class Controller {
     constructor($firedux, $stateParams) {
-      this.stateParams = Object.assign($firedux.stateParams || {}, $stateParams || {});
+      this.$stateParams = $stateParams;
+      this.$firedux = $firedux;
     }
     $onChanges() {
+      let stateParams = Object.assign(this.$firedux.stateParams || {}, this.$stateParams || {});
       this.then({
-        $data: this.stateParams
+        $data: stateParams
       });
     }
   }
