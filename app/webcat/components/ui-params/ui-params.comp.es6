@@ -4,7 +4,7 @@
     constructor($firedux, $stateParams) {
       this.stateParams = Object.assign($firedux.stateParams || {}, $stateParams || {});
     }
-    $onInit() {
+    $onChanges() {
       this.then({
         $data: this.stateParams
       });
