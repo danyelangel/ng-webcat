@@ -22,9 +22,11 @@
         angular.isString(hitType) &&
         angular.isFunction(this.ga)
       ) {
+        let hit = Object.assign({hitType}, params);
+        console.log(hit);
         this.ga(
           'send',
-          Object.assign({hitType}, params)
+          hit
         );
       }
     }
