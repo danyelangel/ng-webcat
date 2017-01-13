@@ -83,6 +83,6 @@
     }
   }
   angular
-    .module('firedux.$fireduxAuth', [])
+    .module('firedux.auth', [])
     .service('$fireduxAuth', Service);
 }());

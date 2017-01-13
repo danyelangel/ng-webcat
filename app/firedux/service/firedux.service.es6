@@ -103,10 +103,13 @@
     storageRef(path) {
       return this.firebase.storage().ref(path);
     }
-    init(config) {
+    init(config, analytics) {
       this.firebase.initializeApp(config);
       this.hasInitialized = true;
-      this.$fireduxAuth.init(this.firebase);
+      this.$fireduxAuth
+        .init(this.firebase);
+      this.$fireduxAnalytics
+        .init(analytics);
       this.database = this.firebase.database;
       this.projectUrl = config.storageBucket;
       this.waitForAuth((authData) => {
@@ -144,16 +147,19 @@
             console.log(action);
             this.reducers[action.type](action, this)
               .then((payload) => {
+                this.$scope.$emit('fd:action', action.type);
                 console.log(`Reducer resolved`);
                 console.groupEnd();
                 this.isDispatching[action.type] = false;
                 resolve(payload);
               })
               .catch((err) => {
+                err = err || 'UNDEFINED ERROR';
+                this.$scope.$emit('fd:error', `${action.type}: ${err}`);
                 this.isDispatching[action.type] = false;
                 console.groupEnd();
                 console.warn(`Reducer ${action.type} threw this error: `, err);
-                reject(err || 'UNDEFINED ERROR');
+                reject(err);
               });
           } else {
             this.isDispatching[action.type] = false;
@@ -245,7 +251,8 @@
   }
   angular
     .module('firedux.service', [
-      'firedux.$fireduxAuth'
+      'firedux.auth',
+      'firedux.analytics'
     ])
     .service('$firedux', Service);
 }());
