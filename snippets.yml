@@ -88,18 +88,6 @@
             then
             catch
             
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
-            before
-            then
-            catch
-            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -135,6 +123,18 @@
             before
             catch
             then
+            
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
+            before
+            then
+            catch
             
 - trigger: fd-timeout
   scope: jade
@@ -224,6 +224,17 @@
             wc-identicon-email="${1}"
             then="$data")
             then
+- trigger: wc-progress
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
 - trigger: wc-rating
   scope: jade
   text: |
@@ -239,17 +250,6 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
 - trigger: wc-ui-params
   scope: jade
   text: |
