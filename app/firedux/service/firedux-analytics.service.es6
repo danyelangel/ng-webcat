@@ -35,12 +35,13 @@
     }
     trackPageViews() {
       function toUrl(state) {
-        return state.replace('.', '/');
+        return state.split('.').join('/');
       }
-      this.$rootScope.$on('$stateChangeSuccess', (event, toState) => {
-        console.log(toState.name);
-        this.pageView(toUrl(toState.name));
-      });
+      this.$rootScope.$on(
+        '$stateChangeSuccess',
+        (event, toState) => {
+          this.pageView(toUrl(toState.name));
+        });
     }
     trackDispatcher() {
       this.$rootScope.$on(
