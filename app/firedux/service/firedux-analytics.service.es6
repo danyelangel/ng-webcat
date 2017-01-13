@@ -7,7 +7,7 @@
     }
     init(code) {
       if (
-        angular.isFunction(this.ga) &&
+        angular.isFunction(this.$window.ga) &&
         angular.isString(code)
       ) {
         this.$window.ga('create', code, 'auto');
@@ -20,7 +20,7 @@
     sendHit(hitType, params = {}) {
       if (
         angular.isString(hitType) &&
-        angular.isFunction(this.ga)
+        angular.isFunction(this.$window.ga)
       ) {
         let hit = Object.assign({hitType}, params);
         console.log(hit);
