@@ -38,8 +38,8 @@
         return state.replace('.', '/');
       }
       this.$rootScope.$on('$stateChangeSuccess', (event, toState) => {
-        console.log(toState);
-        this.pageView(toUrl(toState));
+        console.log(toState.name);
+        this.pageView(toUrl(toState.name));
       });
     }
     trackDispatcher() {
