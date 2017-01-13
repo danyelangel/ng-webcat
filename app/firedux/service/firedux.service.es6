@@ -191,6 +191,10 @@
           providerService = this.$fireduxAuth
             .getProvider('facebook');
           break;
+        case 'google':
+          providerService = this.$fireduxAuth
+            .getProvider('google');
+          break;
         case 'twitter':
           providerService = this.$fireduxAuth
             .getProvider('twitter');
