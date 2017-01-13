@@ -2,7 +2,7 @@
   'use strict';
   class Service {
     constructor($window, $rootScope) {
-      this.$window = $window.ga;
+      this.$window = $window;
       this.$rootScope = $rootScope;
     }
     init(code) {
