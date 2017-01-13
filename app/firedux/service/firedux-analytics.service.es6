@@ -2,7 +2,7 @@
   'use strict';
   class Service {
     constructor($window, $rootScope) {
-      this.ga = $window.ga;
+      this.$window = $window.ga;
       this.$rootScope = $rootScope;
     }
     init(code) {
@@ -10,7 +10,7 @@
         angular.isFunction(this.ga) &&
         angular.isString(code)
       ) {
-        this.ga('create', code, 'auto');
+        this.$window.ga('create', code, 'auto');
         this.trackPageViews();
         this.trackDispatcher();
       } else {
@@ -24,7 +24,7 @@
       ) {
         let hit = Object.assign({hitType}, params);
         console.log(hit);
-        this.ga(
+        this.$window.ga(
           'send',
           hit
         );
