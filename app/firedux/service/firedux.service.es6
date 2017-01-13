@@ -23,7 +23,7 @@
     constructor($window, $fireduxAuth, $fireduxAnalytics, $timeout, $rootScope) {
       this.firebase = $window.firebase;
       this.$fireduxAuth = $fireduxAuth;
-      this.$fireduxAnalytics
+      this.$fireduxAnalytics = $fireduxAnalytics;
       this.reducers = [];
       this.$scope = $rootScope;
       this.$timeout = $timeout;
