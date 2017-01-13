@@ -1,9 +1,10 @@
 (function () {
   'use strict';
   class Service {
-    constructor($window, $rootScope) {
+    constructor($window, $rootScope, $transitions) {
       this.ga = $window.ga;
       this.$rootScope = $rootScope;
+      this.$transitions = $transitions;
     }
     init(code) {
       if (
@@ -37,11 +38,11 @@
       function toUrl(state) {
         return state.replace('.', '/');
       }
-      this.$rootScope.$on(
-        '$stateChangeSuccess',
-        (event, toState) => {
-          this.pageView(toUrl(toState));
-        });
+      this.$transitions.onSuccess({}, transition => {
+        let toState = transition.$to(),
+            state = toState.name;
+        this.pageView(toUrl(state));
+      });
     }
     trackDispatcher() {
       this.$rootScope.$on(
