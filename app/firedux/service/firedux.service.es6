@@ -20,9 +20,10 @@
     }
   }
   class Service {
-    constructor($window, $fireduxAuth, $timeout, $rootScope) {
+    constructor($window, $fireduxAuth, $fireduxAnalytics, $timeout, $rootScope) {
       this.firebase = $window.firebase;
       this.$fireduxAuth = $fireduxAuth;
+      this.$fireduxAnalytics = $fireduxAnalytics;
       this.reducers = [];
       this.$scope = $rootScope;
       this.$timeout = $timeout;
