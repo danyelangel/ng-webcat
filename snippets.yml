@@ -32,17 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
-            before
-            catch
-            
 - trigger: fd-auth
   scope: jade
   text: |
@@ -63,6 +52,17 @@
           then
           
 
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -131,18 +131,6 @@
           fd-timeout-time="${1:1000}")
           then
 
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -152,6 +140,18 @@
             before="${3:$data}"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
             before
             then
             catch
@@ -224,17 +224,6 @@
             wc-identicon-email="${1}"
             then="$data")
             then
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
 - trigger: wc-rating
   scope: jade
   text: |
@@ -250,11 +239,32 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
+- trigger: wc-progress
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
 - trigger: wc-ui-params
   scope: jade
   text: |
         wc-ui-params(
             then="$${1:params}=$data")      
+- trigger: wc-upload
+  scope: jade
+  text: |
+        wc-upload(
+            wc-upload-dimensions="${1}"
+            wc-upload-multiple="${2}"
+            then="$file"
+            catch="$error")
+            then
+            catch
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -272,13 +282,3 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-params="${2}")      
-- trigger: wc-upload
-  scope: jade
-  text: |
-        wc-upload(
-            wc-upload-dimensions="${1}"
-            wc-upload-multiple="${2}"
-            then="$file"
-            catch="$error")
-            then
-            catch

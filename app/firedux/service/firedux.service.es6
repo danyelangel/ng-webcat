@@ -146,22 +146,30 @@
           if (angular.isDefined(this.reducers[action.type])) {
             console.groupCollapsed(`${action.type}`);
             console.log(action);
-            this.reducers[action.type](action, this)
-              .then((payload) => {
-                this.$scope.$emit('fd:action', action.type);
-                console.log(`Reducer resolved`);
-                console.groupEnd();
-                this.isDispatching[action.type] = false;
-                resolve(payload);
-              })
-              .catch((err) => {
-                err = err || 'UNDEFINED ERROR';
-                this.$scope.$emit('fd:error', `${action.type}: ${err}`);
-                this.isDispatching[action.type] = false;
-                console.groupEnd();
-                console.warn(`Reducer ${action.type} threw this error: `, err);
-                reject(err);
-              });
+            try {
+              this.reducers[action.type](action, this)
+                .then(payload => {
+                  console.log(`Reducer resolved`);
+                  console.groupEnd();
+                  this.$scope.$emit('fd:action', action.type);
+                  this.isDispatching[action.type] = false;
+                  resolve(payload);
+                })
+                .catch(err => {
+                  err = err || 'UNDEFINED ERROR';
+                  this.isDispatching[action.type] = false;
+                  console.groupEnd();
+                  this.$scope.$emit('fd:error', `${action.type}: ${err}`);
+                  console.warn(`Reducer ${action.type} threw this error: `, err);
+                  reject(err);
+                });
+            } catch (err) {
+              this.isDispatching[action.type] = false;
+              console.groupEnd();
+              this.$scope.$emit('fd:error', `${action.type}: ${err}`);
+              console.warn(`Reducer ${action.type} threw this synchronous error: `, err);
+              reject(err);
+            }
           } else {
             this.isDispatching[action.type] = false;
             console.warn('Reducer ' + action.type + ' is not registered');
