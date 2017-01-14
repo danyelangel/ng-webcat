@@ -187,6 +187,7 @@
         // Dialog properties
         wcDialogLabels: '<',
         wcDialogFullscreen: '<',
+        wcDialogModal: '<',
         // Callbacks
         then: '&',
         catch: '&',

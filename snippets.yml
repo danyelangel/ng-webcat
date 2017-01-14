@@ -40,6 +40,17 @@
             then
             catch
             
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -75,17 +86,6 @@
             catch="${4:$error}")
             before
             then
-            catch
-            
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
-            before
             catch
             
 - trigger: fd-ref
@@ -143,14 +143,6 @@
           fd-timeout-time="${1:1000}")
           then
 
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="$ctrl.$auth = $data")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -164,13 +156,14 @@
             then
             catch
             
-- trigger: wc-identicon
+- trigger: fd-user
   scope: jade
   text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
+        fd-user(then="$ctrl.$auth = $data")
+            before
             then
+            catch
+            
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -224,6 +217,13 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-progress
   scope: jade
   text: |
