@@ -89,7 +89,7 @@
         returnable = returnable
           .endAt(query.endAt);
       }
-      if (query.equalTo) {
+      if (angular.isDefined(query.equalTo)) {
         returnable = returnable
           .equalTo(query.equalTo);
       }
