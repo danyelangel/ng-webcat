@@ -98,7 +98,9 @@
           dialog = {
             parent: angular.element(this.$document[0].body),
             contentElement: '#webcatDialogTemplate',
-            fullscreen: angular.isDefined(this.wcDialogFullscreen) ? this.wcDialogFullscreen : true
+            fullscreen: angular.isDefined(this.wcDialogFullscreen) ? this.wcDialogFullscreen : true,
+            clickOutsideToClose: angular.isDefined(this.wcDialogModal) ? this.wcDialogModal : false,
+            escapeToClose: angular.isDefined(this.wcDialogModal) ? this.wcDialogModal : false
           };
           break;
         default:

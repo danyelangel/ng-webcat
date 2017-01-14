@@ -23,7 +23,6 @@
         angular.isFunction(this.$window.ga)
       ) {
         let hit = Object.assign({hitType}, params);
-        console.log(hit);
         this.$window.ga(
           'send',
           hit

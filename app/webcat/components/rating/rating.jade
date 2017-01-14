@@ -1,5 +1,8 @@
 div(layout="row")
   div(
+    style={
+      outline: 'none'
+    }
     ng-click="$ctrl.$then($index)"
     ng-repeat="star in $ctrl.$stars track by $index")
     full(
