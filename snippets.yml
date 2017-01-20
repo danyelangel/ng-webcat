@@ -88,18 +88,6 @@
             then
             catch
             
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
-            before
-            then
-            catch
-            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -136,6 +124,18 @@
             catch
             then
             
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
+            before
+            then
+            catch
+            
 - trigger: fd-timeout
   scope: jade
   text: |
@@ -143,14 +143,6 @@
           fd-timeout-time="${1:1000}")
           then
 
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="$ctrl.$auth = $data")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -160,6 +152,14 @@
             before="${3:$data}"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch
@@ -217,6 +217,13 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-progress
   scope: jade
   text: |
@@ -228,13 +235,6 @@
             wc-progress-type="${1:linear}"
             wc-progress-percentage="")
                 
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-rating
   scope: jade
   text: |

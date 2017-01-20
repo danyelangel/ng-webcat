@@ -9,11 +9,14 @@
       if (changes.fdTimeoutTime) {
         this.$before = true;
         this.$ready = false;
-        this.$timeout(() => {
+        this.timer = this.$timeout(() => {
           this.$before = false;
           this.$ready = true;
-        }, parseInt(this.fdTimeoutTime, 10));
+        }, this.fdTimeoutTime);
       }
+    }
+    $onDestroy() {
+      this.$timeout.cancel(this.timer);
     }
   }
   angular
