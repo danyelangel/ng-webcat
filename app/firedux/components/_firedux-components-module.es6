@@ -8,6 +8,7 @@ angular
     'firedux.fdRegister',
     'firedux.fdSet',
     'firedux.fdTimeout',
+    'firedux.fdTrack',
     'firedux.fdUpload',
     'firedux.fdUser',
     'firedux.fdValue'
