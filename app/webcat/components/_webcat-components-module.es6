@@ -4,6 +4,7 @@
     .module('webcat.components', [
       'webcat.wcDialog',
       'webcat.wcIdenticon',
+      'webcat.wcImgResize',
       'webcat.wcProgress',
       'webcat.wcRating',
       'webcat.wcToast',

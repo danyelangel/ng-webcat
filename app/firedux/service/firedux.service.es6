@@ -20,15 +20,56 @@
     }
   }
   class Service {
-    constructor($window, $fireduxAuth, $fireduxAnalytics, $timeout, $rootScope) {
+    constructor(
+      $window,
+      $fireduxAuth,
+      $fireduxAnalytics,
+      $fireduxStorage,
+      $timeout,
+      $rootScope
+    ) {
       this.firebase = $window.firebase;
       this.$fireduxAuth = $fireduxAuth;
       this.$fireduxAnalytics = $fireduxAnalytics;
+      this.$fireduxStorage = $fireduxStorage;
       this.reducers = [];
       this.$scope = $rootScope;
       this.$timeout = $timeout;
       this.isDispatching = {};
       this.vals = {};
+    }
+    // Initialization
+    init(config, analytics, pixel) {
+      this.firebase.initializeApp(config);
+      this.val('PROJECT_ID').set(config.authDomain.split('.')[0]);
+      this.hasInitialized = true;
+      this.$fireduxAuth
+        .init(this.firebase);
+      this.$fireduxAnalytics
+        .init(analytics, pixel);
+      this.database = this.firebase.database;
+      this.projectUrl = config.storageBucket;
+      this.waitForAuth((authData) => {
+        if (authData) {
+          this
+            .ref('users')
+            .child(authData.uid)
+            .on('value', snap => {
+              this.user = snap.val();
+            });
+        }
+      });
+    }
+    // Constants
+    var(variable) {
+      switch (variable) {
+        case 'UID':
+          return this.UID;
+        case 'TIMESTAMP':
+          return this.TIMESTAMP;
+        default:
+          return null;
+      }
     }
     get auth() {
       return this.$fireduxAuth.auth || {};
@@ -43,22 +84,18 @@
         .push()
         .key;
     }
-    var(variable) {
-      switch (variable) {
-        case 'UID':
-          return this.UID;
-        case 'TIMESTAMP':
-          return this.TIMESTAMP;
-        default:
-          return null;
-      }
-    }
+    // ValueObserver
     val(valId) {
       if (!this.vals[valId]) {
         this.vals[valId] = new ValueObserver();
       }
       return this.vals[valId];
     }
+    // Analytics
+    analytics() {
+      return this.$fireduxAnalytics;
+    }
+    // Database
     ref(path) {
       return this.database().ref(path);
     }
@@ -101,33 +138,14 @@
         }
       };
     }
+    // Storage
+    storage() {
+      return this.$fireduxStorage;
+    }
     storageRef(path) {
-      return this.firebase.storage().ref(path);
+      return this.storage().ref(path);
     }
-    init(config, analytics, pixel) {
-      this.firebase.initializeApp(config);
-      this.val('PROJECT_ID').set(config.authDomain.split('.')[0]);
-      this.hasInitialized = true;
-      this.$fireduxAuth
-        .init(this.firebase);
-      this.$fireduxAnalytics
-        .init(analytics, pixel);
-      this.database = this.firebase.database;
-      this.projectUrl = config.storageBucket;
-      this.waitForAuth((authData) => {
-        if (authData) {
-          this
-            .ref('users')
-            .child(authData.uid)
-            .on('value', snap => {
-              this.user = snap.val();
-            });
-        }
-      });
-    }
-    analytics() {
-      return this.$fireduxAnalytics;
-    }
+    // Redux
     reducer(params) {
       if (angular.isString(params.trigger) && angular.isFunction(params.reducer)) {
         if (this.reducers[params.trigger]) {
@@ -186,6 +204,7 @@
         }
       });
     }
+    // Auth
     waitForAuth(success, error) {
       return this.$fireduxAuth.waitForAuth(success, error);
     }
@@ -253,9 +272,12 @@
     logout() {
       this.$fireduxAuth.logout();
     }
+    // For deprecation
     setParams(params) {
+      console.error('$firedux.setParams is being deprecated. Please update your code accordingly.');
       this.stateParams = params;
     }
+    // Util
     $apply() {
       this.$timeout(() => {
         this.$scope.$apply();
@@ -265,7 +287,8 @@
   angular
     .module('firedux.service', [
       'firedux.auth',
-      'firedux.analytics'
+      'firedux.analytics',
+      'firedux.storage'
     ])
     .service('$firedux', Service);
 }());

@@ -3,6 +3,7 @@ angular
     'firedux.fdApi',
     'firedux.fdAuth',
     'firedux.fdDispatcher',
+    'firedux.fdImgResize',
     'firedux.fdLogin',
     'firedux.fdRef',
     'firedux.fdRegister',
