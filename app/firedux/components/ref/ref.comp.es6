@@ -9,45 +9,67 @@
     $onChanges(changes) {
       if (
         changes.fdRefPath ||
+        changes.fdRefPaths ||
         changes.fdRefQuery ||
         changes.fdRefArray
       ) {
         this.$ready =
         this.$error =
         this.$before = undefined;
-        this.updateRef(
-          this.fdRefPath,
-          this.fdRefQuery,
-          this.fdRefArray
-        );
+        if (this.fdRefPath) {
+          this.updateRef(
+            this.fdRefPath,
+            this.fdRefQuery,
+            this.fdRefArray
+          );
+        } else if (this.fdRefPaths) {
+          this.updateRefs(this.fdRefPaths);
+        }
       }
     }
+    // UPDATE REFS
     updateRef(path, query, isArray) {
       this.$before = true;
-      if (
-        angular.isObject(this.ref) &&
-        angular.isFunction(this.ref.off)
-      ) {
-        this.ref.off();
-      }
-      this.ref = this.getRef(path, query);
-      if (isArray === 'false') {
-        isArray = false;
-      }
-      this.ref.on('value', snapshot => {
-        this.updateChanges(snapshot, isArray);
-        this.$timeout(() => {
-          this.$scope.$apply();
-        });
+      this.watchRef(path, query, snapshot => {
+        this.resolveChanges(isArray ? this.getArray(snapshot) : snapshot.val());
       }, err => {
-        console.warn(err);
-        this.$before = undefined;
-        this.$error = err;
-        this.catch({
-          $error: err
-        });
-        this.$scope.$apply();
+        this.error(err);
       });
+    }
+    updateRefs(paths) {
+      if (angular.isArray(paths)) {
+        Promise
+          .all(
+            this.getRefPromises(
+              this.getRefDefinitions(paths)
+            ))
+          .then(results => {
+            this.resolveChanges(results);
+          });
+      }
+    }
+    // CREATE REFS
+    getRefDefinitions(paths) {
+      let refs = [];
+      angular.forEach(paths, path => {
+        if (angular.isString(path)) {
+          refs.push({
+            ref: this.getRef(path),
+            array: false
+          });
+        } else if (
+          angular.isObject(path) &&
+          angular.isString(path.path)
+        ) {
+          refs.push({
+            ref: this.getRef(path.path),
+            array: path.array
+          });
+        } else {
+          console.error('The path object was incorrectly formatted: ', path);
+        }
+      });
+      return refs;
     }
     getRef(path, query) {
       let ref = this.$firedux.ref(path);
@@ -95,26 +117,56 @@
       }
       return returnable;
     }
-    updateChanges(snapshot, isArray) {
-      let array = [],
-          $index = 0;
-      if (isArray) {
-        snapshot.forEach(childSnapshot => {
-          array[$index] = childSnapshot.val();
-          $index++;
-        });
-        this.$before = undefined;
-        this.$ready = true;
-        this.then({
-          $data: array
-        });
-      } else {
-        this.$before = undefined;
-        this.$ready = true;
-        this.then({
-          $data: snapshot.val()
-        });
+    // GET DATA
+    getRefPromises(refs) {
+      let promises;
+      angular.forEach(refs, item => {
+        promises.push(item
+          .once('value')
+          .then(snap => {
+            return item.array ? this.getArray(snap) : snap.val();
+          }));
+      });
+      return promises;
+    }
+    watchRef(path, query, then, err) {
+      if (
+        angular.isObject(this.ref) &&
+        angular.isFunction(this.ref.off)
+      ) {
+        this.ref.off();
       }
+      this.ref = this.getRef(path, query);
+      this.ref.on('value', then, err);
+    }
+    // TRANSFORM DATA
+    getArray(snapshot) {
+      let array = [];
+      snapshot.forEach(childSnapshot => {
+        array.push(childSnapshot.val());
+      });
+      return array;
+    }
+    // HANDLE ERRORS
+    error(err) {
+      console.warn(err);
+      this.$before = undefined;
+      this.$error = err;
+      this.catch({
+        $error: err
+      });
+      this.$scope.$apply();
+    }
+    // FINAL OUTPUT
+    resolveChanges($data) {
+      this.$before = undefined;
+      this.$ready = true;
+      this.then({
+        $data
+      });
+      this.$timeout(() => {
+        this.$scope.$apply();
+      });
     }
   }
   angular
@@ -129,6 +181,7 @@
       },
       bindings: {
         fdRefPath: '@',
+        fdRefPaths: '<',
         fdRefQuery: '<',
         fdRefArray: '<',
         then: '&',

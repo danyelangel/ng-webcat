@@ -3,8 +3,21 @@
   text: |
         fd-dispatcher(
           fd-dispatcher-action=`{
-           type: '${1}'
+            type: '${1}'
           }`)
+          before
+          catch
+          then
+          
+- trigger: fd-dispatcher-all
+  scope: jade
+  text: |
+        fd-dispatcher(
+          fd-dispatcher-actions=`[
+            {
+              type: '${1}'
+            }
+          ]`)
           before
           catch
           then

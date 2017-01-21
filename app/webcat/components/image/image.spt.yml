@@ -1,7 +1,0 @@
-- trigger: wc-image-src
-  scope: jade
-  text: |
-        wc-image-src(
-            wc-image-ref="${1}"
-            wc-image-size="600"
-            then="$data")

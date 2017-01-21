@@ -10,7 +10,10 @@
           this.dispatch(this.fdDispatcherAction);
         } else {
           this.$class = 'hidden-input';
+          console.error('fd-dispatcher:fd-click is being deprecated. Please make sure to change your implementation.');
         }
+      } else if (changes.fdDispatcherActions) {
+        this.dispatch(this.fdDispatcherAction);
       }
     }
     dispatch(action) {
@@ -24,6 +27,43 @@
           this.$firedux.$apply();
           this.$firedux
             .dispatch(action)
+            .then($data => {
+              this.$ready = true;
+              this.$before = undefined;
+              this.$firedux.$apply();
+              this.then({$data});
+            })
+            .catch($error => {
+              this.$error = $error;
+              this.$before = undefined;
+              this.$firedux.$apply();
+              this.catch({$error});
+            });
+        }
+      }
+    }
+    dispatchAll(actions) {
+      if (
+        angular.isArray(actions)
+      ) {
+        let valid = true;
+        angular.forEach(actions, action => {
+          if (!(
+            angular.isObject(action) && angular.isString(action.type)
+          )) {
+            valid = false;
+          }
+        });
+        if (!this.$before && valid) {
+          let promises = [];
+          this.$before = true;
+          this.$ready = this.$error = undefined;
+          this.$firedux.$apply();
+          angular.forEach(actions, action => {
+            promises.push(this.$firedux.dispatch(action));
+          });
+          Promise
+            .all(promises)
             .then($data => {
               this.$ready = true;
               this.$before = undefined;
@@ -58,6 +98,7 @@
       bindings: {
         fdClick: '<',
         fdDispatcherAction: '<',
+        fdDispatcherActions: '<',
         then: '&',
         catch: '&'
       }

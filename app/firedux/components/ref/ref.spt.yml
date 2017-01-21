@@ -34,3 +34,15 @@
             catch
             then
             
+- trigger: fd-ref-paths
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-paths=`[
+              ${1}
+            ]`
+            then="$data")
+            before
+            catch
+            then
+            

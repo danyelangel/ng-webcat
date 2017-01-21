@@ -56,8 +56,21 @@
   text: |
         fd-dispatcher(
           fd-dispatcher-action=`{
-           type: '${1}'
+            type: '${1}'
           }`)
+          before
+          catch
+          then
+          
+- trigger: fd-dispatcher-all
+  scope: jade
+  text: |
+        fd-dispatcher(
+          fd-dispatcher-actions=`[
+            {
+              type: '${1}'
+            }
+          ]`)
           before
           catch
           then
@@ -224,13 +237,6 @@
             wc-identicon-email="${1}"
             then="$data")
             then
-- trigger: wc-image-src
-  scope: jade
-  text: |
-        wc-image-src(
-            wc-image-ref="${1}"
-            wc-image-size="600"
-            then="$data")
 - trigger: wc-progress
   scope: jade
   text: |
