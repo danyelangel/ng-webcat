@@ -31,7 +31,7 @@
       bindings: {
         fdImgUrl: '@',
         fdImgSize: '<',
-        then: '@'
+        then: '&'
       }
     });
 }());

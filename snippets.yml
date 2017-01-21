@@ -32,17 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
-            before
-            catch
-            
 - trigger: fd-auth
   scope: jade
   text: |
@@ -82,6 +71,17 @@
         fd-img-resize(
           fd-img-url="${1}"
           fd-img-size="")
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -255,6 +255,10 @@
             wc-identicon-email="${1}"
             then="$data")
             then
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-progress
   scope: jade
   text: |
@@ -277,10 +281,6 @@
             half
             full
             catch
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-params
   scope: jade
   text: |
