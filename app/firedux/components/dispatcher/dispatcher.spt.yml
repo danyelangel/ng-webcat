@@ -9,7 +9,7 @@
           catch
           then
           
-- trigger: fd-dispatcher-all
+- trigger: fd-dispatch-all
   scope: jade
   text: |
         fd-dispatcher(

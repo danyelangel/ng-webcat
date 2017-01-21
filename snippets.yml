@@ -62,7 +62,7 @@
           catch
           then
           
-- trigger: fd-dispatcher-all
+- trigger: fd-dispatch-all
   scope: jade
   text: |
         fd-dispatcher(
@@ -133,6 +133,18 @@
             fd-ref-array="true"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            catch
+            then
+            
+- trigger: fd-ref-paths
+  scope: jade
+  text: |
+        fd-ref(
+            fd-ref-paths=`[
+              ${1}
+            ]`
+            then="$data")
             before
             catch
             then
