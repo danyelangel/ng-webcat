@@ -106,6 +106,7 @@
     }
     init(config, analytics, pixel) {
       this.firebase.initializeApp(config);
+      this.val('PROJECT_ID').set(config.authDomain.split('.')[0]);
       this.hasInitialized = true;
       this.$fireduxAuth
         .init(this.firebase);
