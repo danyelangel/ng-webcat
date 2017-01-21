@@ -104,13 +104,13 @@
     storageRef(path) {
       return this.firebase.storage().ref(path);
     }
-    init(config, analytics) {
+    init(config, analytics, pixel) {
       this.firebase.initializeApp(config);
       this.hasInitialized = true;
       this.$fireduxAuth
         .init(this.firebase);
       this.$fireduxAnalytics
-        .init(analytics);
+        .init(analytics, pixel);
       this.database = this.firebase.database;
       this.projectUrl = config.storageBucket;
       this.waitForAuth((authData) => {
@@ -123,6 +123,9 @@
             });
         }
       });
+    }
+    analytics() {
+      return this.$fireduxAnalytics;
     }
     reducer(params) {
       if (angular.isString(params.trigger) && angular.isFunction(params.reducer)) {

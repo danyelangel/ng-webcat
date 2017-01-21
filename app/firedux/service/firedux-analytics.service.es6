@@ -5,19 +5,26 @@
       this.$window = $window;
       this.$rootScope = $rootScope;
     }
-    init(code) {
+    init(analytics, pixel) {
       if (
         angular.isFunction(this.$window.ga) &&
-        angular.isString(code)
+        angular.isString(analytics)
       ) {
-        this.$window.ga('create', code, 'auto');
+        this.$window.ga('create', analytics, 'auto');
+      }
+      if (
+        angular.isFunction(this.$window.fbq) &&
+        angular.isString(pixel)
+      ) {
+        this.$window.fbq('init', pixel);
+      }
+      if (analytics || pixel) {
         this.trackPageViews();
         this.trackDispatcher();
-      } else {
-        console.warn('Analytics is not loaded');
       }
     }
-    sendHit(hitType, params = {}) {
+    // ANALYTICS
+    sendAnalyticsHit(hitType, params = {}) {
       if (
         angular.isString(hitType) &&
         angular.isFunction(this.$window.ga)
@@ -29,11 +36,20 @@
         );
       }
     }
-    pageView(page) {
-      if (angular.isString(page)) {
-        this.sendHit('pageview', {page});
+    // PIXEL
+    sendPixelHit(hitType, params = {}) {
+      if (
+        angular.isString(hitType) &&
+        angular.isFunction(this.$window.fbq)
+      ) {
+        this.$window.fbq(
+          'track',
+          hitType,
+          params
+        );
       }
     }
+    // TRACKERS
     trackPageViews() {
       function toUrl(state) {
         return state.split('.').join('/');
@@ -56,16 +72,30 @@
           this.error(data);
         });
     }
-    error(exDescription) {
-      if (angular.isString(exDescription)) {
-        this.sendHit('exception', {exDescription});
+    // EVENTS
+    pageView(page) {
+      if (angular.isString(page)) {
+        this.sendAnalyticsHit('pageview', {page});
+        this.sendPixelHit('ViewContent', {
+          /* eslint-disable */
+          /* jshint ignore:start */
+          content_name: page
+          /* jshint ignore:end */
+          /* eslint-enable */
+        });
       }
     }
-    action(eventAction) {
+    error(exDescription) {
+      if (angular.isString(exDescription)) {
+        this.sendAnalyticsHit('exception', {exDescription});
+      }
+    }
+    action(eventAction, eventLabel) {
       if (angular.isString(eventAction)) {
-        this.sendHit('event', {
+        this.sendAnalyticsHit('event', {
           eventCategory: 'Action',
-          eventAction
+          eventAction,
+          eventLabel
         });
       }
     }
