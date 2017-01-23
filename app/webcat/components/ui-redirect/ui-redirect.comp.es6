@@ -21,11 +21,6 @@
     }
     redirect(state, params) {
       if (angular.isString(state)) {
-        if (params) {
-          this.$firedux.setParams(params);
-        } else {
-          this.$firedux.setParams(null);
-        }
         this.$state.go(state, params, {
           location: this.wcUiReplace ? 'replace' : true,
           reload: this.wcUiReload ? true : false
