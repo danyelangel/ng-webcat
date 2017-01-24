@@ -7,7 +7,7 @@
       this.$window = $window;
     }
     $onChanges(changes) {
-      if (changes.wcUiRedirectBack) {
+      if (this.wcUiRedirectBack) {
         this.$window.history.back();
       } else if (
         changes.wcUiRedirectSref ||
