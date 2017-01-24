@@ -1,12 +1,15 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($state, $firedux) {
+    constructor($state, $firedux, $window) {
       this.$state = $state;
       this.$firedux = $firedux;
+      this.$window = $window;
     }
     $onChanges(changes) {
-      if (
+      if (changes.wcUiRedirectBack) {
+        this.$window.history.back();
+      } else if (
         changes.wcUiRedirectSref ||
         changes.wcUiRedirectParams
       ) {
@@ -33,6 +36,7 @@
     .component('wcUiRedirect', {
       controller: Controller,
       bindings: {
+        wcUiRedirectBack: '@',
         wcUiRedirectSref: '@',
         wcUiRedirectParams: '<',
         wcUiReplace: '@',

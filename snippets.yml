@@ -32,14 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-api
   scope: jade
   text: |
@@ -82,6 +74,14 @@
         fd-img-resize(
           fd-img-url="${1}"
           fd-img-size="")
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -103,6 +103,18 @@
             fd-login-credentials="${2:credentials}")
             then="${3:$data}"
             catch="${4:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
             before
             then
             catch
@@ -155,14 +167,15 @@
             catch
             then
             
-- trigger: fd-set
+- trigger: fd-upload
   scope: jade
   text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
+        fd-upload(
+            fd-upload-file="${1:$file}"
+            fd-upload-filename="${2}"
+            before="${3:$data}"
+            then="${4:$data}"
+            catch="${5:$error}")
             before
             then
             catch
@@ -182,26 +195,6 @@
             then
             catch
             
-- trigger: fd-upload
-  scope: jade
-  text: |
-        fd-upload(
-            fd-upload-file="${1:$file}"
-            fd-upload-filename="${2}"
-            before="${3:$data}"
-            then="${4:$data}"
-            catch="${5:$error}")
-            before
-            then
-            catch
-            
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -255,17 +248,6 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
 - trigger: wc-rating
   scope: jade
   text: |
@@ -277,10 +259,24 @@
             half
             full
             catch
-- trigger: wc-toast
+- trigger: wc-progress
   scope: jade
   text: |
-        wc-toast(wc-toast-message="${1:message}")
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-ui-params
   scope: jade
   text: |
@@ -303,6 +299,10 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-params="${2}")      
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-upload
   scope: jade
   text: |
