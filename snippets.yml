@@ -32,6 +32,14 @@
   text: |
         $firedux.auth.uid()
             
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-api
   scope: jade
   text: |
@@ -41,14 +49,6 @@
             fd-api-array="${3:false}"
             then="${4}")
             before
-            catch
-            
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
             catch
             
 - trigger: fd-dispatcher
@@ -174,6 +174,14 @@
           fd-timeout-time="${1:1000}")
           then
 
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="$ctrl.$auth = $data")
+            before
+            then
+            catch
+            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -187,14 +195,13 @@
             then
             catch
             
-- trigger: fd-user
+- trigger: wc-identicon
   scope: jade
   text: |
-        fd-user(then="$ctrl.$auth = $data")
-            before
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
             then
-            catch
-            
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -248,13 +255,6 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-progress
   scope: jade
   text: |

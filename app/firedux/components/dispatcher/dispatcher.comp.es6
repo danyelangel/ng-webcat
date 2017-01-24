@@ -13,7 +13,7 @@
           console.error('fd-dispatcher:fd-click is being deprecated. Please make sure to change your implementation.');
         }
       } else if (changes.fdDispatcherActions) {
-        this.dispatch(this.fdDispatcherAction);
+        this.dispatchAll(this.fdDispatcherActions);
       }
     }
     dispatch(action) {
