@@ -76,12 +76,6 @@
           then
           
 
-- trigger: fd-img-resize
-  scope: jade
-  text: |
-        fd-img-resize(
-          fd-img-url="${1}"
-          fd-img-size="")
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -155,6 +149,12 @@
             catch
             then
             
+- trigger: fd-img-resize
+  scope: jade
+  text: |
+        fd-img-resize(
+          fd-img-url="${1}"
+          fd-img-size="")
 - trigger: fd-set
   scope: jade
   text: |

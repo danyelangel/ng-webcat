@@ -233,7 +233,7 @@
           console.log(action);
         });
       }
-      Promise
+      return Promise
         .all(promises)
         .then(() => {
           if (log) {
