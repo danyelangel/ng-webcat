@@ -222,10 +222,8 @@
       let promises = [],
           promiseTypes = '';
       angular.forEach(actions, action => {
-        promises.push(() => {
-          this.dispatch(action, false);
-          promiseTypes = promiseTypes + ', ' + action.type;
-        });
+        promiseTypes = promiseTypes + ', ' + action.type;
+        promises.push(this.dispatch(action, false));
       });
       if (log) {
         console.groupCollapsed(`${promiseTypes}`);
