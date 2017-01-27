@@ -55,15 +55,10 @@
           }
         });
         if (!this.$before && valid) {
-          let promises = [];
           this.$before = true;
           this.$ready = this.$error = undefined;
           this.$firedux.$apply();
-          angular.forEach(actions, action => {
-            promises.push(this.$firedux.dispatch(action));
-          });
-          Promise
-            .all(promises)
+          this.$firedux.dispatchGroup(actions)
             .then($data => {
               this.$ready = true;
               this.$before = undefined;

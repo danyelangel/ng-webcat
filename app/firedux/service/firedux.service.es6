@@ -161,48 +161,93 @@
     registerReducer(params) {
       this.reducers[params.trigger] = params.reducer;
     }
-    dispatch(action) {
+    dispatch(action, log = true) {
       return new Promise((resolve, reject) => {
         if (!this.isDispatching[action.type]) {
           this.isDispatching[action.type] = true;
           if (angular.isDefined(this.reducers[action.type])) {
-            console.groupCollapsed(`${action.type}`);
-            console.log(action);
+            if (log) {
+              console.groupCollapsed(`${action.type}`);
+              console.log(action);
+            }
             try {
               this.reducers[action.type](action, this)
                 .then(payload => {
-                  console.log(`Reducer resolved`);
-                  console.groupEnd();
+                  if (log) {
+                    console.log(`Reducer resolved`);
+                    console.groupEnd();
+                  }
                   this.$scope.$emit('fd:action', action.type);
                   this.isDispatching[action.type] = false;
                   resolve(payload);
                 })
                 .catch(err => {
                   err = err || 'UNDEFINED ERROR';
+                  if (log) {
+                    console.groupEnd();
+                    console.warn(`Reducer ${action.type} threw this error: `, err);
+                  }
                   this.isDispatching[action.type] = false;
-                  console.groupEnd();
                   this.$scope.$emit('fd:error', `${action.type}: ${err}`);
-                  console.warn(`Reducer ${action.type} threw this error: `, err);
                   reject(err);
                 });
             } catch (err) {
               this.isDispatching[action.type] = false;
-              console.groupEnd();
+              if (log) {
+                console.groupEnd();
+              }
               this.$scope.$emit('fd:error', `${action.type}: ${err}`);
-              console.warn(`Reducer ${action.type} threw this synchronous error: `, err);
+              if (log) {
+                console.warn(`Reducer ${action.type} threw this synchronous error: `, err);
+              }
               reject(err);
             }
           } else {
             this.isDispatching[action.type] = false;
-            console.warn('Reducer ' + action.type + ' is not registered');
+            if (log) {
+              console.warn('Reducer ' + action.type + ' is not registered');
+            }
             reject('Reducer ' + action.type + ' is not registered');
           }
         } else {
           this.isDispatching[action.type] = false;
-          console.warn('Firedux is already dispatching this action');
-          reject('Firedux is already dispatching this action');
+          if (log) {
+            console.warn('Firedux is already dispatching this action: ' + action.type);
+          }
+          reject('Firedux is already dispatching this action: ' + action.type);
         }
       });
+    }
+    dispatchGroup(actions, log = true) {
+      let promises = [],
+          promiseTypes = '';
+      angular.forEach(actions, action => {
+        promises.push(() => {
+          this.dispatch(action, false);
+          promiseTypes = `${promiseTypes}, ${action.type}`;
+        });
+      });
+      if (log) {
+        console.groupCollapsed(`${promiseTypes}`);
+        angular.forEach(actions, action => {
+          console.log(action);
+        });
+      }
+      Promise
+        .all(promises)
+        .then(() => {
+          if (log) {
+            console.log(`All reducers resolved`);
+            console.groupEnd();
+          }
+        })
+        .catch(err => {
+          err = err || 'UNDEFINED ERROR';
+          if (log) {
+            console.groupEnd();
+            console.warn(`One reducer threw this error: `, err);
+          }
+        });
     }
     // Auth
     waitForAuth(success, error) {
