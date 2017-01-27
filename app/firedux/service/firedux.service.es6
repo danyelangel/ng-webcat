@@ -224,7 +224,7 @@
       angular.forEach(actions, action => {
         promises.push(() => {
           this.dispatch(action, false);
-          promiseTypes = `${promiseTypes}, ${action.type}`;
+          promiseTypes = promiseTypes + ', ' + action.type;
         });
       });
       if (log) {
