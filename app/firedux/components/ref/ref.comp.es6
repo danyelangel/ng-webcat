@@ -86,10 +86,10 @@
           .orderByChild(query.orderByChild);
       } else if (query.orderByKey) {
         returnable = ref
-          .orderByKey(query.orderByKey);
+          .orderByKey();
       } else if (query.orderByValue) {
         returnable = ref
-          .orderByValue(query.orderByValue);
+          .orderByValue();
       }
       return returnable;
     }
