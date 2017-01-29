@@ -12,7 +12,7 @@
       return this.$auth()
           .onAuthStateChanged(success, error);
     }
-    getProvider(provider) {
+    getProvider(provider, credentials) {
       let returnable;
       switch (provider) {
         case 'facebook':
@@ -24,10 +24,19 @@
         case 'google':
           returnable = new this.$auth.GoogleAuthProvider();
           break;
+        case 'email':
+          returnable = new this.$auth.EmailAuthProvider(credentials);
+          break;
         default:
           break;
       }
       return returnable;
+    }
+    link(provider) {
+      return this.auth.link(provider);
+    }
+    linkWithRedirect(provider) {
+      return this.auth.linkWithRedirect(provider);
     }
     signInAnonymously() {
       return this.$auth()

@@ -4,6 +4,7 @@ angular
     'firedux.fdAuth',
     'firedux.fdDispatcher',
     'firedux.fdImgResize',
+    'firedux.fdLink',
     'firedux.fdLogin',
     'firedux.fdRef',
     'firedux.fdRegister',

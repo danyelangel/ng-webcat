@@ -300,6 +300,46 @@
       }
       return loginPromise;
     }
+    link(provider, credentials, method) {
+      let linkPromise,
+          providerService;
+      switch (provider) {
+        case 'email':
+          providerService = this.$fireduxAuth
+            .getProvider('email', credentials);
+          break;
+        case 'facebook':
+          providerService = this.$fireduxAuth
+            .getProvider('facebook');
+          break;
+        case 'google':
+          providerService = this.$fireduxAuth
+            .getProvider('google');
+          break;
+        case 'twitter':
+          providerService = this.$fireduxAuth
+            .getProvider('twitter');
+          break;
+        default:
+          linkPromise = Promise.reject();
+          break;
+      }
+      if (providerService) {
+        switch (method) {
+          case 'redirect':
+            linkPromise = this.$fireduxAuth
+              .linkWithRedirect(providerService);
+            break;
+          default:
+            break;
+        }
+        if (provider === 'email') {
+          linkPromise = this.$fireduxAuth
+              .link(providerService);
+        }
+      }
+      return linkPromise;
+    }
     updatePassword(oldPassword, newPassword) {
       return this
         .$fireduxAuth
