@@ -7,19 +7,36 @@
     $onInit() {
       this.$before = true;
       this.$firedux
-        .waitForAuth((authData) => {
+        .waitForAuth(authData => {
           this.$firedux.$apply();
-          this.$ready = true;
-          this.$before = undefined;
-          this.then({
-            $data: authData
-          });
+          if (authData) {
+            this.$then(authData);
+          } else {
+            this.$catch(authData);
+          }
         }, () => {
           this.$firedux.$apply();
-          this.$error = true;
-          this.$before = undefined;
-          this.catch();
+          this.$catch();
         });
+    }
+    $reset() {
+      this.$ready = undefined;
+      this.$before = undefined;
+      this.$error = undefined;
+    }
+    $then(authData) {
+      this.$reset();
+      this.$ready = true;
+      this.$before = undefined;
+      this.then({
+        $data: authData
+      });
+    }
+    $catch() {
+      this.$reset();
+      this.$error = true;
+      this.$before = undefined;
+      this.catch();
     }
   }
   angular

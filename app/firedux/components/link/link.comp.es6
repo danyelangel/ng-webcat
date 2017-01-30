@@ -47,7 +47,7 @@
     .module('firedux.fdLink', [])
     .component('fdLink', {
       controller: Controller,
-      templateUrl: 'firedux/components/link/_link.html',
+      templateUrl: 'firedux/components/link/link.html',
       transclude: {
         before: '?before',
         then: '?then',
