@@ -43,14 +43,6 @@
             before
             catch
             
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -82,6 +74,14 @@
         fd-img-resize(
           fd-img-url="${1}"
           fd-img-size="")
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-login_provider
   scope: jade
   text: |

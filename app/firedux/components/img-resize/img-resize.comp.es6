@@ -5,8 +5,11 @@
       this.$firedux = $firedux;
     }
     $onChanges(changes) {
+      this.$ready = this.$error = false;
       if (changes.fdImgUrl || changes.fdImgSize) {
         this.getUrl();
+      } else {
+        this.$error = true;
       }
     }
     getUrl() {
@@ -21,6 +24,7 @@
             .storage()
             .getResizeableUrl(url, size)
         });
+        this.$ready = true;
       }
     }
   }
@@ -28,6 +32,11 @@
     .module('firedux.fdImgResize', [])
     .component('fdImgResize', {
       controller: Controller,
+      templateUrl: 'firedux/components/img-resize/img-resize.html',
+      transclude: {
+        then: '?then',
+        catch: '?catch'
+      },
       bindings: {
         fdImgUrl: '@',
         fdImgSize: '<',

@@ -1,0 +1,7 @@
+then(
+  ng-if="$ctrl.$ready"
+  ng-transclude="then")
+catch(
+  ng-if="$ctrl.$error"
+  ng-transclude="catch")
+  
