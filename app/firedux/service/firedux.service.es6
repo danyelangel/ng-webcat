@@ -138,6 +138,13 @@
         }
       };
     }
+    parseArray(array) {
+      let returnable = {};
+      angular.forEach(array, item => {
+        returnable[this.UID] = item;
+      });
+      return returnable;
+    }
     // Storage
     storage() {
       return this.$fireduxStorage;
