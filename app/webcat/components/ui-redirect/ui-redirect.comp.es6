@@ -25,10 +25,13 @@
     redirect(state, params) {
       if (angular.isString(state)) {
         this.$state.go(state, params, {
-          location: this.wcUiReplace ? 'replace' : true,
+          location: this.wcUiReplace ? 'replace' : this.getLocation(),
           reload: this.wcUiReload ? true : false
         });
       }
+    }
+    getLocation() {
+      return angular.isUndefined(this.wcUiLocation) ? true : this.wcUiLocation;
     }
   }
   angular
@@ -39,6 +42,7 @@
         wcUiRedirectBack: '@',
         wcUiRedirectSref: '@',
         wcUiRedirectParams: '<',
+        wcUiLocation: '<',
         wcUiReplace: '@',
         wcUiReload: '@'
       }
