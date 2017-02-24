@@ -46,7 +46,6 @@
             animation = animation.withAnimation(this.$mdPanel.animation.SLIDE);
             break;
           default:
-            animation = animation.withAnimation(this.$mdPanel.animation.FADE);
             break;
         }
       } else {
