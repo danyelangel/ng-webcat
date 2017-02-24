@@ -1,0 +1,11 @@
+- trigger: wc-menu
+  scope: jade
+  text: |
+        wc-menu(
+          wc-icon="more_vert"
+          wc-align="end"
+          wc-width="3")
+          wc-menu-item(
+            wc-icon="add"
+            on-click="")
+            |Plop

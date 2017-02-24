@@ -1,0 +1,12 @@
+.settingsWrapper(
+ng-style="{marginTop: $ctrl.wcMarginTop}"
+ng-class="'{{$ctrl.wcAlign}}'"
+ng-if="$ctrl.authData")
+  md-menu(
+  md-position-mode="target-{{$ctrl.wcAlign||'right'}} target"
+  ng-class="'position-{{$ctrl.wcPosition}}'")
+    md-button.md-icon-button.toolbar-button(
+    ng-click="$mdOpenMenu(ev)")
+      md-icon.wcSettingsOrigin(md-menu-origin)|{{$ctrl.wcIcon||'settings'}}
+    md-menu-content(width="{{$ctrl.wcWidth || 3}}")
+      div(ng-transclude)
