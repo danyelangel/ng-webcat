@@ -8,6 +8,7 @@
       'webcat.wcPanel',
       'webcat.wcProgress',
       'webcat.wcRating',
+      'webcat.wcText',
       'webcat.wcToast',
       'webcat.wcToggle',
       'webcat.wcUiRedirect',

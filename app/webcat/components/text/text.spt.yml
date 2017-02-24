@@ -1,0 +1,10 @@
+- trigger: wc-text
+  scope: jade
+  text: |
+        wc-text(
+            wc-data=""
+            wc-rich="false"
+            wc-placeholder=""
+            wc-disabled="false"
+            wc-href: ""
+            then="$data")
