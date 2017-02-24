@@ -146,7 +146,7 @@
       let panel = {
         parent: angular.element(this.$document[0].body),
         contentElement: '#webcatPanelTemplate',
-        clickOutsideToClose: !this.wcPanelModal,
+        clickOutsideToClose: this.wcPanelBackdrop ? !this.wcPanelModal : false,
         escapeToClose: !this.wcPanelModal,
         trapFocus: !!this.wcPanelModal,
         hasBackdrop: !!this.wcPanelBackdrop,
