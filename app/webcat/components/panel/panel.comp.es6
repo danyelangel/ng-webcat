@@ -55,6 +55,8 @@
         angular.isNumber(this.wcPanelDuration)
       ) {
         animation = animation.duration(this.wcPanelDuration);
+      } else {
+        animation = animation.duration(0);
       }
       animation = animation.closeTo(this.wcPanelTrigger || 'body');
       return animation;
