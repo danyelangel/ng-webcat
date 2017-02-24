@@ -32,25 +32,6 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
-            before
-            catch
-            
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -76,6 +57,25 @@
           then
           
 
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-img-resize
   scope: jade
   text: |
@@ -174,14 +174,6 @@
           fd-timeout-time="${1:1000}")
           then
 
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="$ctrl.$auth = $data")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -191,6 +183,14 @@
             before="${3:$data}"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch

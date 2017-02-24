@@ -195,6 +195,7 @@
         wcPanelAlign: '@',
         // Panel animation
         wcPanelAnimation: '@',
+        wcPanelDuration: '<',
         // Panel properties
         wcPanelModal: '<',
         wcPanelBackdrop: '<',
