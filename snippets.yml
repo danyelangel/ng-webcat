@@ -248,6 +248,13 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-menu
   scope: jade
   text: |
@@ -260,13 +267,6 @@
             on-click="")
             |Plop
 
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-panel
   scope: jade
   text: |
@@ -301,10 +301,6 @@
             half
             full
             catch
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-text
   scope: jade
   text: |
@@ -315,6 +311,10 @@
             wc-disabled="false"
             wc-href: ""
             then="$data")
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-params
   scope: jade
   text: |

@@ -11,6 +11,11 @@ wc-text {
     min-height: auto !important;
   }
 }
+wc-text:hover {
+  [contenteditable] {
+    border-bottom: 1px solid rgba(125, 125, 125, 0.125) !important;
+  }
+}
 [contenteditable], [contenteditable]:focus {
   outline: none;
   user-select: text;
