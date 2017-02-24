@@ -1,0 +1,11 @@
+- trigger: wc-panel
+  scope: jade
+  text: |
+        wc-panel(
+          wc-panel-trigger=".trigger"
+          wc-panel-modal="false"
+          wc-panel-backdrop="true"
+          wc-panel-align="start start"
+          wc-panel-animation="fade"
+          catch="$ctrl.openPanel = false")
+          wc-panel-template

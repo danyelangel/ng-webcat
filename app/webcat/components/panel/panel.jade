@@ -1,0 +1,14 @@
+then(
+  ng-if="$ctrl.$ready"
+  ng-transclude="then")
+catch(
+  ng-if="$ctrl.$error"
+  ng-transclude="catch")
+after(
+  ng-if="$ctrl.$after"
+  ng-transclude="after")
+.webcat-panel-container#webcatPanelTemplate(
+  ng-if="!$ctrl.$closed"
+  ng-show="$ctrl.$domAdded")
+  md-content(ng-transclude="wcPanelTemplate")
+  

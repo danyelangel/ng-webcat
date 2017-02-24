@@ -1,0 +1,23 @@
+.md-display-1|wc-panel
+.md-headline|Custom
+
+md-button.trigger(
+  ng-mouseenter="$ctrl.openPanel=true"
+  ng-click="$ctrl.openPanel = true")|Trigger Panel
+
+wc-panel(
+  ng-if="$ctrl.openPanel"
+  wc-panel-modal="false"
+  wc-panel-trigger=".trigger"
+  wc-panel-backdrop="true"
+  wc-panel-align="start start"
+  wc-panel-animation="fade"
+  catch="$ctrl.openPanel = false")
+  wc-panel-template
+    .md-whiteframe-2dp.padding(
+      ng-mouseleave="$ctrl.openPanel=false")
+      p|PLOP plop
+      p|PLOP plop
+      p|PLOP plop
+      p|PLOP plop
+  
