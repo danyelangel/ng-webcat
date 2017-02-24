@@ -172,9 +172,11 @@
       });
     }
     $onDestroy() {
-      return this.panel.hide().then(() => {
-        return this.panel.destroy();
-      });
+      if (this.panel && this.panel.hide) {
+        return this.panel.hide().then(() => {
+          return this.panel.destroy();
+        });
+      }
     }
   }
   angular
