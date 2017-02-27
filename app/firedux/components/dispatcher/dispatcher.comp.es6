@@ -4,15 +4,15 @@
     constructor($firedux) {
       this.$firedux = $firedux;
     }
-    $onChanges(changes) {
-      if (changes.fdDispatcherAction) {
+    $onChanges() {
+      if (this.fdDispatcherAction) {
         if (angular.isUndefined(this.fdClick)) {
           this.dispatch(this.fdDispatcherAction);
         } else {
           this.$class = 'hidden-input';
           console.error('fd-dispatcher:fd-click is being deprecated. Please make sure to change your implementation.');
         }
-      } else if (changes.fdDispatcherActions) {
+      } else if (this.fdDispatcherActions) {
         this.dispatchAll(this.fdDispatcherActions);
       }
     }
