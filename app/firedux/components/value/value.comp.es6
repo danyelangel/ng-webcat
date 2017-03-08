@@ -8,7 +8,9 @@
       this.$firedux
         .val(this.fdValueId)
         .watch(newVal => {
-          if (newVal) {
+          if (
+            angular.isDefined(newVal)
+          ) {
             this.then({
               $data: newVal
             });
