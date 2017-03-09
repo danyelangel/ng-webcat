@@ -1,3 +1,8 @@
+wc-text:hover {
+  [contenteditable] {
+    border-bottom: 1px solid rgba(125, 125, 125, 0.125) !important;
+  }
+}
 wc-text {
   display: block;
   outline: none;
@@ -10,25 +15,21 @@ wc-text {
     margin: 0;
     min-height: auto !important;
   }
-}
-wc-text:hover {
-  [contenteditable] {
-    border-bottom: 1px solid rgba(125, 125, 125, 0.125) !important;
-  }
-}
-[contenteditable], [contenteditable]:focus {
-  outline: none;
-  user-select: text;
-  margin: 0;
-  p {
+  [contenteditable], [contenteditable]:focus {
+    outline: none;
+    user-select: text;
     margin: 0;
+    p {
+      margin: 0;
+    }
   }
-}
-[contenteditable] {
-  border-bottom: 1px solid rgba(125, 125, 125, 0) !important;
-}
-[contenteditable]:focus {
-  border-bottom: 1px solid rgba(125, 125, 125, 0.5) !important;
+  [contenteditable] {
+    transition: all .3s;
+    border-bottom: 1px solid rgba(125, 125, 125, 0) !important;
+  }
+  [contenteditable]:focus {
+    border-bottom: 1px solid rgba(125, 125, 125, 0.5) !important;
+  }
 }
 .medium-editor-placeholder:after {
   position: relative;
