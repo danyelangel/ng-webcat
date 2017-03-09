@@ -15,18 +15,17 @@ wc-text:hover {
   [contenteditable] {
     border-bottom: 1px solid rgba(125, 125, 125, 0.125) !important;
   }
-  [contenteditable]:focus {
-    border-bottom: 1px solid rgba(125, 125, 125, 0.5) !important;
-  }
 }
 [contenteditable], [contenteditable]:focus {
   outline: none;
   user-select: text;
   margin: 0;
-  border-bottom: 1px solid rgba(125, 125, 125, 0) !important;
   p {
     margin: 0;
   }
+}
+[contenteditable] {
+  border-bottom: 1px solid rgba(125, 125, 125, 0) !important;
 }
 [contenteditable]:focus {
   border-bottom: 1px solid rgba(125, 125, 125, 0.5) !important;

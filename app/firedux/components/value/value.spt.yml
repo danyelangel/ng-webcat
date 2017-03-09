@@ -1,0 +1,7 @@
+- trigger: fd-value
+  scope: jade
+  text: |
+        fd-value(
+            fd-value-id="${1}"
+            fd-value-data=""
+            then="${2:$data}")
