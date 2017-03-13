@@ -13,7 +13,7 @@ wc-text {
     display: block;
     padding: 0;
     margin: 0;
-    min-height: auto !important;
+    min-height: 1rem !important;
   }
   [contenteditable], [contenteditable]:focus {
     outline: none;
@@ -24,7 +24,7 @@ wc-text {
     }
   }
   [contenteditable] {
-    transition: all .3s;
+    transition: all .15s;
     border-bottom: 1px solid rgba(125, 125, 125, 0) !important;
   }
   [contenteditable]:focus {
