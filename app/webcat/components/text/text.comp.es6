@@ -37,7 +37,7 @@
       };
       let buttons = [];
       angular.forEach(buttonDefinitions, (def, key) => {
-        if (controls.indexOf(key) > 0) {
+        if (controls.indexOf(key) >= 0) {
           buttons.push(def);
         }
       });
