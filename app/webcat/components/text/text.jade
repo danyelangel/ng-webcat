@@ -4,5 +4,5 @@ ng-if="$ctrl.show"
 bind-options="$ctrl.settings"
 data-placeholder="{{$ctrl.wcPlaceholder}}"
 ng-model="$ctrl.wcData"
-ng-blur="$ctrl.then({$data:$ctrl.wcData})"
+ng-blur="$ctrl.$then({$data:$ctrl.wcData})"
 ng-href="{{$ctrl.wcHref}}")

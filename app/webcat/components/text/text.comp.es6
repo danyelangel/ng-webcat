@@ -1,9 +1,15 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($timeout, $element) {
+    constructor($timeout, $element, $window) {
       this.$element = $element;
       this.$timeout = $timeout;
+      this._ = $window._;
+      this.$then = this._.throttle(data => {
+        this.then(data, 1000, {
+          leading: false
+        });
+      });
     }
     $onChanges() {
       if (this.wcRich) {
