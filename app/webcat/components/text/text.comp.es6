@@ -8,7 +8,7 @@
       this.$then = this._.throttle(data => {
         this.then(data);
       }, 1000, {
-        leading: false
+        leading: true
       });
     }
     $onChanges() {
