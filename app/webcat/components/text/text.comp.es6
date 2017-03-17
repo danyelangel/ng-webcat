@@ -47,7 +47,7 @@
           buttons.push(def);
         }
       });
-      return buttons.length > 0 ? buttons : false;
+      return buttons.length > 0 ? buttons : [];
     }
   }
   angular
