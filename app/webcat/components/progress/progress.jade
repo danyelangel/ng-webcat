@@ -13,5 +13,8 @@ md-progress-linear(
   value="{{$ctrl.$percentage}}")
   
 md-progress-linear(
+  style={
+    'margin-bottom': '-5px'
+  }
   ng-if="!$ctrl.$percentage && $ctrl.$type === 'linear'"
   md-mode="indeterminate")
