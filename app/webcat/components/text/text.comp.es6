@@ -6,9 +6,9 @@
       this.$timeout = $timeout;
       this._ = $window._;
       this.$then = this._.throttle(data => {
-        this.then(data, 1000, {
-          leading: false
-        });
+        this.then(data);
+      }, 1000, {
+        leading: false
       });
     }
     $onChanges() {
@@ -47,7 +47,7 @@
           buttons.push(def);
         }
       });
-      return buttons;
+      return buttons.length > 0 ? buttons : false;
     }
   }
   angular
