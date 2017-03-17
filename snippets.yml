@@ -82,6 +82,31 @@
         fd-img-resize(
           fd-img-url="${1}"
           fd-img-size="")
+- trigger: fd-login_provider
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:facebook}"
+            fd-login-popup="${2:$mdMedia('gt-md')}"
+            fd-login-redirect="!${2:$mdMedia('gt-md')}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+
+- trigger: fd-login_email
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:email}"
+            fd-login-credentials="${2:credentials}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -130,31 +155,6 @@
             catch
             then
             
-- trigger: fd-login_provider
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:facebook}"
-            fd-login-popup="${2:$mdMedia('gt-md')}"
-            fd-login-redirect="!${2:$mdMedia('gt-md')}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-
-- trigger: fd-login_email
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:email}"
-            fd-login-credentials="${2:credentials}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-            
 - trigger: fd-set
   scope: jade
   text: |
@@ -174,14 +174,6 @@
           fd-timeout-time="${1:1000}")
           then
 
-- trigger: fd-user
-  scope: jade
-  text: |
-        fd-user(then="$ctrl.$auth = $data")
-            before
-            then
-            catch
-            
 - trigger: fd-upload
   scope: jade
   text: |
@@ -191,6 +183,14 @@
             before="${3:$data}"
             then="${4:$data}"
             catch="${5:$error}")
+            before
+            then
+            catch
+            
+- trigger: fd-user
+  scope: jade
+  text: |
+        fd-user(then="$ctrl.$auth = $data")
             before
             then
             catch
@@ -286,17 +286,6 @@
           catch="$ctrl.openPanel = false")
           wc-panel-template
 
-- trigger: wc-rating
-  scope: jade
-  text: |
-        wc-rating(
-            wc-total-score=""
-            wc-user-score=""
-            then="$data")
-            empty
-            half
-            full
-            catch
 - trigger: wc-progress
   scope: jade
   text: |
@@ -318,6 +307,17 @@
             wc-disabled="false"
             wc-href: ""
             then="$data")
+- trigger: wc-rating
+  scope: jade
+  text: |
+        wc-rating(
+            wc-total-score=""
+            wc-user-score=""
+            then="$data")
+            empty
+            half
+            full
+            catch
 - trigger: wc-toast
   scope: jade
   text: |
