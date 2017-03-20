@@ -39,16 +39,36 @@
       this.vals = {};
     }
     // Initialization
-    init(config, analytics, pixel) {
-      this.firebase.initializeApp(config);
-      this.val('PROJECT_ID').set(config.authDomain.split('.')[0]);
+    init(params, analytics, pixel) {
+      if (
+        angular.isObject(params) &&
+        angular.isObject(params.config) &&
+        angular.isString(params.config.apiKey)
+      ) {
+        this.firebase.initializeApp(params.config);
+        this.initialize(params.config, params.base);
+        this.$fireduxAnalytics
+          .init(params.analytics, params.pixel);
+        this.val('PROJECT_ID').set(params.config.authDomain.split('.')[0]);
+      } else if (
+        angular.isObject(params) &&
+        angular.isString(params.apiKey)
+      ) {
+        console.warn('$firedux.initialize(firebaseConfig) is being deprecated. Please use $firedux.initialize({config: firebaseConfig})');
+        this.firebase.initializeApp(params);
+        this.initialize(params);
+        this.$fireduxAnalytics
+          .init(analytics, pixel);
+      }
+    }
+    initialize(params, base = '/') {
+      this.refBase = base;
+      this.val('PROJECT_ID').set(params.authDomain.split('.')[0]);
       this.hasInitialized = true;
       this.$fireduxAuth
         .init(this.firebase);
-      this.$fireduxAnalytics
-        .init(analytics, pixel);
       this.database = this.firebase.database;
-      this.projectUrl = config.storageBucket;
+      this.projectUrl = params.storageBucket;
       this.waitForAuth((authData) => {
         if (authData) {
           this
@@ -96,8 +116,8 @@
       return this.$fireduxAnalytics;
     }
     // Database
-    ref(path) {
-      return this.database().ref(path);
+    ref(path = '/') {
+      return this.database().ref(this.refBase).child(path);
     }
     api(endpoint) {
       return {
