@@ -1,12 +1,12 @@
 (function () {
   'use strict';
   class Controller {
-    constructor($stateParams) {
+    constructor($stateParams, $scope) {
       this.$stateParams = $stateParams;
-    }
-    $onChanges() {
-      this.then({
-        $data: this.$stateParams
+      $scope.$watch(() => {
+        return this.$stateParams;
+      }, $data => {
+        this.then({$data});
       });
     }
   }

@@ -82,6 +82,31 @@
         fd-img-resize(
           fd-img-url="${1}"
           fd-img-size="")
+- trigger: fd-login_provider
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:facebook}"
+            fd-login-popup="${2:$mdMedia('gt-md')}"
+            fd-login-redirect="!${2:$mdMedia('gt-md')}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+
+- trigger: fd-login_email
+  scope: jade
+  text: |
+        fd-login(
+            fd-login-provider="${1:email}"
+            fd-login-credentials="${2:credentials}")
+            then="${3:$data}"
+            catch="${4:$error}")
+            before
+            then
+            catch
+            
 - trigger: fd-ref
   scope: jade
   text: |
@@ -129,31 +154,6 @@
             before
             catch
             then
-            
-- trigger: fd-login_provider
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:facebook}"
-            fd-login-popup="${2:$mdMedia('gt-md')}"
-            fd-login-redirect="!${2:$mdMedia('gt-md')}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
-
-- trigger: fd-login_email
-  scope: jade
-  text: |
-        fd-login(
-            fd-login-provider="${1:email}"
-            fd-login-credentials="${2:credentials}")
-            then="${3:$data}"
-            catch="${4:$error}")
-            before
-            then
-            catch
             
 - trigger: fd-set
   scope: jade
