@@ -43,6 +43,14 @@
             before
             catch
             
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -68,14 +76,6 @@
           then
           
 
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-img-resize
   scope: jade
   text: |
@@ -187,6 +187,13 @@
             then
             catch
             
+- trigger: fd-value
+  scope: jade
+  text: |
+        fd-value(
+            fd-value-id="${1}"
+            fd-value-data=""
+            then="${2:$data}")
 - trigger: fd-user
   scope: jade
   text: |
@@ -195,13 +202,13 @@
             then
             catch
             
-- trigger: fd-value
+- trigger: wc-identicon
   scope: jade
   text: |
-        fd-value(
-            fd-value-id="${1}"
-            fd-value-data=""
-            then="${2:$data}")
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -255,13 +262,6 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-menu
   scope: jade
   text: |

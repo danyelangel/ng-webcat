@@ -1,0 +1,131 @@
+// SPACING
+.padding {
+  padding: 1rem;
+}
+.padding-half {
+  padding: .5rem;
+}
+.padding-quarter {
+  padding: .25rem;
+}
+.padding-v {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.padding-v-half {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.padding-v-quarter {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+.padding-h {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.padding-h-half {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.padding-h-quarter {
+  padding-left: .25rem;
+  padding-right: .25rem;
+}
+.margin {
+  margin: 1rem;
+}
+.margin-half {
+  margin: .5rem;
+}
+.margin-quarter {
+  margin: .25rem;
+}
+.margin-v {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.margin-v-half {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+.margin-v-quarter {
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+.margin-h {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.margin-h-half {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.margin-h-quarter {
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+
+// POSITIONING
+.absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.fixed-fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.relative {
+  position: relative;
+}
+
+// IMAGES
+.background-image {
+  background-position: center;
+  background-size: cover;
+}
+.ratio-1-1 {
+  padding-bottom: 100%;
+}
+.ratio-4-3 {
+  padding-bottom: 75%;
+}
+.ratio-3-4 {
+  padding-bottom: 133.333%;
+}
+.ratio-16-9 {
+  padding-bottom: 56.25%;
+}
+.ratio-16-9 {
+  padding-bottom: 177.778%;
+}
+
+// LAYOUT
+$width: 950px;
+.container {
+  width: 100%;
+  max-width: $width;
+}
+.container-half {
+  width: 100%;
+  max-width: $width / 2;
+}
+.container-third {
+  width: 100%;
+  max-width: $width / 3;
+}
+.container-quarter {
+  width: 100%;
+  max-width: $width / 4;
+}
+
+// CURSOR
+.cursor-pointer {
+  cursor: pointer;
+}
