@@ -43,14 +43,6 @@
             before
             catch
             
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -76,6 +68,14 @@
           then
           
 
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
 - trigger: fd-img-resize
   scope: jade
   text: |
@@ -202,13 +202,6 @@
             then
             catch
             
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -262,6 +255,13 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-menu
   scope: jade
   text: |
@@ -286,17 +286,6 @@
           catch="$ctrl.openPanel = false")
           wc-panel-template
 
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
 - trigger: wc-rating
   scope: jade
   text: |
@@ -308,6 +297,17 @@
             half
             full
             catch
+- trigger: wc-progress
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
 - trigger: wc-text
   scope: jade
   text: |
