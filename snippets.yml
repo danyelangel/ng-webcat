@@ -32,15 +32,12 @@
   text: |
         $firedux.auth.uid()
             
-- trigger: fd-api
+- trigger: fd-auth
   scope: jade
   text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
+        fd-auth(then="${1:$ctrl.$auth = $data}")
             before
+            then
             catch
             
 - trigger: fd-dispatcher
@@ -68,20 +65,23 @@
           then
           
 
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-img-resize
   scope: jade
   text: |
         fd-img-resize(
           fd-img-url="${1}"
           fd-img-size="")
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -187,13 +187,6 @@
             then
             catch
             
-- trigger: fd-value
-  scope: jade
-  text: |
-        fd-value(
-            fd-value-id="${1}"
-            fd-value-data=""
-            then="${2:$data}")
 - trigger: fd-user
   scope: jade
   text: |
@@ -202,6 +195,20 @@
             then
             catch
             
+- trigger: fd-value
+  scope: jade
+  text: |
+        fd-value(
+            fd-value-id="${1}"
+            fd-value-data=""
+            then="${2:$data}")
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -255,25 +262,28 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
-- trigger: wc-identicon
+- trigger: wc-progress
   scope: jade
   text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
+- trigger: wc-rating
+  scope: jade
+  text: |
+        wc-rating(
+            wc-total-score=""
+            wc-user-score=""
             then="$data")
-            then
-- trigger: wc-menu
-  scope: jade
-  text: |
-        wc-menu(
-          wc-icon="more_vert"
-          wc-align="end"
-          wc-width="3")
-          wc-menu-item(
-            wc-icon="add"
-            on-click="")
-            |Plop
-
+            empty
+            half
+            full
+            catch
 - trigger: wc-panel
   scope: jade
   text: |
@@ -286,42 +296,31 @@
           catch="$ctrl.openPanel = false")
           wc-panel-template
 
-- trigger: wc-rating
+- trigger: wc-menu
   scope: jade
   text: |
-        wc-rating(
-            wc-total-score=""
-            wc-user-score=""
-            then="$data")
-            empty
-            half
-            full
-            catch
-- trigger: wc-progress
+        wc-menu(
+          wc-icon="more_vert"
+          wc-align="end"
+          wc-width="3")
+          wc-menu-item(
+            wc-icon="add"
+            on-click="")
+            |Plop
+
+- trigger: wc-toast
   scope: jade
   text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-text
   scope: jade
   text: |
         wc-text(
             wc-data=""
-            wc-rich="false"
+            wc-controls="b i a h2 h3"
             wc-placeholder=""
             wc-disabled="false"
-            wc-href: ""
             then="$data")
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-params
   scope: jade
   text: |

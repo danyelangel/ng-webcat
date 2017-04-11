@@ -37,7 +37,7 @@
       const buttonDefinitions = {
         b: 'bold',
         i: 'italic',
-        anchor: 'anchor',
+        a: 'anchor',
         h2: 'h2',
         h3: 'h3'
       };
@@ -47,7 +47,7 @@
           buttons.push(def);
         }
       });
-      return buttons.length > 0 ? buttons : [];
+      return buttons.length > 0 ? buttons : null;
     }
   }
   angular
