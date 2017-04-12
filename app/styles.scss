@@ -109,19 +109,19 @@
 // LAYOUT
 $width: 950px;
 .container {
-  width: 100vw;
+  width: 100%;
   max-width: $width;
 }
 .container-half {
-  width: 100vw;
+  width: 100%;
   max-width: $width / 2;
 }
 .container-third {
-  width: 100vw;
+  width: 100%;
   max-width: $width / 3;
 }
 .container-quarter {
-  width: 100vw;
+  width: 100%;
   max-width: $width / 4;
 }
 
