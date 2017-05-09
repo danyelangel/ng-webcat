@@ -5,7 +5,7 @@
       this.$firedux = $firedux;
     }
     $onChanges(changes) {
-      let method;
+      let method = 'popup';
       this.$ready = this.$error = undefined;
       if (
         changes.fdLoginProvider ||
@@ -13,9 +13,6 @@
       ) {
         if (this.fdLoginRedirect) {
           method = 'redirect';
-        }
-        if (this.fdLoginPopup) {
-          method = 'popup';
         }
         this.login(
           this.fdLoginProvider,
