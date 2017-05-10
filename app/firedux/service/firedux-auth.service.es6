@@ -7,6 +7,14 @@
           .onAuthStateChanged(authData => {
             this.auth = authData;
           });
+      this.checkLogin();
+    }
+    checkLogin() {
+      this.$auth()
+        .getRedirectResult()
+        .catch(error => {
+          console.log(error);
+        });
     }
     waitForAuth(success, error) {
       return this.$auth()
