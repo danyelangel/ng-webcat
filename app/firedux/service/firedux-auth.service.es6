@@ -3,6 +3,7 @@
   class Service {
     init(firebase) {
       this.$auth = firebase.auth;
+      this.$database = firebase.database;
       this.$auth()
           .onAuthStateChanged(authData => {
             this.auth = authData;
@@ -95,8 +96,12 @@
         .updateProfile(newProfile);
     }
     logout() {
+      this.$database().goOffline();
       return this.$auth()
-        .signOut();
+        .signOut()
+        .then(() => {
+          this.$database().goOnline();
+        });
     }
   }
   angular
