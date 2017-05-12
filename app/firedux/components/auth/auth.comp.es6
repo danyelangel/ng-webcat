@@ -37,6 +37,9 @@
       this.$error = true;
       this.$before = undefined;
       this.catch();
+      this.then({
+        $data: null
+      });
     }
   }
   angular
