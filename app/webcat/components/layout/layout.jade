@@ -1,0 +1,28 @@
+.fullscreen-wrapper(
+  layout="column"
+  layout-align="start stretch")
+  .z75(
+    ng-transclude="toolbar"
+    hide
+    show-gt-sm)
+  div(
+    flex
+    layout="row"
+    layout-align="start stretch")
+    md-sidenav.md-sidenav-left.md-whiteframe-4dp(
+      style={
+        'max-width': '15rem'
+      }
+      md-component-id="{{$ctrl.wcSidenavId || 'wc-sidenav-default'}}"
+      md-is-locked-open="$mdMedia('gt-sm') && $ctrl.wcOpen")
+      admin-sidenav
+    div(
+      flex
+      layout="column")
+      .z5(
+        ng-transclude="toolbar"
+        hide-gt-sm)
+          
+      md-content.relative(
+        flex)
+        div(ng-transclude="content")
