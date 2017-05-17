@@ -13,8 +13,7 @@
       },
       bindings: {
         wcOpen: '<',
-        wcSidenavId: '<',
-        
+        wcSidenavId: '<'
       }
     });
 }());

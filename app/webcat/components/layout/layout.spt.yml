@@ -1,0 +1,9 @@
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-layout(
+            wc-open="true"
+            wc-sidenav-id="")
+            sidenav
+            toolbar
+            content

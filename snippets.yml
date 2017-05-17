@@ -308,6 +308,10 @@
             half
             full
             catch
+- trigger: wc-toast
+  scope: jade
+  text: |
+        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-text
   scope: jade
   text: |
@@ -317,10 +321,6 @@
             wc-placeholder=""
             wc-disabled="false"
             then="$data")
-- trigger: wc-toast
-  scope: jade
-  text: |
-        wc-toast(wc-toast-message="${1:message}")
 - trigger: wc-ui-params
   scope: jade
   text: |
