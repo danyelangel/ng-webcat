@@ -15,7 +15,7 @@
       }
       md-component-id="{{$ctrl.wcSidenavId || 'wc-sidenav-default'}}"
       md-is-locked-open="$mdMedia('gt-sm') && $ctrl.wcOpen")
-      admin-sidenav
+      div(ng-transclude="sidenav")
     div(
       flex
       layout="column")
