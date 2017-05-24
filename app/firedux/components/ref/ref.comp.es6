@@ -189,7 +189,7 @@
         fdRefPath: '@',
         fdRefPaths: '<',
         fdRefQuery: '<',
-        fdRefArray: '<',
+        fdRefArray: '@',
         then: '&',
         catch: '&'
       }
