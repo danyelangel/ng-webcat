@@ -31,7 +31,7 @@
     updateRef(path, query, isArray) {
       this.$before = true;
       this.watchRef(path, query, snapshot => {
-        this.resolveChanges(isArray ? this.getArray(snapshot) : snapshot.val());
+        this.resolveChanges(isArray ? this.getArray(snapshot, isArray) : snapshot.val());
       }, err => {
         this.error(err);
       });
@@ -124,7 +124,7 @@
         promises.push(item
           .once('value')
           .then(snap => {
-            return item.array ? this.getArray(snap) : snap.val();
+            return item.array ? this.getArray(snap, item.array) : snap.val();
           }));
       });
       return promises;
@@ -140,10 +140,16 @@
       this.ref.on('value', then, err);
     }
     // TRANSFORM DATA
-    getArray(snapshot) {
+    getArray(snapshot, arrayType) {
       let array = [];
       snapshot.forEach(childSnapshot => {
-        array.push(childSnapshot.val());
+        if (arrayType === 'rich' && angular.isObject(childSnapshot.val())) {
+          array.push(Object.assign({
+            key: childSnapshot.key
+          }, childSnapshot.val()));
+        } else {
+          array.push(childSnapshot.val());
+        }
       });
       return array;
     }
