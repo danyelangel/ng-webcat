@@ -147,6 +147,11 @@
           array.push(Object.assign({
             key: childSnapshot.key
           }, childSnapshot.val()));
+        } else if (arrayType === 'rich' && !angular.isObject(childSnapshot.val())) {
+          array.push({
+            key: childSnapshot.key,
+            value: childSnapshot.val()
+          });
         } else {
           array.push(childSnapshot.val());
         }
