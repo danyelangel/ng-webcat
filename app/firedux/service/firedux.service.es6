@@ -40,6 +40,7 @@
     }
     // Initialization
     init(params, analytics, pixel) {
+      this.onlyRedirect = this.params.redirect;
       if (
         angular.isObject(params) &&
         angular.isObject(params.config) &&
@@ -314,7 +315,7 @@
           break;
       }
       if (providerService) {
-        switch (method) {
+        switch (this.onlyRedirect ? 'redirect' : method) {
           case 'popup':
             loginPromise = this.$fireduxAuth
               .signInWithPopup(providerService);

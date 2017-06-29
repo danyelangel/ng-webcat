@@ -21,9 +21,7 @@
         targetBlank: true,
 
         // Config
-        toolbar: this.wcDisabled ? false : {
-          buttons: this.buildButtons(this.wcControls)
-        },
+        toolbar: this.wcDisabled ? false : this.buildButtons(this.wcControls),
 
         // State
         disableEditing: this.wcDisabled
@@ -47,12 +45,15 @@
           buttons.push(def);
         }
       });
-      return buttons.length > 0 ? buttons : null;
+      return buttons.length > 0 ? {
+        buttons
+      } : false;
     }
   }
   angular
     .module('webcat.wcText', [
-      'angular-medium-editor'
+      'angular-medium-editor',
+      'ngSanitize'
     ])
     .component('wcText', {
       controller: Controller,
