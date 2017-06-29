@@ -40,7 +40,7 @@
     }
     // Initialization
     init(params, analytics, pixel) {
-      this.onlyRedirect = this.params.redirect;
+      this.onlyRedirect = params.redirect;
       if (
         angular.isObject(params) &&
         angular.isObject(params.config) &&
