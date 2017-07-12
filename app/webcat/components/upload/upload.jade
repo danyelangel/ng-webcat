@@ -1,12 +1,12 @@
 input.hidden-input(
-  ng-if="$ctrl.dimensions"
+  ng-if="$ctrl.wcUploadDimensions"
   type="file"
   ngf-select="$ctrl.$then($file)"
   ngf-multiple="$ctrl.wcUploadMultiple"
   accept="image/*"
-  ngf-resize="$ctrl.dimensions")
+  ngf-resize="$ctrl.wcUploadDimensions")
 input.hidden-input(
-  ng-if="!$ctrl.dimensions"
+  ng-if="!$ctrl.wcUploadDimensions"
   type="file"
   ngf-select="$ctrl.$then($file)"
   ngf-multiple="$ctrl.wcUploadMultiple")

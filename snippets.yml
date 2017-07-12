@@ -271,18 +271,6 @@
             sidenav
             toolbar
             content
-- trigger: wc-panel
-  scope: jade
-  text: |
-        wc-panel(
-          wc-panel-trigger=".trigger"
-          wc-panel-modal="false"
-          wc-panel-backdrop="true"
-          wc-panel-align="start start"
-          wc-panel-animation="fade"
-          catch="$ctrl.openPanel = false")
-          wc-panel-template
-
 - trigger: wc-menu
   scope: jade
   text: |
@@ -294,6 +282,18 @@
             wc-icon="add"
             on-click="")
             |Plop
+
+- trigger: wc-panel
+  scope: jade
+  text: |
+        wc-panel(
+          wc-panel-trigger=".trigger"
+          wc-panel-modal="false"
+          wc-panel-backdrop="true"
+          wc-panel-align="start start"
+          wc-panel-animation="fade"
+          catch="$ctrl.openPanel = false")
+          wc-panel-template
 
 - trigger: wc-progress
   scope: jade
