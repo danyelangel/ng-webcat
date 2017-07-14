@@ -43,6 +43,12 @@
             before
             catch
             
+- trigger: fd-img-resize
+  scope: jade
+  text: |
+        fd-img-resize(
+          fd-img-url="${1}"
+          fd-img-size="")
 - trigger: fd-auth
   scope: jade
   text: |
@@ -101,12 +107,6 @@
             then
             catch
             
-- trigger: fd-img-resize
-  scope: jade
-  text: |
-        fd-img-resize(
-          fd-img-url="${1}"
-          fd-img-size="")
 - trigger: fd-ref
   scope: jade
   text: |
@@ -155,13 +155,6 @@
             catch
             then
             
-- trigger: fd-timeout
-  scope: jade
-  text: |
-        fd-timeout(
-          fd-timeout-time="${1:1000}")
-          then
-
 - trigger: fd-set
   scope: jade
   text: |
@@ -174,6 +167,13 @@
             then
             catch
             
+- trigger: fd-timeout
+  scope: jade
+  text: |
+        fd-timeout(
+          fd-timeout-time="${1:1000}")
+          then
+
 - trigger: fd-upload
   scope: jade
   text: |
@@ -202,22 +202,6 @@
             then
             catch
             
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-layout(
-            wc-open="true"
-            wc-sidenav-id="")
-            sidenav
-            toolbar
-            content
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -271,6 +255,34 @@
           wc-dialog-labels="{title: '${1}'}"
           then="${2}")
           then
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-layout(
+            wc-open="true"
+            wc-sidenav-id="")
+            sidenav
+            toolbar
+            content
+- trigger: wc-identicon
+  scope: jade
+  text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
+- trigger: wc-panel
+  scope: jade
+  text: |
+        wc-panel(
+          wc-panel-trigger=".trigger"
+          wc-panel-modal="false"
+          wc-panel-backdrop="true"
+          wc-panel-align="start start"
+          wc-panel-animation="fade"
+          catch="$ctrl.openPanel = false")
+          wc-panel-template
+
 - trigger: wc-menu
   scope: jade
   text: |
@@ -294,18 +306,6 @@
             wc-progress-type="${1:linear}"
             wc-progress-percentage="")
                 
-- trigger: wc-panel
-  scope: jade
-  text: |
-        wc-panel(
-          wc-panel-trigger=".trigger"
-          wc-panel-modal="false"
-          wc-panel-backdrop="true"
-          wc-panel-align="start start"
-          wc-panel-animation="fade"
-          catch="$ctrl.openPanel = false")
-          wc-panel-template
-
 - trigger: wc-rating
   scope: jade
   text: |
@@ -335,16 +335,6 @@
   text: |
         wc-ui-params(
             then="$${1:params}=$data")      
-- trigger: wc-upload
-  scope: jade
-  text: |
-        wc-upload(
-            wc-upload-dimensions="${1}"
-            wc-upload-multiple="${2}"
-            then="$file"
-            catch="$error")
-            then
-            catch
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -362,3 +352,13 @@
         wc-ui-redirect(
             wc-ui-redirect-sref="${1:state}"
             wc-ui-redirect-params="${2}")      
+- trigger: wc-upload
+  scope: jade
+  text: |
+        wc-upload(
+            wc-upload-dimensions="${1}"
+            wc-upload-multiple="${2}"
+            then="$file"
+            catch="$error")
+            then
+            catch
