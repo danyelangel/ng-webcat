@@ -19,15 +19,23 @@
       };
     }
   }
+
+  function isPhoneGap($window, navigator) {
+    return ($window.cordova || $window.PhoneGap || $window.phonegap) && (/^file:\/{3}[^\/]/i).test($window.location.href) && (/ios|iphone|ipod|ipad|android/i).test(navigator.userAgent);
+  }
+
   class Service {
     constructor(
       $window,
+      $document,
       $fireduxAuth,
       $fireduxAnalytics,
       $fireduxStorage,
       $timeout,
       $rootScope
     ) {
+      this.$window = $window;
+      this.$document = $document;
       this.firebase = $window.firebase;
       this.$fireduxAuth = $fireduxAuth;
       this.$fireduxAnalytics = $fireduxAnalytics;
@@ -40,6 +48,15 @@
     }
     // Initialization
     init(params, analytics, pixel) {
+      if (!isPhoneGap(this.$window, this.$window.navigator)) {
+        this.initFunc(params, analytics, pixel);
+      } else {
+        this.$document[0].addEventListener('deviceready', () => {
+          this.initFunc(params, analytics, pixel);
+        }, false);
+      }
+    }
+    initFunc(params, analytics, pixel) {
       this.onlyRedirect = params.redirect;
       if (
         angular.isObject(params) &&
