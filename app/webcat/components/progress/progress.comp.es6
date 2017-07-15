@@ -10,7 +10,6 @@
         let current = this.$firedux.val(this.wcProgressGroup).get();
         if (angular.isArray(current)) {
           current.push(this.uid);
-          this.uidIndex = current.length - 1;
         } else {
           current = [this.uid];
         }
@@ -20,7 +19,7 @@
     $onDestroy() {
       if (this.wcProgressGroup) {
         let current = this.$firedux.val(this.wcProgressGroup).get();
-        current.splice(this.uidIndex, 1);
+        current.splice(current.indexOf(this.uid), 1);
         this.$firedux.val(this.wcProgressGroup).set(current);
       }
     }
