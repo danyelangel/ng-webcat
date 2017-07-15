@@ -10,6 +10,9 @@
         callback(this.data);
       });
     }
+    get() {
+      return this.data;
+    }
     watch(callback) {
       this.callbacks.push(callback);
       callback(this.data);

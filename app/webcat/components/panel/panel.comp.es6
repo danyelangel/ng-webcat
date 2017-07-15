@@ -155,11 +155,11 @@
         disableParentScroll: !!this.wcPanelScroll,
         position,
         animation,
-        onDomAdded: () => {
+        onDomAdded() {
           this.$domAdded = true;
           this.$firedux.$apply();
         },
-        onCloseSuccess: () => {
+        onCloseSuccess() {
           this.$closed = true;
           this.$firedux.$apply();
           this.catch();

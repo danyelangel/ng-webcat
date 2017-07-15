@@ -1,14 +1,14 @@
 md-progress-circular(
-  ng-if="$ctrl.$percentage && $ctrl.$type === 'circular'"
+  ng-if="$ctrl.$percentage && $ctrl.$type === 'circular' && !$ctrl.wcProgressGroup"
   md-mode="determinate"
   value="{{$ctrl.$percentage}}")
   
 md-progress-circular(
-  ng-if="!$ctrl.$percentage && $ctrl.$type === 'circular'"
+  ng-if="!$ctrl.$percentage && $ctrl.$type === 'circular' && !$ctrl.wcProgressGroup"
   md-mode="indeterminate")
   
 md-progress-linear(
-  ng-if="$ctrl.$percentage && $ctrl.$type === 'linear'"
+  ng-if="$ctrl.$percentage && $ctrl.$type === 'linear' && !$ctrl.wcProgressGroup"
   md-mode="determinate"
   value="{{$ctrl.$percentage}}")
   
@@ -16,5 +16,5 @@ md-progress-linear(
   style={
     'margin-bottom': '-5px'
   }
-  ng-if="!$ctrl.$percentage && $ctrl.$type === 'linear'"
+  ng-if="!$ctrl.$percentage && $ctrl.$type === 'linear' && !$ctrl.wcProgressGroup"
   md-mode="indeterminate")

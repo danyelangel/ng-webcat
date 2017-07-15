@@ -43,20 +43,6 @@
             before
             catch
             
-- trigger: fd-img-resize
-  scope: jade
-  text: |
-        fd-img-resize(
-          fd-img-url="${1}"
-          fd-img-size="")
-- trigger: fd-auth
-  scope: jade
-  text: |
-        fd-auth(then="${1:$ctrl.$auth = $data}")
-            before
-            then
-            catch
-            
 - trigger: fd-dispatcher
   scope: jade
   text: |
@@ -82,6 +68,20 @@
           then
           
 
+- trigger: fd-auth
+  scope: jade
+  text: |
+        fd-auth(then="${1:$ctrl.$auth = $data}")
+            before
+            then
+            catch
+            
+- trigger: fd-img-resize
+  scope: jade
+  text: |
+        fd-img-resize(
+          fd-img-url="${1}"
+          fd-img-size="")
 - trigger: fd-login_provider
   scope: jade
   text: |
@@ -258,19 +258,30 @@
 - trigger: wc-identicon
   scope: jade
   text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
+- trigger: wc-identicon
+  scope: jade
+  text: |
         wc-layout(
             wc-open="true"
             wc-sidenav-id="")
             sidenav
             toolbar
             content
-- trigger: wc-identicon
+- trigger: wc-rating
   scope: jade
   text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
+        wc-rating(
+            wc-total-score=""
+            wc-user-score=""
             then="$data")
-            then
+            empty
+            half
+            full
+            catch
 - trigger: wc-panel
   scope: jade
   text: |
@@ -283,6 +294,17 @@
           catch="$ctrl.openPanel = false")
           wc-panel-template
 
+- trigger: wc-progress
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
 - trigger: wc-menu
   scope: jade
   text: |
@@ -295,37 +317,6 @@
             on-click="")
             |Plop
 
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
-- trigger: wc-rating
-  scope: jade
-  text: |
-        wc-rating(
-            wc-total-score=""
-            wc-user-score=""
-            then="$data")
-            empty
-            half
-            full
-            catch
-- trigger: wc-text
-  scope: jade
-  text: |
-        wc-text(
-            wc-data=""
-            wc-controls="b i a h2 h3"
-            wc-placeholder=""
-            wc-disabled="false"
-            then="$data")
 - trigger: wc-toast
   scope: jade
   text: |
@@ -335,6 +326,15 @@
   text: |
         wc-ui-params(
             then="$${1:params}=$data")      
+- trigger: wc-text
+  scope: jade
+  text: |
+        wc-text(
+            wc-data=""
+            wc-controls="b i a h2 h3"
+            wc-placeholder=""
+            wc-disabled="false"
+            then="$data")
 - trigger: wc-ui-redirect
   scope: jade
   text: |
