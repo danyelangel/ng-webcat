@@ -9,14 +9,15 @@
         changes.fdUploadFile
       ) {
         this.upload(
-          this.fdUploadFile
+          this.fdUploadFile,
+          this.fdUploadFilename
         );
       }
     }
-    upload(file) {
+    upload(file, filename) {
       let storageRef = this.$firedux.storageRef(),
           uploadTask = storageRef
-            .child(this.$firedux.var('UID'))
+            .child(this.$firedux.var('UID') || filename)
             .put(file);
       this.$before =
       this.$then =
@@ -66,6 +67,7 @@
       },
       bindings: {
         fdUploadFile: '<',
+        fdUploadFilename: '<',
         then: '&',
         catch: '&',
         before: '&'

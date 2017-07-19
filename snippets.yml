@@ -32,6 +32,17 @@
   text: |
         $firedux.auth.uid()
             
+- trigger: fd-api
+  scope: jade
+  text: |
+        fd-api(
+            fd-api-endpoint="${1:endpoint}"
+            fd-api-request="${2:$ctrl.$request}"
+            fd-api-array="${3:false}"
+            then="${4}")
+            before
+            catch
+            
 - trigger: fd-auth
   scope: jade
   text: |
@@ -65,17 +76,6 @@
           then
           
 
-- trigger: fd-api
-  scope: jade
-  text: |
-        fd-api(
-            fd-api-endpoint="${1:endpoint}"
-            fd-api-request="${2:$ctrl.$request}"
-            fd-api-array="${3:false}"
-            then="${4}")
-            before
-            catch
-            
 - trigger: fd-img-resize
   scope: jade
   text: |
@@ -103,18 +103,6 @@
             fd-login-credentials="${2:credentials}")
             then="${3:$data}"
             catch="${4:$error}")
-            before
-            then
-            catch
-            
-- trigger: fd-set
-  scope: jade
-  text: |
-        fd-set(
-            fdSetPath="${1:/}"
-            fdSetData="${2}"
-            fdSetPresence="${3:false}"
-            catch="$error")
             before
             then
             catch
@@ -167,6 +155,18 @@
             catch
             then
             
+- trigger: fd-set
+  scope: jade
+  text: |
+        fd-set(
+            fdSetPath="${1:/}"
+            fdSetData="${2}"
+            fdSetPresence="${3:false}"
+            catch="$error")
+            before
+            then
+            catch
+            
 - trigger: fd-timeout
   scope: jade
   text: |
@@ -202,13 +202,6 @@
             fd-value-id="${1}"
             fd-value-data=""
             then="${2:$data}")
-- trigger: wc-identicon
-  scope: jade
-  text: |
-        wc-identicon(
-            wc-identicon-email="${1}"
-            then="$data")
-            then
 - trigger: wc-dialog-alert
   scope: jade
   text: |
@@ -265,24 +258,19 @@
 - trigger: wc-identicon
   scope: jade
   text: |
+        wc-identicon(
+            wc-identicon-email="${1}"
+            then="$data")
+            then
+- trigger: wc-identicon
+  scope: jade
+  text: |
         wc-layout(
             wc-open="true"
             wc-sidenav-id="")
             sidenav
             toolbar
             content
-- trigger: wc-panel
-  scope: jade
-  text: |
-        wc-panel(
-          wc-panel-trigger=".trigger"
-          wc-panel-modal="false"
-          wc-panel-backdrop="true"
-          wc-panel-align="start start"
-          wc-panel-animation="fade"
-          catch="$ctrl.openPanel = false")
-          wc-panel-template
-
 - trigger: wc-menu
   scope: jade
   text: |
@@ -295,6 +283,40 @@
             on-click="")
             |Plop
 
+- trigger: wc-panel
+  scope: jade
+  text: |
+        wc-panel(
+          wc-panel-trigger=".trigger"
+          wc-panel-modal="false"
+          wc-panel-backdrop="true"
+          wc-panel-align="start start"
+          wc-panel-animation="fade"
+          catch="$ctrl.openPanel = false")
+          wc-panel-template
+
+- trigger: wc-progress
+  scope: jade
+  text: |
+        wc-progress(wc-progress-type="${1:linear}")
+- trigger: wc-progress-determinate
+  scope: jade
+  text: |
+        wc-progress(
+            wc-progress-type="${1:linear}"
+            wc-progress-percentage="")
+                
+- trigger: wc-rating
+  scope: jade
+  text: |
+        wc-rating(
+            wc-total-score=""
+            wc-user-score=""
+            then="$data")
+            empty
+            half
+            full
+            catch
 - trigger: wc-text
   scope: jade
   text: |
@@ -308,28 +330,11 @@
   scope: jade
   text: |
         wc-toast(wc-toast-message="${1:message}")
-- trigger: wc-rating
+- trigger: wc-ui-params
   scope: jade
   text: |
-        wc-rating(
-            wc-total-score=""
-            wc-user-score=""
-            then="$data")
-            empty
-            half
-            full
-            catch
-- trigger: wc-progress
-  scope: jade
-  text: |
-        wc-progress(wc-progress-type="${1:linear}")
-- trigger: wc-progress-determinate
-  scope: jade
-  text: |
-        wc-progress(
-            wc-progress-type="${1:linear}"
-            wc-progress-percentage="")
-                
+        wc-ui-params(
+            then="$${1:params}=$data")      
 - trigger: wc-ui-redirect
   scope: jade
   text: |
@@ -357,8 +362,3 @@
             catch="$error")
             then
             catch
-- trigger: wc-ui-params
-  scope: jade
-  text: |
-        wc-ui-params(
-            then="$${1:params}=$data")      
