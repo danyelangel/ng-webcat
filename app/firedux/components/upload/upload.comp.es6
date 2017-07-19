@@ -17,7 +17,7 @@
     upload(file, filename) {
       let storageRef = this.$firedux.storageRef(),
           uploadTask = storageRef
-            .child(this.$firedux.var('UID') || filename)
+            .child(filename || this.$firedux.var('UID'))
             .put(file);
       this.$before =
       this.$then =
