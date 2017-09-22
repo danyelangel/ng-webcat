@@ -62,13 +62,13 @@
       return this.$auth()
         .signInWithPopup(
           provider
-        ).then(() => this.updateProfilePicture());
+        ).then((currentUser) => this.updateProfilePicture(currentUser));
     }
     signInWithRedirect(provider) {
       return this.$auth()
         .signInWithRedirect(
           provider
-        ).then(() => this.updateProfilePicture());
+        ).then((currentUser) => this.updateProfilePicture(currentUser));
     }
     register(credentials) {
       return this.$auth()
@@ -95,9 +95,9 @@
       return this.auth
         .updateProfile(newProfile);
     }
-    updateProfilePicture() {
+    updateProfilePicture(currentUser) {
       return this.updateProfile({
-        photoURL: (((this.auth || {}).providerData || [])[0] || {}).photoURL || null
+        photoURL: ((currentUser.providerData || [])[0] || {}).photoURL || null
       });
     }
     logout() {
