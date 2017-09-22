@@ -62,13 +62,13 @@
       return this.$auth()
         .signInWithPopup(
           provider
-        );
+        ).then(() => this.updateProfilePicture());
     }
     signInWithRedirect(provider) {
       return this.$auth()
         .signInWithRedirect(
           provider
-        );
+        ).then(() => this.updateProfilePicture());
     }
     register(credentials) {
       return this.$auth()
@@ -94,6 +94,11 @@
       }
       return this.auth
         .updateProfile(newProfile);
+    }
+    updateProfilePicture() {
+      return this.updateProfile({
+        photoURL: (((this.auth || {}).providerData || [])[0] || {}).photoURL || null
+      });
     }
     logout() {
       this.$database().goOffline();

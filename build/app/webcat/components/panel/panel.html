@@ -1,0 +1,1 @@
+<then ng-if="$ctrl.$ready" ng-transclude="then"></then><catch ng-if="$ctrl.$error" ng-transclude="catch"></catch><after ng-if="$ctrl.$after" ng-transclude="after"></after><div id="webcatPanelTemplate" ng-if="!$ctrl.$closed" ng-show="$ctrl.$domAdded" class="webcat-panel-container"><div ng-transclude="wcPanelTemplate"></div></div>
