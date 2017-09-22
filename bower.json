@@ -18,8 +18,7 @@
     "angular-md5": "^0.1.10",
     "angular-animate": "^1.6.2",
     "underscore": "^1.8.3",
-    "angular-sanitize": "^1.6.4",
-    "webcat": "ng-webcat#master"
+    "angular-sanitize": "^1.6.4"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.*"
