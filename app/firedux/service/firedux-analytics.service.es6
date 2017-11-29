@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  class Service {
+  class AnalyticsClass {
     constructor($window, $rootScope) {
       this.$window = $window;
       this.$rootScope = $rootScope;
@@ -11,6 +11,7 @@
         angular.isString(analytics)
       ) {
         this.$window.ga('create', analytics, 'auto');
+        this.$window.ga('require', 'ecommerce');
       }
       if (
         angular.isFunction(this.$window.fbq) &&
@@ -24,6 +25,14 @@
       }
     }
     // ANALYTICS
+    sendAnalyticsTransaction({id, revenue, affiliation}) {
+      this.$window.ga('ecommerce:addTransaction', {
+        id,
+        affiliation,
+        revenue
+      });
+      this.$window.ga('ecommerce:send');
+    }
     sendAnalyticsHit(hitType, params = {}) {
       if (
         angular.isString(hitType) &&
@@ -90,6 +99,13 @@
         this.sendAnalyticsHit('exception', {exDescription});
       }
     }
+    /**
+     * 
+     * 
+     * @param {any} eventAction 
+     * @param {any} eventLabel 
+     * @memberof AnalyticsClass
+     */
     action(eventAction, eventLabel) {
       if (angular.isString(eventAction)) {
         this.sendAnalyticsHit('event', {
@@ -102,5 +118,5 @@
   }
   angular
     .module('firedux.analytics', [])
-    .service('$fireduxAnalytics', Service);
+    .service('$fireduxAnalytics', AnalyticsClass);
 }());
